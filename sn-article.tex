@@ -568,7 +568,26 @@ Butterworth filter, whose amplitude response is 50.0\% at 0.1~Hz, 96.6\% at
 0.15~Hz and 99.7\% from 0.2~Hz, and at the upper end 99.9\% at 4.5~Hz,
 97.6\% at 6.5~Hz, 87.3\% at 8~Hz and 50.0\% at 10~Hz. Its noise window spans
 5~s, from 7 to 2~s before the onset, and the signal-to-noise ratio is
-measured, as for the fixed-length window, between 0.5 and 10~Hz.
+measured, as for the fixed-length window, between 0.5 and 10~Hz. Figure~\ref{fig:codawindow} sets the two windows side
+by side on one event.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{fig_coda_window.pdf}
+\caption{The two windows on the same event, an LP recorded at Hudson on
+station HUDZ on 18 March 2017 (event 470006-1489830109120), with an
+analyst-assigned duration of 27~s. Top: the fixed-length window, 10~s from the onset, conditioned between
+0.5 and 10~Hz, with its 2~s noise window. Bottom: the coda-length window,
+which spans the analyst-assigned duration to the end of the coda (dashed
+line), conditioned between 0.1 and 10~Hz, with its 5~s noise window. In both
+panels the dotted line marks the onset, the blue shading the signal window,
+the grey shading the noise window and the red shading the edge margins
+discarded after filtering. Amplitudes are ground velocity. The lower corner
+of the coda-length band admits the long-period background visible on both
+sides of the event.}
+\label{fig:codawindow}
+\end{figure}
+
 
 \subsection{Manual segmentation of the external records}\label{subsec:manualcut}
 
@@ -595,6 +614,27 @@ noise window spans 12 to 2~s before the onset. The analyst then sets the
 onset at the first arrival of the labeled event, the end of the coda where
 the signal returns to the pre-event level, and the noise window immediately
 before the onset, free of other events where the record allows it.
+
+Figure~\ref{fig:manualcut} shows the three references set on one
+event of each catalog, against the catalog reference and the automatic
+proposal.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{fig_corte_manual.pdf}
+\caption{Manual segmentation of one LP event from each external catalog. Each
+trace is shown as in the review display, band-passed between 0.5 and 10~Hz,
+with amplitudes normalized. Dotted lines mark the reference the catalog
+supplies: the labeled segment at Deception Island, the P and S arrivals in
+VCSEIS and the end of the 120~s labeled window in VOISS-Net; the SGC files
+supply none. Dashed lines mark the automatic proposal the display starts
+from, which at Deception Island coincides with the labeled segment. Solid
+lines mark the onset and the end of the coda set by the analyst, with the
+signal window shaded in blue, and the grey shading marks the noise window
+set by the analyst. The Nevado del Ruiz event is reviewed at station
+Olleta.}
+\label{fig:manualcut}
+\end{figure}
 
 An event is kept when its onset falls within the reference the catalog
 supplies and its coda can be delimited within the record. It is discarded
