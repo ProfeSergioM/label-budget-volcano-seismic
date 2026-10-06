@@ -319,16 +319,18 @@ Nevados de Chill\'an and the VT swarm at Laguna del Maule appear as sustained
 changes in composition, so the class proportions of a system depend on the
 interval from which its events are drawn.
 
-\subsection{External catalogs}\label{subsec:external}
+\subsection{Validation catalogs}\label{subsec:validation}
 
-Four catalogs compiled by other agencies provide labeled records from
-volcanoes outside the OVDAS network and serve as an external validation of
-the descriptors (Table~\ref{tab:external}). This validation is the second
-stage of the work started in \cite{morales_recurrence_2026}, which defined the
-recurrence and spectral descriptors on the five OVDAS systems; here the same
-descriptors are measured on records labeled under other operational
-practices. From each catalog the study uses the classes it shares with the
-OVDAS taxonomy: LP and VT in all four, and HB at Nevado del Ruiz.
+Four catalogs compiled by other agencies validate the descriptors and the
+classifiers on records the OVDAS systems do not contain
+(Table~\ref{tab:validation}). They come from other volcanoes, other networks
+and other labeling practices, so they test whether what the descriptors
+capture at the OVDAS systems holds when the volcano, the station and the
+analyst change. This validation is the second stage of the work started in
+\cite{morales_recurrence_2026}, which defined the recurrence and spectral
+descriptors on the five OVDAS systems. From each catalog the study uses the
+classes it shares with the OVDAS taxonomy: LP and VT in all four, and HB at
+Nevado del Ruiz.
 
 The Deception Island dataset \cite{cortes_standardization_2019}, deposited in
 \cite{cortes_vsr_2018}, holds two deployments on this Antarctic volcano,
@@ -363,10 +365,10 @@ or duration. The SGC designates Olleta as the reference station of the
 volcano and Bis as its backup.
 
 \begin{table}[h]
-\caption{External catalogs used for validation: the systems each contributes,
+\caption{Validation catalogs: the systems each contributes,
 the classes it labels that match the OVDAS taxonomy, its sampling rate, and
 the reference times it supplies.}
-\label{tab:external}
+\label{tab:validation}
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}
                 >{\raggedright\arraybackslash}p{0.27\linewidth}
                 >{\raggedright\arraybackslash}p{0.11\linewidth}
@@ -384,7 +386,7 @@ SGC, Nevado del Ruiz & Olleta and Bis stations & LP, VT, HB & 100 & None \\
 \end{tabular}
 \end{table}
 
-The external systems also differ in their recording conditions
+The validation systems also differ in their recording conditions
 (Table~\ref{tab:recording}). Each VOISS-Net volcano is recorded mostly at one
 reference station, 2.7 to 11.2~km from its summit, sampled at 50 or 100~Hz;
 the Tanaga station lies 9.3~km from the Tanaga summit and 4.7~km from
@@ -394,11 +396,11 @@ about 1.1~km from the Arenas crater and Olleta about 2.4~km
 \cite{castano_continuous_2020}, and both Deception Island deployments lie
 about 3~km from the caldera center. Semisopochnoi, Tanaga, K\={\i}lauea and
 Deception Island are islands, while the other volcanoes, like the five OVDAS
-systems, stand on a continent. Each external system is thus described by its
+systems, stand on a continent. Each validation system is thus described by its
 station, distance, sampling rate and setting, as well as by its labels.
 
 \begin{table}[h]
-\caption{Recording conditions of the external systems. For VOISS-Net, the
+\caption{Recording conditions of the validation systems. For VOISS-Net, the
 reference station, its distance to the summit as located by the Global
 Volcanism Program \cite{gvp_votw}, its sampling rate, and the share of the
 events of that system recorded at it. For VCSEIS, the number of
@@ -453,7 +455,7 @@ it.
 Each OVDAS system uses one station, the one that combines the largest number
 of catalogued detections with uninterrupted operation
 (Table~\ref{tab:stations}). One station per system keeps a single instrument
-response and source--station geometry within each class. The external
+response and source--station geometry within each class. The validation
 catalogs follow the same rule, with each region, volcano or station treated
 as a system of its own.
 
@@ -548,11 +550,11 @@ discarded after filtering. Amplitudes are ground velocity.}
 \label{fig:codawindow}
 \end{figure}
 
-\subsection{Manual segmentation of the external records}\label{subsec:manualcut}
+\subsection{Manual segmentation of the validation records}\label{subsec:manualcut}
 
-The external catalogs give labels but not the three references the windows
+The validation catalogs give labels but not the three references the windows
 need: an onset, the end of the coda and a pre-event noise window. One analyst
-therefore sets the three by hand for every external event, with a single
+therefore sets the three by hand for every validation event, with a single
 protocol for the four catalogs (Figure~\ref{fig:manualcut}).
 
 Each record is shown as its trace, band-passed between 0.5 and 10~Hz, and
@@ -574,7 +576,7 @@ clear of other events where the record allows it.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.94\textwidth]{fig_corte_manual.pdf}
-\caption{Manual segmentation of one LP event from each external catalog. Each
+\caption{Manual segmentation of one LP event from each validation catalog. Each
 trace is shown as in the review display, band-passed between 0.5 and 10~Hz,
 with amplitudes normalized. Dotted lines mark the reference the catalog
 supplies: the labeled segment at Deception Island, the P and S arrivals in
