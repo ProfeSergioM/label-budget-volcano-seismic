@@ -465,8 +465,10 @@ The pipeline converts each event of the catalogs described above into
 sixteen descriptors computed on two windows of its waveform: a fixed-length
 window that opens at the onset, and a window that follows the event to the
 end of its coda. The steps are described in the order in which they are
-applied, from the choice of a station to the descriptors themselves, and the
-value of every parameter is given where the step that uses it is defined.
+applied, from the choice of a station to the descriptors themselves and to
+the design by which a classifier trained on one system is scored on another,
+and the value of every parameter is given where the step that uses it is
+defined.
 
 \subsection{Station selection}\label{subsec:stationselection}
 
@@ -770,6 +772,90 @@ $W_{div}$ and $W_{entr}$. Each marked structure is the longest of its kind
 within the inset, offset by a few samples so as not to cover it.}
 \label{fig:rqa}
 \end{figure}
+
+\subsection{Classification and transfer design}\label{subsec:transfer}
+
+Generalization is measured by training a classifier on the events of one
+system and scoring it on the events of another. A model is always trained on
+one source system alone, so that each score describes the passage from one
+recorded population to another, and the scores of every source--target pair
+form a matrix for each window. Two matrices are built, one centered on the
+hybrid class and one spanning every system.
+
+The first matrix holds LP, VT and HB, the three classes that Nevado del Ruiz
+shares with the OVDAS taxonomy. HB occupies a transitional region between LP
+and VT, defined by an impulsive onset followed by a low-frequency coda, and it
+is the class whose boundary depends most on the analyst who draws it. The
+sources are the three systems that hold the three classes above the support
+criterion: Copahue, Hudson and Nevado del Ruiz at Olleta. Nevado del Ruiz at
+Bis enters as a target, scored on the LP and HB events it holds. Within this
+matrix the volcano is kept and the station changes from Olleta to Bis, the
+observatory is kept and the volcano changes between Copahue and Hudson, and
+both change between Nevado del Ruiz and the two OVDAS systems, with HB
+labeled by the analysts of two different agencies.
+
+The second matrix holds LP and VT and extends the comparison to every
+system. Its sources are the systems holding both classes above the support
+criterion: the five OVDAS systems, the four VCSEIS regions and Nevado del
+Ruiz at Olleta. Every system acts as a target, including those holding a
+single class: the six VOISS-Net volcanoes, Nevado del Ruiz at Bis and the
+two Deception Island deployments. Its pairs are read in the same order, from
+the same volcano recorded differently, as at Deception Island between the
+1995 and 2009 deployments, to volcanoes of the same observatory, and to
+volcanoes of a different observatory.
+
+In both matrices the diagonal, where source and target are the same system,
+is a cross-validation within it and serves as the reference against which
+every transfer is measured. The difference between a transfer score and the
+diagonal score of the same target is the transfer loss.
+
+Two classifiers are trained on every source. The first is gradient-boosted
+decision trees \cite{chen_xgboost_2016}, applied directly to the sixteen
+descriptors; a tree ensemble is invariant to monotone rescaling of an
+individual feature, so it reads the descriptors on their native scales. The
+second is an $L_2$-regularized logistic regression on the descriptors
+standardized to zero mean and unit variance with the statistics of the
+source. The two differ in how much structure they can fit: a transfer loss
+shared by both belongs to the descriptors and to the records, while one
+confined to the boosted trees belongs to what the more flexible model learned
+from the source alone.
+
+Every training set holds 100 events per class drawn at random from the
+source, the support criterion of Section~\ref{subsec:classsupport}. A common
+size keeps the sources comparable, since the systems differ by orders of
+magnitude in the number of events they hold, and an equal count per class
+keeps the prior of the source out of the decision. The draw is repeated 20
+times with different seeds, and each score is reported as the mean and
+spread over the repetitions.
+
+Hyperparameters are selected on the source alone, never on a target. For the
+boosted trees they are chosen by Bayesian optimization
+\cite{akiba_optuna_2019}, with a tree-structured Parzen estimator over 200
+trials scored by stratified five-fold cross-validation within an independent
+draw of the source; the search covers the number of boosting rounds in
+$[200, 2000]$, the maximum depth in $[3, 12]$, the learning rate in
+$[0.01, 0.3]$, row and column subsampling each in $[0.5, 1.0]$, the minimum
+child weight in $[1, 50]$, and the $L_1$ and $L_2$ regularization terms each
+in $[10^{-8}, 10]$, with the learning rate, the child weight and both
+regularization terms sampled log-uniformly. For the logistic regression the
+regularization strength is chosen from a logarithmic grid between $10^{-3}$
+and $10^{3}$ by the same cross-validation. The configuration selected for a
+source is then held fixed across its 20 training draws and across every
+target it is scored on.
+
+A target is scored by the recall of each class it holds and, when it holds
+every class of the matrix, by their geometric mean,
+\begin{equation}
+G_m = \left( \prod_{c=1}^{C} \mathrm{recall}_c \right)^{1/C},
+\end{equation}
+over the $C$ classes of the matrix. $G_m$ rewards a model for recovering
+every class and is insensitive to the proportion in which the target holds
+them; a target holding fewer classes is read through the recall of each.
+Every score is computed on all the events of the target and reported
+alongside the distribution of their signal-to-noise ratio, so that a loss
+that follows recording quality can be told apart from one that follows the
+source. The whole design is run on each window, and the two sets of matrices
+compare which window carries a class from one system to another.
 
 %%===========================================================================%%
 \section{Results}\label{sec:results}
