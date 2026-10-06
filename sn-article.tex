@@ -11,6 +11,7 @@
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
 \usepackage{booktabs}%
+\usepackage{array}%
 \usepackage{comment}
 \usepackage{algorithm}%
 \usepackage{algorithmicx}%
@@ -439,15 +440,19 @@ catalogs therefore contribute LP and VT, and HB at Nevado del Ruiz.
 the classes it labels that match the OVDAS taxonomy, its sampling rate, and
 the reference times it supplies.}
 \label{tab:external}
-\begin{tabular}{@{}llllp{4.2cm}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}
+                >{\raggedright\arraybackslash}p{0.27\linewidth}
+                >{\raggedright\arraybackslash}p{0.11\linewidth}
+                >{\raggedright\arraybackslash}p{0.08\linewidth}
+                >{\raggedright\arraybackslash}p{0.17\linewidth}@{}}
 \toprule
 Catalog & Systems & Classes & Rate (Hz) & Reference supplied \\
 \midrule
-Deception Island \cite{cortes_standardization_2019} & 1 (two deployments) & LP, VT & 50 & segment start and end \\
-VCSEIS \cite{zhong_deep-learning-based_2024} & Alaska, Cascade Range, Hawai`i, N. California & LP, VT & 100 & P and S arrivals \\
+Deception Island \cite{cortes_standardization_2019} & One volcano, two deployments (1995, 2009) & LP, VT & 50 & Segment start and end \\
+VCSEIS \cite{zhong_deep-learning-based_2024} & Alaska, Cascade Range, Hawai`i, Northern California & LP, VT & 100 & P and S arrivals \\
 VOISS-Net \cite{fee_generalized_2025} & K\={\i}lauea, Redoubt, Tanaga & VT & 40--100 & 120~s labeled window \\
  & Veniaminof, Semisopochnoi, Pavlof & LP & 40--100 & 120~s labeled window \\
-SGC, Nevado del Ruiz & Olleta, Bis & LP, VT, HB & 100 & none \\
+SGC, Nevado del Ruiz & Olleta and Bis stations & LP, VT, HB & 100 & None \\
 \botrule
 \end{tabular}
 \end{table}
