@@ -399,7 +399,9 @@ four catalogs.
 The Deception Island dataset \cite{cortes_standardization_2019}, deposited
 in \cite{cortes_vsr_2018}, comprises two independent deployments on the same
 Antarctic volcano, in 1995 and 2009, with different stations and
-instruments. Records are sampled at 50~Hz, and its label file delimits every
+instruments: a short-period sensor located between the Argentinean and the
+Spanish bases in 1995, and a broadband station close to the Spanish base,
+about 900~m away, in 2009. Records are sampled at 50~Hz, and its label file delimits every
 event by a start and an end. A single record holds several labeled segments,
 typical of the swarms the volcano produces, and every LP and VT segment of
 both deployments is used.
@@ -467,9 +469,10 @@ record. The Tanaga station lies 9.3~km from the Tanaga summit and 4.7~km
 from neighboring Takawangha. VCSEIS distributes each region over many stations, with a median
 epicentral distance between 4.5 and 15.0~km. Three of the external volcanoes,
 Semisopochnoi and Tanaga in the Aleutian arc and K\={\i}lauea in Hawai`i, are
-islands, as are the Deception Island deployments, while the remaining
-volcanoes, like the five OVDAS systems, stand on a continent. The SGC files
-do not carry station coordinates.
+islands, as is Deception Island, whose two deployments were recorded about
+3~km from the caldera center with a short-period and a broadband sensor,
+respectively. The remaining volcanoes, like the five OVDAS systems, stand on
+a continent.
 
 \begin{table}[h]
 \caption{Recording conditions of the external systems. For VOISS-Net, the
@@ -477,7 +480,10 @@ reference station, its distance to the summit as located by the Global
 Volcanism Program \cite{gvp_votw}, its sampling rate, and the share of the
 events of that system recorded at it. For VCSEIS, the number of
 stations and the median epicentral distance, with the 10th and 90th
-percentiles in parentheses, over the traces used.}\label{tab:recording}
+percentiles in parentheses, over the traces used. For Deception Island, the
+sensor of each deployment and its approximate distance to the caldera,
+located from the published station maps \cite{cortes_standardization_2019};
+the SGC files carry no station coordinates.}\label{tab:recording}
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}
                 >{\raggedright\arraybackslash}p{0.17\linewidth}
                 >{\raggedright\arraybackslash}p{0.19\linewidth}
@@ -498,6 +504,12 @@ Alaska          & 161 stations & 8.6 (3.5--23.8)  & 100 & Mixed \\
 Cascade Range   & 93 stations  & 15.0 (2.6--55.7) & 100 & Continental \\
 Hawai`i         & 54 stations  & 4.5 (1.4--36.2)  & 100 & Island \\
 N. California   & 97 stations  & 5.4 (1.8--20.9)  & 100 & Continental \\
+\multicolumn{5}{@{}l}{\textit{Deception Island}} \\
+1995            & Short-period sensor & $\approx$3 & 50 & Island \\
+2009            & Broadband sensor    & $\approx$3 & 50 & Island \\
+\multicolumn{5}{@{}l}{\textit{SGC, Nevado del Ruiz}} \\
+Olleta          & OLLZ, OLLE & -- & 100 & Continental \\
+Bis             & BISZ, BIS1 & -- & 100 & Continental \\
 \botrule
 \end{tabular}
 \end{table}
