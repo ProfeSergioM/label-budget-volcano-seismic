@@ -328,9 +328,13 @@ and other labeling practices, so they test whether what the descriptors
 capture at the OVDAS systems holds when the volcano, the station and the
 analyst change. This validation is the second stage of the work started in
 \cite{morales_recurrence_2026}, which defined the recurrence and spectral
-descriptors on the five OVDAS systems. From each catalog the study uses the
-classes it shares with the OVDAS taxonomy: LP and VT in all four, and HB at
-Nevado del Ruiz.
+descriptors on the five OVDAS systems. The study uses every class each
+catalog labels, in two groups. LP and VT, present in all four catalogs and at
+every OVDAS system, are the global labels. The classes particular to one
+catalog or one observatory are the local labels: HB at Nevado del Ruiz,
+tremor, explosions and noise in Alaska and Mexico, regional and other events
+in Alaska, and noise and tremor at Deception Island, alongside HB, TO, VLP and
+AV at the OVDAS systems.
 
 The Deception Island dataset \cite{cortes_standardization_2019}, deposited in
 \cite{cortes_vsr_2018}, holds two deployments on this Antarctic volcano,
@@ -338,7 +342,8 @@ recorded at 50~Hz: a short-period sensor between the Argentinean and Spanish
 bases in 1995, and a broadband station near the Spanish base, about 900~m
 away, in 2009. Its label file gives the start and end of every event, and a
 single record often holds several labeled events, as the volcano produces
-swarms. The study uses every LP and VT event of both deployments.
+swarms. The study uses every event of both deployments: LP, VT and NTR, the
+catalog's class for noise and tremor.
 
 VCSEIS \cite{zhong_deep-learning-based_2024}, distributed in SeisBench format
 \cite{woollam_seisbench_2022}, covers four regions catalogued by the Alaska
@@ -348,40 +353,48 @@ California Earthquake Data Center and the Pacific Northwest Seismic Network
 arrivals, and its class comes from the catalog field that separates
 long-period from local events. The catalog stores one trace per station, so
 an earthquake recorded at several stations appears several times. The study
-uses a random draw of 500 traces per region and class.
+uses a random draw of 500 traces per region and class. The Alaska catalog
+also labels regional earthquakes, tremor, avalanches and events of other
+types, and the Hawaiian catalog one explosion and one regional earthquake;
+the study draws up to 500 traces of each of these classes.
 
 The VOISS-Net training set \cite{fee_generalized_2025} labels 120~s windows
 of continuous data in Alaska and Hawai`i, one label per window and network.
 Its Earthquake and Long Period labels correspond to VT and LP, and each
 volcano contributes one of them: VT at K\={\i}lauea, Redoubt and Tanaga, LP at
-Veniaminof, Semisopochnoi and Pavlof. The waveforms come from the EarthScope
+Veniaminof, Semisopochnoi and Pavlof. Its other labels enter as local
+classes: harmonic, monochromatic and broadband tremor at Pavlof,
+Semisopochnoi and Veniaminof, and harmonic tremor at Popocat\'epetl; and
+explosions and noise at Pavlof and Semisopochnoi. The waveforms come from the EarthScope
 data center, at the vertical channel of one station per volcano, with 60~s
 before and 120~s after each labeled window.
 
 The Servicio Geol\'ogico Colombiano (SGC) provided 500 events per class from
-Nevado del Ruiz, labeled LP, VT and HB by its analysts. Each event comes as
+Nevado del Ruiz, labeled LP, VT, HB and tremor by its analysts. Each event comes as
 one file holding the whole network, sampled at 100~Hz, without catalog onset
 or duration. The SGC designates Olleta as the reference station of the
 volcano and Bis as its backup.
 
 \begin{table}[h]
-\caption{Validation catalogs: the systems each contributes,
-the classes it labels that match the OVDAS taxonomy, its sampling rate, and
-the reference times it supplies.}
+\caption{Validation catalogs: the systems each contributes, the classes it
+labels, global (LP, VT) before the semicolon and local after it, its sampling
+rate, and the reference times it supplies.}
 \label{tab:validation}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}
-                >{\raggedright\arraybackslash}p{0.27\linewidth}
-                >{\raggedright\arraybackslash}p{0.11\linewidth}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\linewidth}
+                >{\raggedright\arraybackslash}p{0.22\linewidth}
+                >{\raggedright\arraybackslash}p{0.21\linewidth}
                 >{\raggedright\arraybackslash}p{0.08\linewidth}
-                >{\raggedright\arraybackslash}p{0.17\linewidth}@{}}
+                >{\raggedright\arraybackslash}p{0.13\linewidth}@{}}
 \toprule
 Catalog & Systems & Classes & Rate (Hz) & Reference supplied \\
 \midrule
-Deception Island \cite{cortes_standardization_2019} & One volcano, two deployments (1995, 2009) & LP, VT & 50 & Segment start and end \\
-VCSEIS \cite{zhong_deep-learning-based_2024} & Alaska, Cascade Range, Hawai`i, Northern California & LP, VT & 100 & P and S arrivals \\
+Deception Island \cite{cortes_standardization_2019} & One volcano, two deployments (1995, 2009) & LP, VT; NTR & 50 & Segment start and end \\
+VCSEIS \cite{zhong_deep-learning-based_2024} & Alaska, Cascade Range, Hawai`i, Northern California & LP, VT; regional, tremor, avalanche, explosion, other & 100 & P and S arrivals \\
 VOISS-Net \cite{fee_generalized_2025} & K\={\i}lauea, Redoubt, Tanaga & VT & 40--100 & 120~s labeled window \\
- & Veniaminof, Semisopochnoi, Pavlof & LP & 40--100 & 120~s labeled window \\
-SGC, Nevado del Ruiz & Olleta and Bis stations & LP, VT, HB & 100 & None \\
+ & Veniaminof, Semisopochnoi, Pavlof & LP; tremor & 40--100 & 120~s labeled window \\
+ & Pavlof, Semisopochnoi & explosion, noise & 40--100 & 120~s labeled window \\
+ & Popocat\'epetl & tremor & 40--100 & 120~s labeled window \\
+SGC, Nevado del Ruiz & Olleta and Bis stations & LP, VT; HB, tremor & 100 & None \\
 \botrule
 \end{tabular}
 \end{table}
@@ -446,8 +459,8 @@ Bis             & BISZ, BIS1 & $\approx$1.1 & 100 & Continental \\
 The pipeline turns each event into sixteen descriptors computed on two
 windows of its waveform: a fixed-length window that opens at the onset, and
 a window that follows the event to the end of its coda. The steps appear in
-the order in which they are applied, from the station to the descriptors and
-to the transfer design, and each parameter is given with the step that uses
+the order in which they are applied, from the station to the descriptors, their
+transferability and the transfer and grouping designs, and each parameter is given with the step that uses
 it.
 
 \subsection{Station selection}\label{subsec:stationselection}
@@ -609,6 +622,14 @@ any filtering. From there, both windows and the sixteen descriptors are
 computed with the same code and parameters as at the OVDAS systems, using
 the manual onset and end of coda.
 
+Explosions and the VCSEIS classes outside LP and VT follow the same protocol,
+since they carry a catalog arrival or a distinct first motion. Tremor, noise
+and the Deception Island NTR class are continuous signals with no onset, and
+they enter through the fixed-length window alone, centered on the labeled
+span: the 120~s window in VOISS-Net, the whole record at Nevado del Ruiz and
+the labeled segment at Deception Island. Their noise window falls within the
+signal itself, so no signal-to-noise ratio is assigned to them.
+
 \subsection{Class support criterion}\label{subsec:classsupport}
 
 A class enters the per-class analyses of a system when it holds at least 100
@@ -693,6 +714,23 @@ within the inset, offset by a few samples so as not to cover it.}
 \label{fig:rqa}
 \end{figure}
 
+\subsection{Descriptor transferability}\label{subsec:transferability}
+
+A descriptor is transferable when it separates the global classes in the same
+direction and with a similar strength at every system, whatever the volcano,
+the station or the analyst. Each of the sixteen descriptors is therefore
+scored at each system holding LP and VT above the support criterion by the
+area under the ROC curve (AUC) of LP against VT, a measure that needs no
+classifier and no threshold. The AUC is oriented by its median sign across
+systems, so a value below 0.5 at one system marks a reversal of the
+separation there. Descriptors are ranked by the median of the oriented AUC
+across systems, penalized by its interquartile range: a high median with a
+small spread identifies a descriptor that separates LP from VT everywhere,
+and a high median with a large spread one that separates them only at some
+systems. The ranking is computed on each window, and its two leading
+descriptors define the plane in which the global and local classes of all
+systems are compared.
+
 \subsection{Classification and transfer design}\label{subsec:transfer}
 
 Generalization is measured by training a classifier on one system and
@@ -763,7 +801,26 @@ target. Scores are computed on all the events of the target and reported
 with the distribution of their signal-to-noise ratio, which separates a loss
 that follows recording quality from one that follows the source. The design
 runs on both windows, and the two sets of matrices show which window carries
-each class from one system to another.
+each class from one system to another. The permutation importance of each
+descriptor, computed on every source--target pair, shows which descriptors
+the transferred models rely on, and is compared with the ranking of
+Section~\ref{subsec:transferability}.
+
+\subsection{Unsupervised grouping}\label{subsec:unsupervised}
+
+The last step removes the labels from training altogether. The events of each
+system, global and local classes together, are grouped with a Gaussian
+mixture model on the transferable descriptors, each standardized with the
+median and interquartile range of its system, which requires no label. The
+number of components is selected by the Bayesian information criterion
+between 2 and 10. The grouping runs within each system and on all systems
+together, and its agreement with the catalog labels, applied only after the
+grouping, is measured by the adjusted Rand index, the normalized mutual
+information and the share of each class that falls in its majority group. A
+class that forms its own group at systems where no model was trained shows
+that the descriptors carry it without supervision, and a local class that
+falls in a group apart from LP and VT shows that the same descriptors
+distinguish the classes particular to one observatory.
 
 \section{Results}\label{sec:results}
 
