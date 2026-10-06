@@ -646,6 +646,11 @@ is recorded with the event. The analyst may also revise a label; an event
 relabeled as a tornillo (TO) is kept within LP, the class it was catalogued
 as, and flagged.
 
+The display starts from an automatic proposal for the three references,
+obtained from the record itself, which the analyst accepts or corrects for
+every event; Section~\ref{subsec:configuration} gives the detector and its
+settings.
+
 An event that enters the review more than once is retained once: an
 earthquake recorded at several VCSEIS stations, identified by its catalog
 source identifier, and an event spanning two consecutive VOISS-Net windows or
@@ -790,6 +795,118 @@ $W_{entr}$. Each marked structure is the longest of its kind within the
 inset, offset by a few samples so as not to cover it.}
 \label{fig:rqa}
 \end{figure}
+
+\subsection{Pipeline configuration}\label{subsec:configuration}
+
+Section~\ref{sec:methods} names the variables the preprocessing fixes in
+advance. This section reports the value adopted for each, in the order the
+steps are defined, together with the quantities that vary by system.
+
+\bmhead{Catalog and analyzed population}
+Two filters reduce the six-class catalog to the analyzed population: an event
+must have been detected at the station of Table~\ref{tab:stations}, and it
+must have a complete analysis window. Table~\ref{tab:filters} gives the
+contribution of each by system.
+
+\begin{table}[h]
+\caption{Contribution of each filter to the analyzed population, by system.
+The station filter is the more consequential of the two at every system
+except Villarrica, whose catalog is already dominated by the selected
+station.}\label{tab:filters}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+ & LdM & NdCh & Cop & Vil & Hud \\
+\midrule
+Six-class catalog        & 124{,}563 & 329{,}928 & 150{,}405 & 1{,}008{,}464 & 46{,}275 \\
+After station filter     & 104{,}531 & 275{,}162 & 114{,}487 & 970{,}006 & 36{,}479 \\
+\quad retained           & 83.9\% & 83.4\% & 76.1\% & 96.2\% & 78.8\% \\
+After complete window    & 103{,}476 & 268{,}011 & 112{,}547 & 959{,}236 & 34{,}140 \\
+\quad retained           & 83.1\% & 81.2\% & 74.8\% & 95.1\% & 73.8\% \\
+\botrule
+\end{tabular}
+\end{table}
+
+The catalog repeats a small number of entries, the same event identifier at
+the same time. Among the events entering extraction these number 928 at
+Nevados de Chill\'an, 48 at Villarrica and 24 at Copahue, and none at Laguna
+del Maule or Hudson, 1{,}000 in all; the 981 of them whose two copies both
+yield a complete extraction are reduced to one, so the analyzed population
+counts 1{,}477{,}410 distinct events.
+
+The proportion of events whose analyst-assigned duration fits inside the
+10~s window, promised in Section~\ref{subsec:catalog}, separates the systems
+sharply: 71.8\% at Copahue and 67.5\% at Laguna del Maule, 34.6\% at Hudson,
+4.4\% at Nevados de Chill\'an and 0.2\% at Villarrica. For the systems at the low end the window covers the onset and the early
+coda of nearly every event.
+
+
+\bmhead{Fixed-length window}
+The fixed-length window spans 10~s, 1{,}000 samples at 100~Hz, and opens at
+the onset. It is extracted from a padded segment covering
+$[\text{onset}-7\,\mathrm{s},\ \text{onset}+13\,\mathrm{s}]$, which leaves a
+3~s margin beyond each end of the intervals the conditioning uses. The
+segment is detrended and band-pass filtered with a zero-phase fourth-order
+Butterworth filter between 0.5 and 10~Hz. The amplitude response of that
+zero-phase filter is 50.0\% at 0.5~Hz, 83.8\% at 0.6~Hz, 95.7\% at 0.7~Hz and
+99.9\% from 1.0~Hz, and at the upper end 100.0\% at 2.5 and 4.5~Hz, 98.6\% at
+6.5~Hz, 89.4\% at 8~Hz and 50.0\% at 10~Hz. The flat interior of that
+response is what places the spectral evaluation band below 8~Hz and above
+1~Hz. The noise window spans 2~s at
+$[\text{onset}-4\,\mathrm{s},\ \text{onset}-2\,\mathrm{s}]$, leaving 2~s
+between it and the onset. The event drawn in Figure~\ref{fig:window} is the
+VT event 470453-1489863406890 recorded at HUDZ on 18 March 2017, whose
+signal-to-noise ratio is 10.6~dB.
+
+\bmhead{Coda-length window}
+The coda-length window opens at the onset and spans the duration of the
+event, from a minimum of 5~s to a maximum of 100~s, 10{,}000 samples at
+100~Hz. It is extracted from a padded segment covering
+$[\text{onset}-10\,\mathrm{s},\ \text{end of coda}+3\,\mathrm{s}]$, and
+band-pass filtered with a zero-phase fourth-order Butterworth filter between
+0.1 and 10~Hz, whose amplitude response is 50.0\% at 0.1~Hz, 96.6\% at
+0.15~Hz and 99.7\% from 0.2~Hz, and at the upper end 99.9\% at 4.5~Hz,
+97.6\% at 6.5~Hz, 87.3\% at 8~Hz and 50.0\% at 10~Hz. Its noise window spans
+5~s at $[\text{onset}-7\,\mathrm{s},\ \text{onset}-2\,\mathrm{s}]$, again
+leaving 2~s between it and the onset.
+
+\bmhead{Signal-to-noise ratio}
+In both windows the signal-to-noise ratio is measured over 0.5 to 10~Hz, on
+the padded segment filtered to that band with the same zero-phase filter.
+
+\bmhead{Class support}
+The minimum support a volcano-class combination must reach is 100 events.
+
+\bmhead{Feature extraction}
+The same values apply to both windows. The recurrence plots use an embedding
+dimension of 2 and a delay of 3 samples, a Theiler correction of 1, and a
+minimum length of 2 samples for diagonal, vertical and white vertical lines
+alike. The radius is selected per event from the grid $\{0.1, 0.2, 0.4\}$,
+accepting the first value whose recurrence rate falls in $[0.01, 0.10]$ and
+otherwise taking the value closest to the midpoint of the target band
+$[0.01, 0.05]$. Section~\ref{subsec:extractionvalues} reports which radius
+this selects at each system. The spectral descriptors are evaluated over 1.0
+to 8.0~Hz. The frequency index contrasts a high band of 4.5 to 8.0~Hz with a
+low band of 1.0 to 2.5~Hz, leaving the interval from 2.5 to 4.5~Hz out of
+both so that the two bands do not adjoin. The inset of Figure~\ref{fig:rqa}
+covers 1~s.
+
+\bmhead{External records}
+External records sampled at 50 or 40~Hz are brought to 100~Hz by polyphase
+resampling with rational factors of 2 and 5/2; records whose nominal rate is
+100~Hz enter at that rate. The review display of
+Section~\ref{subsec:manualcut} shows the record band-passed between 0.5 and
+10~Hz with a zero-phase fourth-order Butterworth filter, together with its
+spectrogram over 0 to 25~Hz. The proposal it starts from places the onset at
+the first trigger of a recursive STA/LTA detector (0.5 and 5~s windows,
+trigger and release thresholds of 3 and 1, on the record band-passed between
+1 and 10~Hz) within the reference the catalog supplies, or at the catalog
+arrival or segment start where one exists; the end of the coda at the
+catalog segment end where one exists, and otherwise where a smoothed envelope,
+band-passed to the signal-to-noise band, falls below 1.2 times its pre-event
+level and stays below it for 2~s; and the noise window at
+$[\text{onset}-12\,\mathrm{s},\ \text{onset}-2\,\mathrm{s}]$. Two entries
+whose onsets fall less than 3~s apart at the same system are taken as one
+event.
 
 \section{Results}\label{sec:results}
 
