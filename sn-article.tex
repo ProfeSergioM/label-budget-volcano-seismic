@@ -59,51 +59,42 @@
 
 \subsection{Volcanic systems and monitoring network}\label{subsec:area}
 
-The analysis uses the seismic catalog maintained by the Southern Andes
-Volcanological Observatory (OVDAS), the agency responsible for permanent volcano
-monitoring in southern Chile within Chile's National Geology and Mining Service
-(SERNAGEOMIN) \cite{amigo_volcano_2021}. OVDAS operates dedicated local seismic
-networks at the active volcanoes under surveillance and maintains continuous
-event catalogs for each monitored system. Five of these systems were selected
-according to three criteria: their catalogs hold large event volumes, their
-combined catalogs include the event classes of interest, and they represent
-distinct volcanic environments, so that the dataset spans heterogeneous
-seismicity and recording conditions.
+The study uses the seismic catalog of the Southern Andes Volcanological
+Observatory (OVDAS), which monitors the active volcanoes of southern Chile
+within the National Geology and Mining Service (SERNAGEOMIN)
+\cite{amigo_volcano_2021}. OVDAS runs a local seismic network at each
+monitored volcano and keeps a continuous event catalog for each. Five
+systems were selected because their catalogs hold large event volumes, cover
+together the classes of interest, and come from distinct volcanic
+environments, so that the dataset spans contrasting seismicity and recording
+conditions.
 
-The third criterion defines the scientific contrast within the dataset.
+These environments differ in the processes that drive their seismicity.
 Villarrica is an open-conduit system with an active lava lake and
-near-continuous long-period (LP) seismicity
-\cite{richardson_varying_2014}. Nevados de Chill\'an has sustained an eruption
-with alternating effusive and explosive phases since 2016
-\cite{cardona_volcanic_2021}. Copahue exhibits persistent hydrothermal
-circulation \cite{casas_single-station_2024}. Laguna del Maule has undergone a
-prolonged volcano-tectonic (VT) swarm associated with inflation of its
+near-continuous long-period (LP) seismicity \cite{richardson_varying_2014}.
+Nevados de Chill\'an has erupted since 2016, alternating effusive and
+explosive phases \cite{cardona_volcanic_2021}. Copahue hosts persistent
+hydrothermal circulation \cite{casas_single-station_2024}. Laguna del Maule
+records a prolonged volcano-tectonic (VT) swarm linked to inflation of its
 magmatic-hydrothermal system \cite{cardona_crustal_2018}. Hudson is a heavily
-glaciated stratovolcano whose catalog includes brittle-fracture, fluid-resonance,
-and surface-process seismicity \cite{agurto-detzel_seismicity_2014}. Together,
-these systems offer contrasting volcanic settings, seismicity rates, and
-catalog compositions.
+glaciated stratovolcano whose catalog combines brittle-fracture,
+fluid-resonance and surface-process seismicity
+\cite{agurto-detzel_seismicity_2014}. The five systems therefore provide five
+distinct seismicity rates and catalog compositions.
 
-The five systems span approximately 1100~km along the Southern Volcanic
-Zone, from Laguna del Maule in the north to Hudson in the south, and each is
-monitored by an independent local seismic network (Figure~\ref{fig:map}). The
-waveforms used here come from one vertical-component channel per volcano,
-sampled at 100~Hz (Table~\ref{tab:stations}). These records differ between
-systems in instrument response, source--station distance, site conditions and
-event population, and every quantity reported in this paper is accordingly
-computed within a single system.
-
-The interval covered by each system is the span over which its station
-appears as the detecting station in the catalog, which is narrower than the
-nominal 2013--2024 request at three of the five systems
-(Table~\ref{tab:stations}). Laguna del Maule begins in April 2021, shortly
-after station NI2Z entered operation on 30 March 2021. Copahue ends in August
-2024 and Hudson in January 2024; both catalogs continue to December 2024
-through other stations of their local networks, but the station used here
-stops appearing as the detecting station on those dates. Hudson also begins
-in March 2013 rather than January, because no continuous station record is
-recoverable for its earlier entries. Nevados de Chill\'an and Villarrica span
-the full January 2013--December 2024 interval.
+The systems span about 1100~km of the Southern Volcanic Zone, from Laguna del
+Maule in the north to Hudson in the south (Figure~\ref{fig:map}), and each
+contributes the vertical channel of one station, sampled at 100~Hz
+(Table~\ref{tab:stations}). The records differ between systems in instrument
+response, source--station distance, site conditions and event population,
+so every quantity in this paper is computed within one system. The interval
+of each system is the span over which its station appears as the detecting
+station in the catalog. It covers January 2013 to December 2024 at Nevados
+de Chill\'an and Villarrica, and is shorter at the other three: Laguna del
+Maule starts in April 2021, after station NI2Z began operating on 30 March
+2021; Hudson starts in March 2013, the first month with a continuous record;
+and Copahue and Hudson end in August 2024 and January 2024, when their
+stations stop appearing as detecting stations.
 
 \begin{table}[h]
 \caption{Station used at each volcanic system and the interval it covers. The
@@ -140,24 +131,18 @@ panels). Coordinates in WGS84.}
 \label{fig:map}
 \end{figure}
 
-
 \subsection{Nature of the catalog}\label{subsec:catalog}
 
-The catalog results from analyst-based operational classification. For each
-event, the analyst assigns an event class, identifies a detecting station,
-selects an onset or phase-pick reference, and records a duration. The
-reference time corresponds to the analyst-selected arrival at the detecting
-station, and the duration is assigned during operational labeling as part of
-the same entry.
-
-Duration separates the classes as clearly as any waveform attribute, and it
-varies between systems for a single class. Median analyst-assigned durations
-run from 8.4~s for VT to 36.0~s for TO, with HB, VLP, LP and AV in between
-(Table~\ref{tab:durations}). The same class also shifts between systems: LP
-has a median duration of 11.0~s at Copahue and 29.7~s at Villarrica, and VT
-of 8.0~s at Laguna del Maule and 17.9~s at Villarrica. A small number of
-entries carry a non-positive duration, 1{,}457 events or 0.099\% of the
-analyzed population.
+Each catalog entry is the result of an operational classification by an
+analyst, who assigns the event class, the detecting station, an onset at
+that station and a duration. The onset is the time reference used to
+extract every waveform window, and the duration is part of the same entry.
+Median durations range from 8.4~s for VT to 36.0~s for TO, with HB, VLP, LP
+and AV in between (Table~\ref{tab:durations}), and they also change between
+systems for the same class: LP lasts 11.0~s at Copahue and 29.7~s at
+Villarrica, and VT 8.0~s at Laguna del Maule and 17.9~s at Villarrica. A
+small set of entries, 1{,}457 events or 0.099\% of the analyzed population,
+carries a non-positive duration.
 
 \begin{table}[h]
 \caption{Median analyst-assigned duration in seconds, by volcanic system and
@@ -178,22 +163,18 @@ Hudson                & 21.6 & 8.4  & 25.6 & --   & 20.0 & --   \\
 \end{tabular}
 \end{table}
 
-Hypocentral solutions are available for a subset of the cataloged events.
-Operational monitoring prioritizes timely event characterization, and event
-classification consequently proceeds independently of a location estimate for
-most entries. The events are therefore described here by waveform-derived
-attributes.
-
 \subsection{Event classes}\label{subsec:classes}
 
-The OVDAS database contains a broader set of operational codes than the subset
-used in the analysis, based on the classification proposed by
-\cite{lahr_earthquake_1994} and \cite{chouet_volcano_2003}. The retained
-population comprises six operational volcano-seismic classes: LP
-(long-period), VT (volcano-tectonic), HB (hybrid), VLP (very-long-period;
-coded LV in the database), AV (avalanche and rockfall), and TO (tornillo).
-Between 2013 and 2024, these classes account for 63--97\% of catalog entries
-across the five systems (Table~\ref{tab:rawcounts}).
+The analysis uses six operational classes of the OVDAS database, based on the
+classifications of \cite{lahr_earthquake_1994} and \cite{chouet_volcano_2003}:
+LP (long-period), VT (volcano-tectonic), HB (hybrid), VLP (very-long-period,
+coded LV), AV (avalanche and rockfall) and TO (tornillo). Between 2013 and
+2024 these classes account for 63--97\% of the catalog entries of each system
+(Table~\ref{tab:rawcounts}). All six are discrete events, which gives the
+analysis a common unit of observation; the remaining codes describe
+sustained tremor (TR), observational attributes such as a surface
+manifestation (EX) or an acoustic signal (MF), and detections below the
+classification threshold (VA).
 
 \begin{table}[h]
 \caption{Catalogued entries between 2013 and 2024 at all stations of each
@@ -231,22 +212,20 @@ Hudson
 \end{tabular}
 \end{table}
 
-Tremor (TR) is omitted because the code represents sustained or composite
-seismic radiation rather than a consistently delimited discrete event. Sustained
-tremor and dense sequences of LP events may generate comparable records, and
-their operational separation can therefore depend on the temporal organization
-of the signal. Restricting the analysis to discrete-event classes preserves a
-common unit of observation across the dataset.
-
-Three further database codes are excluded because they do not denote waveform
-classes at all. EX marks an event with an observed surface manifestation, and
-MF an event accompanied by an acoustic signal. Both are observational
-attributes rather than mutually exclusive categories, since either can
-accompany LP, HB, or tremor seismicity, and excluding them preserves a class
-axis defined exclusively by waveform type. VA marks an event below the
-amplitude threshold required for assignment to any specific waveform class,
-and therefore denotes an operational detection category rather than a source
-or signal type.
+Analysts assign the six classes from waveform morphology and spectral
+content (Figure~\ref{fig:gallery}), so they are operational signal categories
+and the interpretations below are the ones commonly attached to each label.
+LP events show emergent onsets and narrow-band low-frequency energy, usually
+attributed to resonance in fluid-filled cracks \cite{chouet_long-period_1996}.
+VT events show impulsive onsets and broadband energy extending to higher
+frequencies, consistent with brittle rock failure. HB events combine an
+impulsive onset with a low-frequency coda \cite{white_volcano-tectonic_2016}.
+VLP events carry energy at lower frequencies than LP and are linked to slow
+fluid transport or conduit deformation \cite{almendros_identifying_2002}. AV
+events are emergent, broadband and long surface signals
+\cite{heck_localization_2019}, and TO events show slowly decaying,
+quasi-monochromatic codas \cite{gomez_m_tornillo_1999}. The classes overlap in
+waveform and spectral features, and HB in particular lies between LP and VT.
 
 \begin{figure}[H]
 \centering
@@ -260,42 +239,17 @@ analyst-assigned duration of the event. Right: amplitude spectrum of the same
 \label{fig:gallery}
 \end{figure}
 
-The six retained classes are assigned by analysts from waveform morphology and
-spectral content and therefore represent operational signal categories rather
-than direct determinations of source mechanisms
-(Figure~\ref{fig:gallery}). The waveform-based descriptions below summarize
-the interpretations commonly associated with these labels and are not treated
-as independent measurements of source processes. LP events are characterized
-by emergent onsets and narrow-band low-frequency energy, commonly associated
-with resonance in fluid-filled cracks
-\cite{chouet_long-period_1996}. VT events are characterized by impulsive
-onsets and broadband energy extending toward higher frequencies, consistent
-with signals commonly associated with brittle rock failure. HB events combine
-an impulsive onset with a low-frequency coda
-\cite{white_volcano-tectonic_2016}. VLP events are characterized
-operationally by lower-frequency energy than LP events and may be
-associated with slow fluid transport or conduit deformation
-\cite{almendros_identifying_2002}. AV events are typically emergent,
-broadband, and relatively long-duration surface signals
-\cite{heck_localization_2019}. TO events exhibit slowly decaying,
-quasi-monochromatic codas \cite{gomez_m_tornillo_1999}. The classes occupy
-partially overlapping regions of waveform and spectral feature space; HB, in
-particular, occupies a transitional region between LP and VT signals.
-
-
 \subsection{Class composition}\label{subsec:composition}
 
-The analyzed population is the part of the six-class catalog of
-Table~\ref{tab:rawcounts} that was detected at the station of
-Table~\ref{tab:stations} and whose record at that station is complete around
-the event. Of the two conditions, the station is the more consequential at
-every system except Villarrica, whose catalog is already dominated by its
-station (Table~\ref{tab:filters}); together they retain 73--95\% of the
-six-class catalog. The catalog also repeats a small number of entries, the
-same event identifier at the same time: 928 at Nevados de Chill\'an, 48 at
-Villarrica and 24 at Copahue, and none at Laguna del Maule or Hudson. Each is
-counted once, and the analyzed population holds 1{,}477{,}410 distinct
-events.
+The analyzed population is the part of the six-class catalog detected at
+the station of Table~\ref{tab:stations} with a complete record around the
+event. The station condition removes most entries at every system except
+Villarrica, whose catalog is already dominated by its station, and the two
+conditions together retain 73--95\% of the catalog (Table~\ref{tab:filters}).
+The catalog also repeats 1{,}000 entries with the same identifier and time,
+928 at Nevados de Chill\'an, 48 at Villarrica and 24 at Copahue; each is
+counted once, which leaves 1{,}477{,}410 distinct events
+(Table~\ref{tab:counts}).
 
 \begin{table}[h]
 \caption{Catalog entries remaining after each of the two conditions that
@@ -334,34 +288,17 @@ Hudson
 \end{tabular}
 \end{table}
 
-Class composition varies strongly among volcanic systems
-(Table~\ref{tab:counts}). LP represents 99.3\% of the analyzed population at
-Villarrica, whereas VT represents 99.5\% at Laguna del Maule. HB is the
-dominant class at Copahue, accounting for 58.6\% of its analyzed population.
-Nevados de Chill\'an contains five classes with substantial support, with LP
-representing 87.2\% of its analyzed population. Hudson has the most even class
-distribution among the five systems: VT, LP, and AV represent 44.0\%, 32.0\%,
-and 22.5\% of the analyzed population, respectively, while HB contributes
-1.4\%. Two cells of this matrix hold a single event: one HB at Villarrica and
-one AV at Copahue. Both are reported as they appear in the catalog; a class
-with one representative supports no estimate of within-class variability.
-
-These proportions need not follow the dominant seismicity regime alone: they
-may also reflect network sensitivity, station placement, recording conditions,
-and operational labeling practices. The minority classes are distributed
-unevenly for the same reason. Outside Copahue and Hudson, HB support is
-sparse, with only isolated populations at Villarrica, Nevados de Chill\'an,
-and Laguna del Maule. TO is represented only at Nevados de Chill\'an.
-VLP representation is concentrated at Nevados de Chill\'an and Copahue, with
-23 events at Villarrica; Laguna del Maule and Hudson contain no VLP events.
-The AV label is operationally associated with signals attributed to unstable
-slopes, glacier-related mass movement, or active crater-rim processes.
-Hudson contains the largest relative AV population, 22.5\% of its analyzed
-events, consistent with the range of surface and mass-movement processes
-expected on a heavily glaciated edifice, followed by Nevados de Chill\'an at
-6.1\%. Villarrica contributes 6{,}440 AV events in absolute terms, while its
-much larger LP population limits the AV fraction to 0.7\%; AV has limited
-representation at Copahue and Laguna del Maule.
+Class composition varies strongly between systems. LP makes up 99.3\% of the
+population at Villarrica and 87.2\% at Nevados de Chill\'an, VT 99.5\% at
+Laguna del Maule, and HB 58.6\% at Copahue. Hudson has the most even
+composition, with 44.0\% VT, 32.0\% LP, 22.5\% AV and 1.4\% HB. The minority
+classes follow the same uneven pattern: HB is substantial only at Copahue and
+Hudson, TO appears only at Nevados de Chill\'an, VLP concentrates at Nevados
+de Chill\'an and Copahue, and AV reaches its largest share at Hudson, a
+heavily glaciated edifice, followed by Nevados de Chill\'an with 6.1\%. Two
+cells hold a single event, one HB at Villarrica and one AV at Copahue. These
+proportions reflect the seismicity of each volcano together with network
+sensitivity, station placement and labeling practice.
 
 \begin{figure}[H]
 \centering
@@ -376,66 +313,54 @@ Villarrica (Table~\ref{tab:stations}).}
 \label{fig:timeseries}
 \end{figure}
 
-Class composition also varies through time. Event rates track the temporal
-development of each volcanic system, so class proportions depend on the
-interval from which events are drawn (Figure~\ref{fig:timeseries}). The
-eruption at Nevados de Chill\'an and the VT swarm at Laguna del Maule appear
-as sustained changes in catalog composition rather than isolated rate
-excursions.
-
+Composition also changes through time, since event rates follow the
+development of each system (Figure~\ref{fig:timeseries}). The eruption at
+Nevados de Chill\'an and the VT swarm at Laguna del Maule appear as sustained
+changes in composition, so the class proportions of a system depend on the
+interval from which its events are drawn.
 
 \subsection{External catalogs}\label{subsec:external}
 
 Four catalogs compiled by other agencies provide labeled records from
-volcanoes and observatories outside the OVDAS network. They serve as an
-external validation of the descriptors and are not part of the analyzed
-population of Table~\ref{tab:counts}. This external validation is the second
-stage of the programme opened in \cite{morales_recurrence_2026}, which
-established the recurrence and spectral descriptors on the five OVDAS
-systems alone; here the same descriptors are measured on records labeled
-under other operational practices. Table~\ref{tab:external} summarizes the
-four catalogs.
+volcanoes outside the OVDAS network and serve as an external validation of
+the descriptors (Table~\ref{tab:external}). This validation is the second
+stage of the work started in \cite{morales_recurrence_2026}, which defined the
+recurrence and spectral descriptors on the five OVDAS systems; here the same
+descriptors are measured on records labeled under other operational
+practices. From each catalog the study uses the classes it shares with the
+OVDAS taxonomy: LP and VT in all four, and HB at Nevado del Ruiz.
 
-The Deception Island dataset \cite{cortes_standardization_2019}, deposited
-in \cite{cortes_vsr_2018}, comprises two independent deployments on the same
-Antarctic volcano, in 1995 and 2009, with different stations and
-instruments: a short-period sensor located between the Argentinean and the
-Spanish bases in 1995, and a broadband station close to the Spanish base,
-about 900~m away, in 2009. Records are sampled at 50~Hz, and its label file delimits every
-event by a start and an end. A single record holds several labeled segments,
-typical of the swarms the volcano produces, and every LP and VT segment of
-both deployments is used.
+The Deception Island dataset \cite{cortes_standardization_2019}, deposited in
+\cite{cortes_vsr_2018}, holds two deployments on this Antarctic volcano,
+recorded at 50~Hz: a short-period sensor between the Argentinean and Spanish
+bases in 1995, and a broadband station near the Spanish base, about 900~m
+away, in 2009. Its label file gives the start and end of every event, and a
+single record often holds several labeled events, as the volcano produces
+swarms. The study uses every LP and VT event of both deployments.
 
 VCSEIS \cite{zhong_deep-learning-based_2024}, distributed in SeisBench format
-\cite{woollam_seisbench_2022}, covers four volcanic regions catalogued by the
-Alaska Volcano Observatory, the Hawaiian Volcano Observatory, the Northern
+\cite{woollam_seisbench_2022}, covers four regions catalogued by the Alaska
+Volcano Observatory, the Hawaiian Volcano Observatory, the Northern
 California Earthquake Data Center and the Pacific Northwest Seismic Network
-(Cascade Range). Records are sampled at 100~Hz, and each trace carries P and S
-arrival samples. Class labels come from the catalog field that distinguishes
-long-period from local events; traces carrying any other code are not used.
-The catalog distributes one trace per station, so an earthquake recorded at
-several stations appears in several traces. A random draw of 500 traces per
-region and class is used.
+(Cascade Range). Each trace is sampled at 100~Hz and carries P and S
+arrivals, and its class comes from the catalog field that separates
+long-period from local events. The catalog stores one trace per station, so
+an earthquake recorded at several stations appears several times. The study
+uses a random draw of 500 traces per region and class.
 
 The VOISS-Net training set \cite{fee_generalized_2025} labels 120~s windows
-of continuous data from volcanoes in Alaska and Hawai`i, one label per window
-and per network. Its Earthquake and Long Period labels correspond to VT and
-LP. The two classes come from different volcanoes: Earthquake from
-K\={\i}lauea, Redoubt and Tanaga, Long Period from Veniaminof, Semisopochnoi
-and Pavlof, so each of these six systems contributes a single class.
-Waveforms are retrieved from the EarthScope data center at the vertical
-channel of one station per volcano, sampled at 40, 50 or 100~Hz depending on
-the station, with 60~s before and 120~s after each labeled window.
+of continuous data in Alaska and Hawai`i, one label per window and network.
+Its Earthquake and Long Period labels correspond to VT and LP, and each
+volcano contributes one of them: VT at K\={\i}lauea, Redoubt and Tanaga, LP at
+Veniaminof, Semisopochnoi and Pavlof. The waveforms come from the EarthScope
+data center, at the vertical channel of one station per volcano, with 60~s
+before and 120~s after each labeled window.
 
 The Servicio Geol\'ogico Colombiano (SGC) provided 500 events per class from
-Nevado del Ruiz, labeled LP, VT and HB by its analysts and extracted from the
-waveform archive as one file per event holding the whole network, sampled at
-100~Hz. The files carry no catalog onset or duration. The SGC designates
-Olleta as the reference station for the volcano and Bis as its backup.
-
-Labels for tremor, explosions, noise, regional events and other codes have
-no counterpart among the six OVDAS classes and are not used. The external
-catalogs therefore contribute LP and VT, and HB at Nevado del Ruiz.
+Nevado del Ruiz, labeled LP, VT and HB by its analysts. Each event comes as
+one file holding the whole network, sampled at 100~Hz, without catalog onset
+or duration. The SGC designates Olleta as the reference station of the
+volcano and Bis as its backup.
 
 \begin{table}[h]
 \caption{External catalogs used for validation: the systems each contributes,
@@ -459,21 +384,18 @@ SGC, Nevado del Ruiz & Olleta and Bis stations & LP, VT, HB & 100 & None \\
 \end{tabular}
 \end{table}
 
-
-The external systems differ in their recording conditions as much as in
-their labels (Table~\ref{tab:recording}). Each VOISS-Net volcano is recorded
-at a reference station between 2.7 and 9.3~km from its summit, sampled at 50
-or 100~Hz; most of its events are recorded at that station, and the rest at
-another station of the same network where the reference station has no
-record. The Tanaga station lies 9.3~km from the Tanaga summit and 4.7~km
-from neighboring Takawangha. VCSEIS distributes each region over many stations, with a median
-epicentral distance between 4.5 and 15.0~km. Three of the external volcanoes,
-Semisopochnoi and Tanaga in the Aleutian arc and K\={\i}lauea in Hawai`i, are
-islands, as is Deception Island, whose two deployments were recorded about
-3~km from the caldera center with a short-period and a broadband sensor,
-respectively. The remaining volcanoes, like the five OVDAS systems, stand on
-a continent. At Nevado del Ruiz, Bis lies about 1.1~km from the Arenas
-crater and Olleta about 2.4~km \cite{castano_continuous_2020}.
+The external systems also differ in their recording conditions
+(Table~\ref{tab:recording}). Each VOISS-Net volcano is recorded mostly at one
+reference station, 2.7 to 11.2~km from its summit, sampled at 50 or 100~Hz;
+the Tanaga station lies 9.3~km from the Tanaga summit and 4.7~km from
+neighboring Takawangha. VCSEIS spreads each region over many stations, with
+median epicentral distances of 4.5 to 15.0~km. At Nevado del Ruiz, Bis lies
+about 1.1~km from the Arenas crater and Olleta about 2.4~km
+\cite{castano_continuous_2020}, and both Deception Island deployments lie
+about 3~km from the caldera center. Semisopochnoi, Tanaga, K\={\i}lauea and
+Deception Island are islands, while the other volcanoes, like the five OVDAS
+systems, stand on a continent. Each external system is thus described by its
+station, distance, sampling rate and setting, as well as by its labels.
 
 \begin{table}[h]
 \caption{Recording conditions of the external systems. For VOISS-Net, the
@@ -519,65 +441,52 @@ Bis             & BISZ, BIS1 & $\approx$1.1 & 100 & Continental \\
 %%===========================================================================%%
 \section{Methodology}\label{sec:methods}
 
-The pipeline converts each event of the catalogs described above into
-sixteen descriptors computed on two windows of its waveform: a fixed-length
-window that opens at the onset, and a window that follows the event to the
-end of its coda. The steps are described in the order in which they are
-applied, from the choice of a station to the descriptors themselves and to
-the design by which a classifier trained on one system is scored on another,
-and the value of every parameter is given where the step that uses it is
-defined.
+The pipeline turns each event into sixteen descriptors computed on two
+windows of its waveform: a fixed-length window that opens at the onset, and
+a window that follows the event to the end of its coda. The steps appear in
+the order in which they are applied, from the station to the descriptors and
+to the transfer design, and each parameter is given with the step that uses
+it.
 
 \subsection{Station selection}\label{subsec:stationselection}
 
-At each OVDAS system, the analysis draws on a single station: the one that
-combines the largest number of catalogued detections with uninterrupted
-operation (Table~\ref{tab:stations}). Restricting the analysis to one station
-per system keeps a single instrument response and a single source--station
-geometry within each class. The same rule holds at the external catalogs,
-where each region, volcano or station is treated as a system of its own.
+Each OVDAS system uses one station, the one that combines the largest number
+of catalogued detections with uninterrupted operation
+(Table~\ref{tab:stations}). One station per system keeps a single instrument
+response and source--station geometry within each class. The external
+catalogs follow the same rule, with each region, volcano or station treated
+as a system of its own.
 
 \subsection{Fixed-length window}\label{subsec:conditioning}
 
-Every event is first represented by a window of 10~s, 1{,}000 samples at
-100~Hz, that opens at the analyst-assigned onset, so that every sample
-entering a descriptor belongs to the event. The window is extracted from a
-longer padded segment, from 7~s before the onset to 13~s after it, which is
-detrended (linear) and band-pass filtered between 0.5 and 10~Hz with a
-zero-phase fourth-order Butterworth filter before being trimmed. The padding
-leaves a 3~s margin beyond each end of the intervals the window uses, which
-holds the filter's edge transient clear of them. The amplitude response of
-the filter is 50.0\% at 0.5~Hz, 83.8\% at 0.6~Hz, 95.7\% at 0.7~Hz and 99.9\%
-from 1.0~Hz, and at the upper end 100.0\% at 2.5 and 4.5~Hz, 98.6\% at
-6.5~Hz, 89.4\% at 8~Hz and 50.0\% at 10~Hz.
+The first window spans 10~s, 1{,}000 samples at 100~Hz, from the
+analyst-assigned onset, so every sample belongs to the event. It is cut from
+a padded segment from 7~s before the onset to 13~s after it, which is
+linearly detrended and band-pass filtered between 0.5 and 10~Hz with a
+zero-phase fourth-order Butterworth filter; the 3~s margins at both ends
+absorb the edge transient of the filter. The amplitude response of the
+filter is 50.0\% at 0.5~Hz, 95.7\% at 0.7~Hz and 99.9\% from 1.0~Hz, and
+98.6\% at 6.5~Hz, 89.4\% at 8~Hz and 50.0\% at 10~Hz. The padded segment
+comes from one gap-free trace of the selected station, so an event with a
+gap, an interruption or a date before the station was installed falls
+outside the analyzed population, which is the second condition of
+Table~\ref{tab:filters}. An event whose filtered window has zero variance is
+excluded as well, since its z-score is undefined.
 
-Because the catalog carries no multi-station origin time, the padded segment
-must come from a single, gap-free trace at the selected station spanning the
-full interval. An event whose record leaves this interval incomplete, through
-a data gap, an interruption, or a date before the station was installed, does
-not enter the analyzed population; this is the second condition of
-Table~\ref{tab:filters}. An event whose filtered window has zero variance has
-no defined z-score and is excluded as well.
-
-A signal-to-noise ratio is computed from the same padded segment, over a
-noise window of 2~s, from 4 to 2~s before the onset, and the signal window:
+The signal-to-noise ratio of each event is measured on the same padded
+segment, between a noise window of 2~s, from 4 to 2~s before the onset, and
+the signal window:
 \begin{equation}
 \mathrm{SNR_{dB}} = 20\log_{10}\frac{\mathrm{RMS}(\text{signal window})}{\mathrm{RMS}(\text{noise window})}.
 \end{equation}
-The 2~s separation between the noise window and the onset keeps an emergent
-arrival out of the noise measurement. Both windows entering the ratio are
-measured on the segment band-passed between 0.5 and 10~Hz. At lower
-frequencies the record at these stations is dominated by the secondary
-oceanic microseism, whose amplitude follows ocean swell and station distance
-to the coast, so measuring the ratio over this band makes it a statement
-about recording quality where the events of Table~\ref{tab:counts} radiate.
-VLP events, whose energy extends below the band, are the one class the ratio
-understates. The ratio characterizes the recording of each event, which
-separates a class that stands out because of where it is recorded from one
-that stands out because its source is distinctive. The signal window is
-z-scored (zero mean, unit variance) before any descriptor is computed from
-it, so that every descriptor is computed on a dimensionless signal.
-Figure~\ref{fig:window} sets out these intervals on one event.
+The 2~s gap keeps an emergent arrival out of the noise window, and the band
+of 0.5 to 10~Hz keeps out the secondary oceanic microseism, which dominates
+the record at lower frequencies. The ratio therefore measures recording
+quality where the events radiate, with VLP, whose energy extends below the
+band, as the one class it understates. It separates a class that stands out
+because of where it is recorded from one that stands out because of its
+source. Before any descriptor is computed, the signal window is z-scored to
+zero mean and unit variance (Figure~\ref{fig:window}).
 
 \begin{figure}[H]
 \centering
@@ -601,36 +510,28 @@ descriptor is computed from.}
 
 \subsection{Coda-length window}\label{subsec:codawindow}
 
-The fixed-length window spans the full event for only a part of the
-catalog. Set against the analyst-assigned durations, it covers the whole
-event for 11.9\% of the analyzed population, with sharp differences between
-systems: 71.8\% at Copahue, 67.5\% at Laguna del Maule, 34.6\% at Hudson,
-4.4\% at Nevados de Chill\'an and 0.2\% at Villarrica. For the rest it
-captures the onset and the early coda. A second window therefore follows each
-event to the end of its coda, so that its length matches the duration of the
-event. The two windows describe different parts of the record: the
-fixed-length window compares events over an identical interval, dominated by
-the onset and the early coda, while the coda-length window describes each
-event as a whole. The sixteen descriptors are computed on both windows for
-the same events, which shows which properties of a class are carried by its
-onset and which by its full coda.
+The fixed-length window covers the whole event for 11.9\% of the analyzed
+population: 71.8\% at Copahue, 67.5\% at Laguna del Maule, 34.6\% at Hudson,
+4.4\% at Nevados de Chill\'an and 0.2\% at Villarrica. For the other events it
+measures the onset and the early coda. A second window therefore follows each
+event to the end of its coda, so that the two windows together show which
+properties of a class lie in its onset and which in its full coda. The
+sixteen descriptors are computed on both windows for the same events.
 
-At the OVDAS systems the end of the coda is given by the analyst-assigned
-duration. The window opens at the onset and spans that duration, from a
-minimum of 5~s, below which a record holds too few samples for the
-recurrence descriptors, to a maximum of 100~s, 10{,}000 samples, beyond which
-a long coda is measured on its first 100~s. Events shorter than 5~s,
-including the entries of non-positive duration, are represented by the
-fixed-length window alone. The window is extracted from a padded segment
-from 10~s before the onset to 3~s after the end of the coda, and
-conditioned with the same detrending and the same band-pass, between 0.5 and
-10~Hz, as the fixed-length window. Sharing the band, the two windows differ
-only in length: below 0.5~Hz the record is dominated by the secondary oceanic
-microseism, which over a long window would weigh on the recurrence
-descriptors as much as the event itself at coastal and island stations. Its noise window spans
-5~s, from 7 to 2~s before the onset, and the signal-to-noise ratio is
-measured, as for the fixed-length window, between 0.5 and 10~Hz. Figure~\ref{fig:codawindow} sets the two windows side
-by side on one event.
+The coda-length window opens at the onset and spans the duration of the
+event, from 5~s, the shortest record that supports the recurrence
+descriptors, to 100~s, 10{,}000 samples, after which a long coda is measured
+on its first 100~s. At the OVDAS systems the duration is the analyst-assigned
+one, and events shorter than 5~s, including those with non-positive
+duration, keep only the fixed-length window. The window is cut from a padded
+segment from 10~s before the onset to 3~s after the end of the coda and is
+conditioned with the same detrending and band-pass as the fixed-length
+window, so the two windows differ only in length. The shared band matters
+most here, since below 0.5~Hz the oceanic microseism would weigh on the
+recurrence descriptors of a long window as much as the event itself at
+coastal and island stations. The noise window spans 5~s, from 7 to 2~s before
+the onset, and the signal-to-noise ratio uses the same band as before
+(Figure~\ref{fig:codawindow}).
 
 \begin{figure}[H]
 \centering
@@ -647,36 +548,28 @@ discarded after filtering. Amplitudes are ground velocity.}
 \label{fig:codawindow}
 \end{figure}
 
-
 \subsection{Manual segmentation of the external records}\label{subsec:manualcut}
 
-The external catalogs of Table~\ref{tab:external} supply labels, but none of
-them supplies the three references the windows require, an onset, the end of
-the coda and a pre-event noise window, in the form the OVDAS catalog does.
-The three are therefore set by hand for every external event, by a single
-analyst, following one protocol across the four catalogs.
+The external catalogs give labels but not the three references the windows
+need: an onset, the end of the coda and a pre-event noise window. One analyst
+therefore sets the three by hand for every external event, with a single
+protocol for the four catalogs (Figure~\ref{fig:manualcut}).
 
-Each record is displayed as its trace, band-passed between 0.5 and 10~Hz
-with a zero-phase fourth-order Butterworth filter, and its spectrogram up to
-25~Hz, together with the reference the catalog supplies: the labeled segment
-at Deception Island, the P and S arrivals in VCSEIS, the 120~s labeled window
-in VOISS-Net. The display starts from an automatic proposal, which the
-analyst accepts or corrects for every event. The proposed onset is the
-catalog arrival or segment start where one exists, and otherwise the first
-trigger, within the labeled window, of a recursive STA/LTA detector with
-windows of 0.5 and 5~s and trigger and release thresholds of 3 and 1, run on
-the record band-passed between 1 and 10~Hz. The proposed end of the coda is
-the catalog segment end where one exists, and otherwise the point where a
-smoothed envelope of the record, band-passed between 0.5 and 10~Hz, falls
-below 1.2 times its pre-event level and stays below it for 2~s. The proposed
-noise window spans 12 to 2~s before the onset. The analyst then sets the
-onset at the first arrival of the labeled event, the end of the coda where
-the signal returns to the pre-event level, and the noise window immediately
-before the onset, free of other events where the record allows it.
-
-Figure~\ref{fig:manualcut} shows the three references set on one
-event of each catalog, against the catalog reference and the automatic
-proposal.
+Each record is shown as its trace, band-passed between 0.5 and 10~Hz, and
+its spectrogram up to 25~Hz, together with the reference the catalog
+supplies: the labeled segment at Deception Island, the P and S arrivals in
+VCSEIS, or the 120~s labeled window in VOISS-Net. The display starts from an
+automatic proposal that the analyst accepts or corrects. The proposed onset
+is the catalog arrival or segment start where one exists, and otherwise the
+first trigger, within the labeled window, of a recursive STA/LTA detector
+(0.5 and 5~s windows, thresholds of 3 and 1, record band-passed between 1 and
+10~Hz). The proposed end of the coda is the catalog segment end where one
+exists, and otherwise the point where a smoothed envelope of the record
+falls below 1.2 times its pre-event level for 2~s. The proposed noise window
+spans 12 to 2~s before the onset. The analyst then places the onset at the
+first arrival of the labeled event, the end of the coda where the signal
+returns to the pre-event level, and the noise window right before the onset,
+clear of other events where the record allows it.
 
 \begin{figure}[H]
 \centering
@@ -695,106 +588,75 @@ Olleta.}
 \label{fig:manualcut}
 \end{figure}
 
-An event is kept when its onset falls within the reference the catalog
-supplies and its coda can be delimited within the record. It is discarded
-when no event is visible within that reference or when it lasts less than
-5~s, and it does not enter a window whose padded segment its record does not
-hold. At Nevado del Ruiz the events are reviewed at Olleta, and an event
-that is not visible there is reviewed at Bis, following the SGC; the station
-on which an event is cut is recorded with it, and Olleta and Bis are treated
-as two systems, since a station change alters the record of a class. In
-VOISS-Net the windows are reviewed in random order within each volcano and
-class. The analyst may also revise a label; an event relabeled as a tornillo
-(TO) is kept within LP, the class it was catalogued as, and flagged.
+An event is kept when its onset falls within the catalog reference and its
+coda ends within the record, and it is discarded when no event is visible in
+that reference or when it lasts less than 5~s. It enters each window whose
+padded segment its record holds. At Nevado del Ruiz, events are reviewed at
+Olleta, and those not visible there are reviewed at Bis, as the SGC
+indicates; the station of each event is recorded, and Olleta and Bis form two
+systems, since the station changes the record of a class. VOISS-Net windows
+are reviewed in random order within each volcano and class. The analyst may
+also revise a label; an event relabeled as a tornillo (TO) stays in LP, its
+catalogued class, with a flag.
 
-An event that enters the review more than once is kept once: an earthquake
-recorded at several VCSEIS stations, identified by its catalog source
-identifier, and an event spanning two consecutive VOISS-Net windows or two
-consecutive SGC files, identified by onsets less than 3~s apart at the same
-system. Of each group, the copy whose onset falls within its labeled
-reference and has the highest signal-to-noise ratio is kept.
-
-External records sampled at 50 or 40~Hz are brought to 100~Hz by polyphase
-resampling, with rational factors of 2 and 5/2, before any filtering; records
-whose nominal rate is 100~Hz enter at that rate. From that point on, both
-windows and all sixteen descriptors are computed with the same code and
-parameters as at the OVDAS systems, with the manually set onset and end of
-coda in place of the catalog references.
+Each event is kept once. Copies of the same earthquake at several VCSEIS
+stations share a catalog source identifier, and an event spanning two
+consecutive VOISS-Net windows or SGC files gives onsets less than 3~s apart;
+of each group, the copy with its onset inside the labeled reference and the
+highest signal-to-noise ratio is kept. Records sampled at 50 or 40~Hz are
+resampled to 100~Hz by polyphase filtering, with factors of 2 and 5/2, before
+any filtering. From there, both windows and the sixteen descriptors are
+computed with the same code and parameters as at the OVDAS systems, using
+the manual onset and end of coda.
 
 \subsection{Class support criterion}\label{subsec:classsupport}
 
-A class enters the per-class analyses of a volcanic system only if that
-volcano-class combination holds at least 100 events in the analyzed
-population of Table~\ref{tab:counts}. From that count a class carries enough
-events to represent the range it spans at that system, and a measured
-property reflects the class rather than the particular events that entered
-it. A combination below the threshold remains part of the analyzed
-population (Table~\ref{tab:counts}, Figure~\ref{fig:timeseries}). The
-threshold is a convention fixed in advance and applied uniformly to every
-volcano-class combination, which keeps the set of classes a system
-contributes independent of any later result. Eighteen of the thirty
-combinations of Table~\ref{tab:counts} clear it: five at Nevados de
-Chill\'an, four at Copahue and Hudson, three at Villarrica and two at Laguna
-del Maule. Every system therefore contributes at least two classes, and no
-class is admitted at every system. The two single-event cells, one HB at
-Villarrica and one AV at Copahue, fall far below it.
+A class enters the per-class analyses of a system when it holds at least 100
+events there. At that size a class represents the range it spans at the
+system, and its measured properties describe the class rather than a few
+events. The threshold is set in advance and applied to every volcano-class
+combination, so the classes of each system do not depend on any later
+result; a combination below it stays in the analyzed population. Eighteen
+of the thirty OVDAS combinations clear it (Table~\ref{tab:counts}): five at
+Nevados de Chill\'an, four at Copahue and Hudson, three at Villarrica and two
+at Laguna del Maule. Every system thus contributes at least two classes, and
+no class reaches the threshold at all five.
 
 \subsection{RQA and spectral feature extraction}\label{subsec:features}
 
-Sixteen descriptors are computed on each window: thirteen time-domain
-recurrence descriptors and three spectral descriptors. Both act on the same
-signal window, and no descriptor combines information from more than one
-event. The same values apply to both windows.
+Each window yields sixteen descriptors, thirteen from recurrence
+quantification analysis (RQA) and three from the spectrum, all computed on
+the signal window of one event with the same parameters for both windows.
 
-The thirteen recurrence descriptors, $DET$, $L$, $L_{max}$, $DIV$,
-$L_{entr}$, $LAM$, $TT$, $V_{max}$, $V_{entr}$, $W$, $W_{max}$, $W_{div}$, and
-$W_{entr}$, are computed by recurrence quantification analysis (RQA)
-\cite{marwan_recurrence_2007} on the z-scored window, with an embedding
-dimension of 2, a time delay of 3 samples, and a Theiler correction of 1,
-which excludes immediate temporal neighbors from the neighborhood count.
-Diagonal, vertical, and white vertical line structures are counted from a
-minimum length of 2 samples alike (Figure~\ref{fig:rqa}). The neighborhood
-radius $\varepsilon$ is selected per event from the grid
-$\{0.1, 0.2, 0.4\}$: the first radius whose recurrence rate ($RR$) falls
-within $[0.01, 0.10]$ is accepted, and if none does, the radius whose $RR$ is
-closest to the midpoint of the narrower band $[0.01, 0.05]$ is used instead.
-$DIV$ and $W_{div}$, both defined as the reciprocal of a longest-line length,
-are set to missing rather than infinite when that length is zero; if every
-radius in the grid fails to produce a usable recurrence plot, all thirteen
-descriptors, together with $\varepsilon$ and $RR$, are left missing for that
-event. Frequency information enters through the three spectral scalars
-defined next.
+The recurrence descriptors $DET$, $L$, $L_{max}$, $DIV$, $L_{entr}$, $LAM$,
+$TT$, $V_{max}$, $V_{entr}$, $W$, $W_{max}$, $W_{div}$ and $W_{entr}$
+\cite{marwan_recurrence_2007} are computed on the z-scored window with an
+embedding dimension of 2, a delay of 3 samples and a Theiler correction of 1,
+and diagonal, vertical and white vertical lines are counted from a minimum
+length of 2 samples (Figure~\ref{fig:rqa}). The neighborhood radius
+$\varepsilon$ is set for each event from the grid $\{0.1, 0.2, 0.4\}$: the
+first radius with a recurrence rate ($RR$) within $[0.01, 0.10]$ is used,
+and otherwise the one with $RR$ closest to the midpoint of $[0.01, 0.05]$.
+$DIV$ and $W_{div}$, reciprocals of a longest-line length, are left missing
+when that length is zero, and all thirteen descriptors are left missing when
+no radius gives a usable recurrence plot.
 
-The three spectral descriptors, $f_{\text{peak}}$, $SR$, and $FI$, are
-computed from the real FFT of the filtered, non-z-scored signal window, over
-the band from 1.0 to 8.0~Hz. That band lies within the flat part of the
-filter response, so the descriptors reflect the signal rather than the
-filter. $f_{\text{peak}}$ is the frequency of maximum spectral amplitude in
-that band, and $SR$ is the ratio of mean to maximum spectral amplitude over
-the same band, following \cite{cui_subdivision_2021}, a measure of spectral
-concentration, low when energy is confined to a narrow band and approaching
-1 for a flat, broadband spectrum. $FI$ contrasts two narrower bands,
-following \cite{cui_subdivision_2021} and \cite{buurman_seismic_2010}:
+The spectral descriptors come from the FFT of the filtered window before
+z-scoring, over 1.0 to 8.0~Hz, the flat part of the filter response.
+$f_{\text{peak}}$ is the frequency of maximum amplitude in that band, and
+$SR$ is the ratio of mean to maximum amplitude \cite{cui_subdivision_2021},
+low for energy concentrated in a narrow band and close to 1 for a flat
+spectrum. $FI$ compares two bands separated by a gap
+\cite{cui_subdivision_2021,buurman_seismic_2010}:
 \begin{equation}
 \mathrm{FI} = \log_{10}\frac{\overline{A}(4.5\text{--}8.0~\mathrm{Hz})}{\overline{A}(1.0\text{--}2.5~\mathrm{Hz})},
 \end{equation}
-where $\overline{A}$ denotes mean spectral amplitude over the stated band.
-The interval from 2.5 to 4.5~Hz is left out of both, so that the two bands
-do not adjoin.
-
-The VLP class sits outside the range these three descriptors resolve. A very
-long period event radiates, by the definition that separates the class from
-LP, at frequencies lower than the classes it is contrasted against, and its
-dominant frequency lies below the evaluation band. For a VLP event
-$f_{\text{peak}}$ therefore reports the strongest spectral component the band
-admits, and the class characteristic that most directly distinguishes it, the
-frequency at which it radiates most energy, is a quantity this measurement
-places a lower bound on. The three descriptors stay comparable across events,
-since one band applies to all of them; the reading of $f_{\text{peak}}$ as a
-physical dominant frequency holds for the other five classes.
-Figure~\ref{fig:spectral} shows the three descriptors measured on one event
-of each class, and Figure~\ref{fig:rqa} the recurrence plot of the same
-events.
+where $\overline{A}$ is the mean spectral amplitude of each band. One band
+applies to every event, which keeps the three descriptors comparable. VLP
+events radiate below this band, so for them $f_{\text{peak}}$ gives the
+strongest component the band admits, a lower bound on their dominant
+frequency; for the other five classes it measures the dominant frequency
+itself (Figure~\ref{fig:spectral}).
 
 \begin{figure}[H]
 \centering
@@ -833,89 +695,76 @@ within the inset, offset by a few samples so as not to cover it.}
 
 \subsection{Classification and transfer design}\label{subsec:transfer}
 
-Generalization is measured by training a classifier on the events of one
-system and scoring it on the events of another. A model is always trained on
-one source system alone, so that each score describes the passage from one
-recorded population to another, and the scores of every source--target pair
-form a matrix for each window. Two matrices are built, one centered on the
-hybrid class and one spanning every system.
+Generalization is measured by training a classifier on one system and
+scoring it on another. Each model is trained on a single source system, so
+each score describes the passage from one recorded population to another,
+and the scores of all source--target pairs form a matrix for each window.
+Two matrices are built, one centered on the hybrid class and one covering
+every system.
 
-The first matrix holds LP, VT and HB, the three classes that Nevado del Ruiz
-shares with the OVDAS taxonomy. HB occupies a transitional region between LP
-and VT, defined by an impulsive onset followed by a low-frequency coda, and it
-is the class whose boundary depends most on the analyst who draws it. The
-sources are the three systems that hold the three classes above the support
-criterion: Copahue, Hudson and Nevado del Ruiz at Olleta. Nevado del Ruiz at
-Bis enters as a target, scored on the LP and HB events it holds. Within this
-matrix the volcano is kept and the station changes from Olleta to Bis, the
-observatory is kept and the volcano changes between Copahue and Hudson, and
-both change between Nevado del Ruiz and the two OVDAS systems, with HB
-labeled by the analysts of two different agencies.
+The first matrix holds LP, VT and HB, the classes that Nevado del Ruiz shares
+with the OVDAS taxonomy. HB lies between LP and VT, with an impulsive onset
+and a low-frequency coda, and its boundary depends most on the analyst who
+draws it. Its sources are the systems with the three classes above the
+support criterion, Copahue, Hudson and Nevado del Ruiz at Olleta, and Nevado
+del Ruiz at Bis enters as a target scored on its LP and HB events. The pairs
+of this matrix change the station within one volcano, from Olleta to Bis; the
+volcano within one observatory, between Copahue and Hudson; and both,
+between Nevado del Ruiz and the OVDAS systems, with HB labeled by the
+analysts of two agencies.
 
-The second matrix holds LP and VT and extends the comparison to every
-system. Its sources are the systems holding both classes above the support
-criterion: the five OVDAS systems, the four VCSEIS regions and Nevado del
-Ruiz at Olleta. Every system acts as a target, including those holding a
-single class: the six VOISS-Net volcanoes, Nevado del Ruiz at Bis and the
-two Deception Island deployments. Its pairs are read in the same order, from
-the same volcano recorded differently, as at Deception Island between the
-1995 and 2009 deployments, to volcanoes of the same observatory, and to
-volcanoes of a different observatory.
+The second matrix holds LP and VT across every system. Its sources are the
+systems with both classes above the support criterion, the five OVDAS
+systems, the four VCSEIS regions and Nevado del Ruiz at Olleta, and every
+system is a target, including those with a single class: the six VOISS-Net
+volcanoes, Nevado del Ruiz at Bis and the two Deception Island deployments.
+Its pairs extend the same sequence, from one volcano recorded by two
+deployments at Deception Island, to volcanoes of one observatory, to
+volcanoes of different observatories. In both matrices the diagonal, a
+cross-validation within each system, is the reference, and the difference
+between a transfer score and the diagonal score of its target is the
+transfer loss.
 
-In both matrices the diagonal, where source and target are the same system,
-is a cross-validation within it and serves as the reference against which
-every transfer is measured. The difference between a transfer score and the
-diagonal score of the same target is the transfer loss.
+Two classifiers are trained on each source. Gradient-boosted decision trees
+\cite{chen_xgboost_2016} use the sixteen descriptors at their native scales,
+since a tree ensemble is invariant to monotone rescaling. An
+$L_2$-regularized logistic regression uses the descriptors standardized with
+the mean and variance of the source. The two models differ in flexibility,
+so a transfer loss shared by both comes from the descriptors and the
+records, and one seen only in the boosted trees comes from what that model
+learned from its source.
 
-Two classifiers are trained on every source. The first is gradient-boosted
-decision trees \cite{chen_xgboost_2016}, applied directly to the sixteen
-descriptors; a tree ensemble is invariant to monotone rescaling of an
-individual feature, so it reads the descriptors on their native scales. The
-second is an $L_2$-regularized logistic regression on the descriptors
-standardized to zero mean and unit variance with the statistics of the
-source. The two differ in how much structure they can fit: a transfer loss
-shared by both belongs to the descriptors and to the records, while one
-confined to the boosted trees belongs to what the more flexible model learned
-from the source alone.
-
-Every training set holds 100 events per class drawn at random from the
+Each training set holds 100 events per class drawn at random from the
 source, the support criterion of Section~\ref{subsec:classsupport}. A common
-size keeps the sources comparable, since the systems differ by orders of
-magnitude in the number of events they hold, and an equal count per class
-keeps the prior of the source out of the decision. The draw is repeated 20
-times with different seeds, and each score is reported as the mean and
-spread over the repetitions.
+size keeps sources of very different volume comparable, and an equal count
+per class keeps the class prior of the source out of the decision. The draw
+is repeated 20 times with different seeds, and each score is reported as the
+mean and spread of the repetitions.
 
-Hyperparameters are selected on the source alone, never on a target. For the
-boosted trees they are chosen by Bayesian optimization
-\cite{akiba_optuna_2019}, with a tree-structured Parzen estimator over 200
-trials scored by stratified five-fold cross-validation within an independent
-draw of the source; the search covers the number of boosting rounds in
-$[200, 2000]$, the maximum depth in $[3, 12]$, the learning rate in
-$[0.01, 0.3]$, row and column subsampling each in $[0.5, 1.0]$, the minimum
-child weight in $[1, 50]$, and the $L_1$ and $L_2$ regularization terms each
-in $[10^{-8}, 10]$, with the learning rate, the child weight and both
-regularization terms sampled log-uniformly. For the logistic regression the
-regularization strength is chosen from a logarithmic grid between $10^{-3}$
-and $10^{3}$ by the same cross-validation. The configuration selected for a
-source is then held fixed across its 20 training draws and across every
-target it is scored on.
+Hyperparameters are tuned on the source alone. For the boosted trees, a
+tree-structured Parzen estimator \cite{akiba_optuna_2019} runs 200 trials
+scored by stratified five-fold cross-validation on an independent draw of the
+source, over boosting rounds in $[200, 2000]$, maximum depth in $[3, 12]$,
+learning rate in $[0.01, 0.3]$, row and column subsampling in $[0.5, 1.0]$,
+minimum child weight in $[1, 50]$, and $L_1$ and $L_2$ regularization in
+$[10^{-8}, 10]$, with the learning rate, child weight and both regularization
+terms sampled log-uniformly. For the logistic regression, the same
+cross-validation selects the regularization strength from a logarithmic grid
+between $10^{-3}$ and $10^{3}$. The selected configuration of a source stays
+fixed across its 20 draws and all its targets.
 
-A target is scored by the recall of each class it holds and, when it holds
-every class of the matrix, by their geometric mean,
+Each target is scored by the recall of every class it holds and, when it
+holds all the classes of the matrix, by their geometric mean,
 \begin{equation}
 G_m = \left( \prod_{c=1}^{C} \mathrm{recall}_c \right)^{1/C},
 \end{equation}
-over the $C$ classes of the matrix. $G_m$ rewards a model for recovering
-every class and is insensitive to the proportion in which the target holds
-them; a target holding fewer classes is read through the recall of each.
-Every score is computed on all the events of the target and reported
-alongside the distribution of their signal-to-noise ratio, so that a loss
-that follows recording quality can be told apart from one that follows the
-source. The whole design is run on each window, and the two sets of matrices
-compare which window carries a class from one system to another.
+which rewards recovering every class regardless of their proportion in the
+target. Scores are computed on all the events of the target and reported
+with the distribution of their signal-to-noise ratio, which separates a loss
+that follows recording quality from one that follows the source. The design
+runs on both windows, and the two sets of matrices show which window carries
+each class from one system to another.
 
-%%===========================================================================%%
 \section{Results}\label{sec:results}
 
 \section{Conclusion}\label{sec:conclusion}
