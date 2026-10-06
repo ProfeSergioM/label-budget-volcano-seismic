@@ -494,9 +494,8 @@ zero mean and unit variance (Figure~\ref{fig:window}).
 \centering
 \includegraphics[width=0.94\textwidth]{fig_window.pdf}
 \caption{Extraction and conditioning of the fixed-length window, drawn to
-scale against the analyst-assigned onset (dotted line). The example is the VT
-event 470453-1489863406890, recorded at Hudson on station HUDZ on 18 March
-2017, whose signal-to-noise ratio is 10.6~dB. Amplitudes are ground velocity,
+scale against the analyst-assigned onset (dotted line). The example is a VT event recorded at Hudson on station HUDZ, whose
+signal-to-noise ratio is 10.6~dB. Amplitudes are ground velocity,
 obtained from the recorded counts by the station's sensitivity, which is flat
 across the band shown. Top: the raw padded segment, from 7~s before the onset
 to 13~s after it. Bottom: the same segment after linear detrending and the
@@ -538,15 +537,14 @@ the onset, and the signal-to-noise ratio uses the same band as before
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.94\textwidth]{fig_coda_window.pdf}
-\caption{The two windows on the same event, an LP recorded at Hudson on
-station HUDZ on 18 March 2017 (event 470006-1489830109120), with an
-analyst-assigned duration of 27~s. Both windows are conditioned between 0.5 and 10~Hz. Top: the
-fixed-length window, 10~s from the onset, with its 2~s noise window. Bottom:
-the coda-length window, which spans the analyst-assigned duration to the end
-of the coda (dashed line), with its 5~s noise window. In both
-panels the dotted line marks the onset, the blue shading the signal window,
-the grey shading the noise window and the red shading the edge margins
-discarded after filtering. Amplitudes are ground velocity.}
+\caption{The two windows on one LP event recorded at Hudson on station HUDZ,
+with an analyst-assigned duration of 27~s. Both panels show the same record,
+conditioned between 0.5 and 10~Hz, and differ only in the window they mark.
+Top: the fixed-length window, 10~s from the onset, with its 2~s noise window.
+Bottom: the coda-length window, from the onset to the end of the coda
+(dashed line), with its 5~s noise window. The dotted line marks the onset,
+the blue shading the signal window, the grey shading the noise window and the
+red shading the edge margins discarded after filtering.}
 \label{fig:codawindow}
 \end{figure}
 
