@@ -951,9 +951,9 @@ $DIV$ & LP$<$VT & 0.60 & 0.14 & 0.46 & 1 & 0.62 & 0.09 & 0.53 & 1 \\
 In the plane of $FI$ and $DET$, LP and VT form two clouds that hold the
 medians of their own systems (Figure~\ref{fig:plane}). LP gathers at low $FI$
 and high $DET$, from 15 systems, and VT at higher $FI$ and lower $DET$, from
-13, and each median of LP or VT falls within the cloud of its class, so no
-single volcano shapes either cloud. The two clouds overlap at their margins,
-where the medians of Northern California and Nevado del Ruiz lie.
+13, and the medians of LP and VT of every system fall within the cloud of
+their class, so no single volcano shapes either cloud. Nevado del Ruiz is the
+exception: the LP medians of Olleta and Bis lie within the VT cloud.
 
 The local classes fall in places that depend on their catalog. Tremor,
 noise and explosions of VOISS-Net and the noise and tremor class of Deception
@@ -999,17 +999,15 @@ assigns less than 80\% of the accepted LP or VT events correctly at
 Villarrica (LP, 0.49), Nevados de Chill\'an (LP, 0.51), Laguna del Maule (VT,
 0.23) and Nevado del Ruiz at Olleta (LP, 0.55), and it rejects 63\% of the VT
 of Hudson; at the VOISS-Net volcanoes and at Bis, the single global class
-fails as well. No local class of the fixed-length window therefore has a
+fails as well, and only the 2009 deployment of Deception Island holds it. No local class of the fixed-length window therefore has a
 composition that holds under all three scalings.
 
 In the coda-length window, five local classes have a stable composition
 (Table~\ref{tab:composition}). HB of Copahue and the regional and other events
 of Alaska fall mostly on the VT side, the tornillos of Nevados de Chill\'an on
 the LP side, and AV of Nevados de Chill\'an mostly on neither. The events
-rejected as neither are ambiguous between LP and VT rather than distant from
-both: the share of local events beyond the distance threshold, 0 to 0.24,
-matches that of the LP and VT events left out of training. No local class
-lies outside the region the global classes span, and each falls toward LP,
+rejected as neither are mostly ambiguous between LP and VT rather than
+distant from both, so no local class lies outside the region the global classes span, and each falls toward LP,
 toward VT or between them.
 
 \begin{table}[h]
@@ -1032,8 +1030,9 @@ Alaska & Regional & 162 & 0.09 & 0.57 & 0.35 \\
 \subsection{Transfer across systems}\label{subsec:res_transfer}
 
 Within each system the descriptors classify LP and VT well. The diagonal of
-the LP--VT matrix reaches a median $G_m$ of 0.91 in both windows, from 0.82 in
-Alaska to 0.95 at Laguna del Maule (Figure~\ref{fig:matrices}). With all
+the LP--VT matrix reaches a median $G_m$ of 0.91 in both windows, from 0.77
+to 0.83 at Nevado del Ruiz at Olleta and in Alaska to 0.95 at Laguna del
+Maule (Figure~\ref{fig:matrices}). With all
 their classes, the systems range more widely: the balanced accuracy is 0.97
 at Laguna del Maule and 0.90 to 0.94 at the VCSEIS regions with two classes,
 0.75 at Nevados de Chill\'an with five classes and 0.81 at Villarrica with
@@ -1063,7 +1062,7 @@ $G_m$ to 0.85 with the logistic regression and 0.82 with the boosted trees in
 the fixed-length window, and moving to another agency to 0.82 and 0.80; with
 the medians taken by source or by target, both steps lie between 0.80 and
 0.84 and change order. The coda-length window gives 0.78 to 0.83 outside the
-diagonal, and the two classifiers differ by less than 0.03 at every step.
+diagonal, and the two classifiers differ by at most 0.05 at every step.
 Targets with a single class keep it at most systems: the LP of the VOISS-Net
 volcanoes and of Deception Island is recovered in 92\% to 100\% of the
 events, and the VT of Tanaga, Kilauea and Redoubt in 87\% to 96\%, 73\% to
@@ -1073,7 +1072,7 @@ source, only 3\% to 6\% of its LP events are taken as LP.
 HB does not transfer. Its recall, 0.57 to 0.61 within its system in the
 fixed-length window, falls to 0.15 between Copahue and Hudson, to 0.20
 between agencies and to 0.23 to 0.35 from Olleta to Bis, and the $G_m$ of the
-three classes falls from 0.68 to 0.69 to 0.36 and 0.21 to 0.26. Between
+three classes falls from 0.68 to 0.69 to 0.36 to 0.37 and to 0.21 to 0.26. Between
 agencies the LP of Nevado del Ruiz collapses as well, to a recall of 0.04 to
 0.06. The scaling of each system recovers part of HB, to recalls of 0.31 to
 0.40 and a $G_m$ of 0.45 to 0.49, without approaching the diagonal. The
