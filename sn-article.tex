@@ -833,6 +833,15 @@ descriptor, computed on every source--target pair, shows which descriptors
 the transferred models rely on, and is compared with the ranking of
 Section~\ref{subsec:transferability}.
 
+The same design tests whether a local class transfers like a global one.
+For each local class present at two or more systems, a three-class logistic
+regression, the local class against LP and VT, is trained on one system and
+scored on every other system holding that class, by the recall of the local
+class and the share of LP and VT events not taken for it. The same procedure
+with VT against LP is the reference of a global class, and the area under the
+ROC curve of the local class against LP and against VT shows whether its
+position between them is kept from one system to another.
+
 \subsection{Unsupervised grouping}\label{subsec:unsupervised}
 
 The last step removes the labels from training altogether. The events of each
@@ -869,6 +878,19 @@ it collects at each system and by its median descriptors.
 \subsection{Descriptor transferability}\label{subsec:res_transferability}
 
 \subsection{Global and local classes in the transferable plane}\label{subsec:res_plane}
+
+Among the local classes, VLP keeps the most consistent position. At Copahue
+and Nevados de Chill\'an, the only systems where it reaches the support
+criterion, its median lies at $FI = -0.36$ and $DET = 0.77$ and at
+$FI = -0.43$ and $DET = 0.82$, between the LP and VT of each system and
+closer to LP, in both windows. A detector of VLP against LP and VT reaches a
+balanced accuracy of 0.74 at Copahue and 0.89 at Nevados de Chill\'an within
+each system, and keeps 0.73 to 0.77 from Copahue to Nevados de Chill\'an and
+0.66 in the opposite direction, above the 0.53 of HB between systems of the
+same observatory and below the 0.84 of LP against VT. Both systems belong to
+one observatory and no validation catalog labels VLP, so its consistency
+holds within one labeling practice, and the descriptors measure the part of
+its energy above the 0.5~Hz band (Section~\ref{subsec:conditioning}).
 
 \subsection{Composition of the local classes}\label{subsec:res_heterogeneity}
 
