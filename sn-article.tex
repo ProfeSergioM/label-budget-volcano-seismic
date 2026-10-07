@@ -517,15 +517,17 @@ sixteen descriptors are computed on both windows for the same events.
 The coda-length window opens at the onset and spans the duration of the
 event, from 5~s, the shortest record that supports the recurrence
 descriptors, to 100~s, 10{,}000 samples, after which a long coda is measured
-on its first 100~s. At the OVDAS systems the duration is the analyst-assigned
+on its first 100~s. These limits are those of the full-duration window of
+\cite{morales_recurrence_2026}. At the OVDAS systems the duration is the analyst-assigned
 one, and events shorter than 5~s, including those with non-positive
 duration, keep only the fixed-length window. The window is cut from a padded
 segment from 10~s before the onset to 3~s after the end of the coda and is
 conditioned with the same detrending and band-pass as the fixed-length
-window, so the two windows differ only in length. The shared band matters
-most here, since below 0.5~Hz the oceanic microseism would weigh on the
-recurrence descriptors of a long window as much as the event itself at
-coastal and island stations. The noise window spans 5~s, from 7 to 2~s before
+window, so the two windows differ only in length. The lower corner rises
+from the 0.1~Hz of \cite{morales_recurrence_2026} to 0.5~Hz: the validation
+systems include coastal and island stations, where the oceanic microseism
+below 0.5~Hz weighs on the recurrence descriptors of a long window as much as
+the event itself, and a single band keeps the two windows comparable. The noise window spans 5~s, from 7 to 2~s before
 the onset, and the signal-to-noise ratio uses the same band as before
 (Figure~\ref{fig:codawindow}).
 
@@ -641,7 +643,9 @@ $TT$, $V_{max}$, $V_{entr}$, $W$, $W_{max}$, $W_{div}$ and $W_{entr}$
 \cite{marwan_recurrence_2007} are computed on the z-scored window with an
 embedding dimension of 2, a delay of 3 samples and a Theiler correction of 1,
 and diagonal, vertical and white vertical lines are counted from a minimum
-length of 2 samples (Figure~\ref{fig:rqa}). The neighborhood radius
+length of 2 samples (Figure~\ref{fig:rqa}). The embedding is the one
+\cite{morales_recurrence_2026} selected on the OVDAS catalog by classifier
+performance, and the thirteen descriptors are those defined there. The neighborhood radius
 $\varepsilon$ is set for each event from the grid $\{0.1, 0.2, 0.4\}$: the
 first radius with a recurrence rate ($RR$) within $[0.01, 0.10]$ is used,
 and otherwise the one with $RR$ closest to the midpoint of $[0.01, 0.05]$.
@@ -649,7 +653,8 @@ $DIV$ and $W_{div}$, reciprocals of a longest-line length, are left missing
 when that length is zero, and all thirteen descriptors are left missing when
 no radius gives a usable recurrence plot.
 
-The spectral descriptors come from the FFT of the filtered window before
+Three spectral descriptors complement the recurrence set of
+\cite{morales_recurrence_2026}. They come from the FFT of the filtered window before
 z-scoring, over 1.0 to 8.0~Hz, the flat part of the filter response.
 $f_{\text{peak}}$ is the frequency of maximum amplitude in that band, and
 $SR$ is the ratio of mean to maximum amplitude \cite{cui_subdivision_2021},
