@@ -147,7 +147,7 @@ carries a non-positive duration.
 \begin{table}[h]
 \caption{Median analyst-assigned duration in seconds, by volcanic system and
 class, over the analyzed population. Only volcano-class combinations holding
-at least 100 events are shown. Each median is taken within one system: the
+at least 50 events are shown. Each median is taken within one system: the
 systems differ in station and in class composition, so a figure spanning
 them would describe no population that was recorded.}\label{tab:durations}
 \begin{tabular}{@{}lrrrrrr@{}}
@@ -632,16 +632,18 @@ signal itself, so no signal-to-noise ratio is assigned to them.
 
 \subsection{Class support criterion}\label{subsec:classsupport}
 
-A class enters the per-class analyses of a system when it holds at least 100
+A class enters the per-class analyses of a system when it holds at least 50
 events there. At that size a class represents the range it spans at the
 system, and its measured properties describe the class rather than a few
-events. The threshold is set in advance and applied to every volcano-class
+events, while local classes recorded at a single volcano, such as
+monochromatic tremor at Semisopochnoi, still enter. The threshold is set in advance and applied to every volcano-class
 combination, so the classes of each system do not depend on any later
 result; a combination below it stays in the analyzed population. Eighteen
 of the thirty OVDAS combinations clear it (Table~\ref{tab:counts}): five at
 Nevados de Chill\'an, four at Copahue and Hudson, three at Villarrica and two
 at Laguna del Maule. Every system thus contributes at least two classes, and
-no class reaches the threshold at all five.
+no class reaches the threshold at all five. The same threshold applies to
+every validation system.
 
 \subsection{RQA and spectral feature extraction}\label{subsec:features}
 
@@ -773,7 +775,7 @@ records, and one seen only in the boosted trees comes from what that model
 learned from its source.
 
 Each training set holds 100 events per class drawn at random from the
-source, the support criterion of Section~\ref{subsec:classsupport}. A common
+source, a size that every class of every source exceeds in both windows. A common
 size keeps sources of very different volume comparable, and an equal count
 per class keeps the class prior of the source out of the decision. The draw
 is repeated 20 times with different seeds, and each score is reported as the
