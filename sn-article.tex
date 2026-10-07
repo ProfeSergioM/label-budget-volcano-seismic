@@ -771,20 +771,22 @@ analysts of two agencies.
 The second matrix holds LP and VT across every system. Its sources are the
 systems with both classes above the support criterion, the five OVDAS
 systems, the four VCSEIS regions and Nevado del Ruiz at Olleta, and every
-system is a target, including those with a single class: the six VOISS-Net
-volcanoes, Nevado del Ruiz at Bis and the two Deception Island deployments.
-Its pairs extend the same sequence, from one volcano recorded by two
-deployments at Deception Island, to volcanoes of one observatory, to
-volcanoes of different observatories. In both matrices the diagonal, a
-cross-validation within each system, is the reference, and the difference
-between a transfer score and the diagonal score of its target is the
-transfer loss.
+system with LP or VT above that criterion is a target, including those with a
+single class: the six VOISS-Net volcanoes, Nevado del Ruiz at Bis and the
+2009 Deception Island deployment, which holds LP alone. Its pairs extend the
+same sequence, from volcanoes labeled by one agency to volcanoes labeled by
+different agencies. The agency is the one that draws the labels: OVDAS, the
+SGC, the observatories behind the four VCSEIS regions, each counted as its
+own agency, and the VOISS-Net team. In both matrices the diagonal is the
+reference: the source scored on its own events left out of each training
+draw. The difference between a transfer score and the diagonal score of its
+target is the transfer loss.
 
 Two classifiers are trained on each source. Gradient-boosted decision trees
 \cite{chen_xgboost_2016} use the sixteen descriptors at their native scales,
 since a tree ensemble is invariant to monotone rescaling. An
 $L_2$-regularized logistic regression uses the descriptors standardized with
-the mean and variance of the source. The two models differ in flexibility,
+the mean and variance of its training draw. The two models differ in flexibility,
 so a transfer loss shared by both comes from the descriptors and the
 records, and one seen only in the boosted trees comes from what that model
 learned from its source.
@@ -797,7 +799,10 @@ all its events, computed without labels. It removes a shift of the whole
 system, such as a change of station gain or site response, and keeps the
 relations among its classes, so the difference between the two scalings
 separates a transfer loss that a recalibration of the target recovers from
-one that it does not.
+one that it does not. The median and interquartile range of a system follow
+its class composition, so the second scaling is read only for targets that
+hold every class of the matrix, and for a system dominated by one class its
+result reflects that composition as well as the records.
 
 Each training set holds 100 events per class drawn at random from the
 source, a size that every class of every source exceeds in both windows. A common
@@ -824,12 +829,15 @@ holds all the classes of the matrix, by their geometric mean,
 G_m = \left( \prod_{c=1}^{C} \mathrm{recall}_c \right)^{1/C},
 \end{equation}
 which rewards recovering every class regardless of their proportion in the
-target. Scores are computed on all the events of the target and reported
-with the distribution of their signal-to-noise ratio, which separates a loss
+target. Scores are computed on the events of the target, up to 5{,}000 per
+class drawn at random, and reported with the median and quartiles of their
+signal-to-noise ratio, which separates a loss
 that follows recording quality from one that follows the source. The design
 runs on both windows, and the two sets of matrices show which window carries
 each class from one system to another. The permutation importance of each
-descriptor, computed on every source--target pair, shows which descriptors
+descriptor, computed with the first scaling on every source--target pair over
+the first three draws and up to 1{,}000 events of each target class above the
+support criterion, shows which descriptors
 the transferred models rely on, and is compared with the ranking of
 Section~\ref{subsec:transferability}.
 
