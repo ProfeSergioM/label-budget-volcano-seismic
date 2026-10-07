@@ -837,10 +837,19 @@ Section~\ref{subsec:transferability}.
 
 The last step removes the labels from training altogether. The events of each
 system, global and local classes together, are grouped with a Gaussian
-mixture model on the transferable descriptors, each standardized with the
-median and interquartile range of its system, which requires no label. The
-number of components is selected by the Bayesian information criterion
-between 2 and 10. The grouping runs within each system and on all systems
+mixture model on the three most transferable descriptors and, as a contrast,
+on all sixteen reduced by principal components to 90\% of their variance,
+each descriptor standardized with the median and interquartile range of its
+system, which requires no label. The Bayesian information criterion splits
+even the LP and VT of a single system, whose descriptors are skewed and
+bounded, so the number of components is selected by stability instead: for
+each number from 2 to 8, or to 12 when all systems are grouped together,
+mixtures fitted on repeated 80\% draws assign every event, and the largest
+number whose median adjusted Rand index between draws is at least 0.8, with
+a 10th percentile of at least 0.6, for itself and every smaller number, is
+retained. Since that choice can change with the draws, the agreement with
+the labels and the search for recurrent groups are reported over the whole
+range of component numbers. The grouping runs within each system and on all systems
 together, and its agreement with the catalog labels, applied only after the
 grouping, is measured by the adjusted Rand index, the normalized mutual
 information and the share of each class that falls in its majority group. A
