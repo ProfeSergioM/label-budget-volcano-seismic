@@ -604,7 +604,10 @@ computed with the same code and parameters as at the OVDAS systems, using
 the manual onset and end of coda.
 
 Explosions and the VCSEIS classes outside LP and VT follow the same protocol,
-since they carry a catalog arrival or a distinct first motion. Tremor, noise
+since they carry a catalog arrival or a distinct first motion. For the
+regional and other events of Alaska, whose proposal starts at the catalog P
+arrival, the analyst reviews a sample of each class and accepts the proposal
+for the rest. Tremor, noise
 and the Deception Island NTR class are continuous signals with no onset, and
 they enter through the fixed-length window alone, centered on the labeled
 span: the 120~s window in VOISS-Net, the whole record at Nevado del Ruiz and
@@ -714,6 +717,22 @@ systems. The ranking is computed on each window, and its two leading
 descriptors define the plane in which the global and local classes of all
 systems are compared.
 
+\subsection{Class heterogeneity}\label{subsec:heterogeneity}
+
+A label groups the events an analyst judges alike, and the same label may
+gather signals of more than one kind. The number of groups within each class
+of each system is measured with a Gaussian mixture model on the sixteen
+descriptors, scaled with the median and interquartile range of the class and
+reduced by principal components to 90\% of their variance. The number of
+components, from 1 to 6, is selected by the Bayesian information criterion.
+Since that criterion favors more components as the sample grows, every class
+is evaluated on draws of 100 events, repeated 20 times, and LP and VT of each
+system serve as the reference. For the classes that split, the mixture is fit
+on all their events, and each component is described by its size, its median
+descriptors, its duration and its signal-to-noise ratio. Every event keeps its
+label, so the components describe the content of a class without changing
+the population that enters the following steps.
+
 \subsection{Classification and transfer design}\label{subsec:transfer}
 
 Generalization is measured by training a classifier on one system and
@@ -806,6 +825,16 @@ falls in a group apart from LP and VT shows that the same descriptors
 distinguish the classes particular to one observatory.
 
 \section{Results}\label{sec:results}
+
+\subsection{Descriptor transferability}\label{subsec:res_transferability}
+
+\subsection{Global and local classes in the transferable plane}\label{subsec:res_plane}
+
+\subsection{Class heterogeneity}\label{subsec:res_heterogeneity}
+
+\subsection{Transfer across systems}\label{subsec:res_transfer}
+
+\subsection{Unsupervised grouping}\label{subsec:res_unsupervised}
 
 \section{Conclusion}\label{sec:conclusion}
 
