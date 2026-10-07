@@ -891,26 +891,29 @@ it collects at each system and by its median descriptors.
 
 \subsection{Descriptor transferability}\label{subsec:res_transferability}
 
-Three descriptors separate LP from VT in the same direction at all ten
-systems that hold both classes (Table~\ref{tab:transferability}). $FI$ leads
-the ranking in both windows, with a median oriented AUC of 0.93 in the
-fixed-length window and 0.94 in the coda-length window, an interquartile
-range of 0.07 and no reversal; its lowest value, 0.73 in Alaska, still
-separates the classes. $SR$ follows with a median of 0.87 and 0.89 and no
-reversal, and $DET$, the leading recurrence descriptor, reaches 0.87 in the
-fixed-length window and 0.79 in the coda-length window, where it reverses at
-Northern California. LP is lower in $FI$ and $SR$ and higher in $DET$ than VT
-at every system where these descriptors hold their direction.
+Five descriptors keep the direction of their contrast between LP and VT at
+all ten systems that hold both classes, in both windows: $FI$, $SR$,
+$f_{\text{peak}}$, $W$ and $W_{entr}$ (Table~\ref{tab:transferability}).
+$FI$ leads the ranking in both windows, with a median oriented AUC of 0.93 in
+the fixed-length window and 0.94 in the coda-length window, an interquartile
+range of 0.07, and its lowest value, 0.73, in Alaska. In the fixed-length
+window $DET$, the leading recurrence descriptor, and $SR$ follow with a
+median of 0.87 and scores of 0.79 and 0.78. In the coda-length window $SR$
+rises to 0.89 and to second place, while $DET$ falls to 0.79 and reverses at
+Northern California. LP is lower in $FI$ and $SR$ and higher in $DET$ than VT.
 
-The remaining recurrence descriptors separate the classes less and less
-consistently. Their median AUC lies between 0.59 and 0.76, and most of them
-reverse at one system, in all cases Northern California, so that a direction
-learned elsewhere does not hold there. $W_{max}$ and $W_{div}$ reverse their
-direction between the two windows, which places part of their contrast in the
-coda rather than in the onset. The ranking therefore sets apart a spectral
-pair and one recurrence descriptor that carry LP and VT across systems, and
-$FI$ and $DET$, the leading descriptor of each kind, define the plane of the
-following comparison.
+The remaining recurrence descriptors separate the classes less and with less
+agreement between systems. Their median AUC lies between 0.59 and 0.76, and
+most of them reverse at one system. In the fixed-length window that system is
+Northern California for $L$, $L_{entr}$, $L_{max}$, $DIV$, $TT$, $V_{max}$ and
+$V_{entr}$, Villarrica for $W_{max}$ and $W_{div}$, and both Northern
+California and Nevado del Ruiz at Olleta for $LAM$; in the coda-length window
+every reversal falls at Northern California. $W_{max}$ and $W_{div}$ also
+reverse their direction between the two windows, which places part of their
+contrast in the coda rather than in the onset. The ranking thus sets apart a
+spectral pair and one recurrence descriptor that carry LP and VT across
+systems, and $FI$ and $DET$, the leading descriptor of each kind, define a
+common plane for the classes of all systems.
 
 \begin{table}[h]
 \caption{Transferability of the sixteen descriptors: median over the ten
@@ -949,20 +952,24 @@ $DIV$ & LP$<$VT & 0.60 & 0.14 & 0.46 & 1 & 0.62 & 0.09 & 0.53 & 1 \\
 \subsection{Global and local classes in the transferable plane}\label{subsec:res_plane}
 
 In the plane of $FI$ and $DET$, LP and VT form two clouds that hold the
-medians of their own systems (Figure~\ref{fig:plane}). LP gathers at low $FI$
-and high $DET$, from 15 systems, and VT at higher $FI$ and lower $DET$, from
-13, and the medians of LP and VT of every system fall within the cloud of
-their class, so no single volcano shapes either cloud. Nevado del Ruiz is the
-exception: the LP medians of Olleta and Bis lie within the VT cloud.
+medians of their systems (Figure~\ref{fig:plane}). LP gathers at low $FI$ and
+high $DET$, from 15 systems, and VT at higher $FI$ and lower $DET$, from 13.
+Every median of LP and VT lies within the 90\% contour of its class, and most
+within its 50\% core; the LP medians of Copahue and Alaska and the VT medians
+of Northern California, Laguna del Maule and Hudson lie outside the core.
+Nevado del Ruiz departs from this pattern: the LP medians of Olleta and Bis
+lie within the core of VT.
 
-The local classes fall in places that depend on their catalog. Tremor,
-noise and explosions of VOISS-Net and the noise and tremor class of Deception
-Island lie at the low-$FI$, high-$DET$ end of the LP cloud, beyond most LP
-events, while the tremor of Nevado del Ruiz lies in the VT cloud. HB lies
-between LP and VT at Copahue and Hudson and within the VT cloud at Nevado del
-Ruiz, and the regional and other events of Alaska lie on the VT of their own
-region. In the coda-length window, HB of Hudson moves into the LP cloud and AV
-gathers between the two clouds, while LP and VT keep their separation.
+The local classes fall in places that depend on their catalog. Tremor, noise
+and explosions of VOISS-Net and the noise and tremor class of Deception
+Island lie within the LP cloud, at its low-$FI$ end for the tremor and
+explosions of Pavlof and the tremor of Veniaminof. The tremor of Nevado del
+Ruiz lies at the boundary of the two clouds at Olleta and within the VT
+contour at Bis. HB lies between LP and VT at Copahue and Hudson and within the
+VT cloud at Nevado del Ruiz, and the regional and other events of Alaska lie
+on the VT of their own region. In the coda-length window, HB of Hudson moves
+into the LP cloud, and AV approaches VT at Nevados de Chill\'an and
+Villarrica, with AV of Hudson between the two clouds.
 
 \begin{figure}[H]
 \centering
@@ -981,34 +988,39 @@ Deception Island noise and tremor class have no coda-length window.}
 Among the local classes, VLP keeps the most consistent position. At Copahue
 and Nevados de Chill\'an, the only systems where it reaches the support
 criterion, its median lies at $FI = -0.36$ and $DET = 0.77$ and at
-$FI = -0.43$ and $DET = 0.82$, between the LP and VT of each system and
-closer to LP, in both windows. A detector of VLP against LP and VT reaches a
-balanced accuracy of 0.74 at Copahue and 0.89 at Nevados de Chill\'an within
-each system, and keeps 0.73 to 0.77 from Copahue to Nevados de Chill\'an and
-0.66 in the opposite direction, above the 0.53 of HB between systems of the
-same observatory and below the 0.84 of LP against VT. Both systems belong to
-one observatory and no validation catalog labels VLP, so its consistency
-holds within one labeling practice, and the descriptors measure the part of
-its energy above the 0.5~Hz band (Section~\ref{subsec:conditioning}).
+$FI = -0.43$ and $DET = 0.82$, with $FI$ between the LP and VT of each system
+and closer to LP, in both windows. A detector of VLP against LP and VT
+reaches a balanced accuracy of 0.74 at Copahue and 0.89 at Nevados de
+Chill\'an within each system, and keeps 0.73 to 0.77 from Copahue to Nevados
+de Chill\'an and 0.66 in the opposite direction, above the 0.53 of HB between
+systems of the same observatory and below the 0.84 of LP against VT. Both
+systems belong to one observatory and no validation catalog labels VLP, so
+its consistency holds within one labeling practice, and the descriptors
+measure the part of its energy above the 0.5~Hz band
+(Section~\ref{subsec:conditioning}).
 
 \subsection{Composition of the local classes}\label{subsec:res_heterogeneity}
 
 The LP and VT reference holds at fewer systems than the local classes
-require. In the fixed-length window, the model trained on the other systems
-assigns less than 80\% of the accepted LP or VT events correctly at
-Villarrica (LP, 0.49), Nevados de Chill\'an (LP, 0.51), Laguna del Maule (VT,
-0.23) and Nevado del Ruiz at Olleta (LP, 0.55), and it rejects 63\% of the VT
-of Hudson; at the VOISS-Net volcanoes and at Bis, the single global class
-fails as well, and only the 2009 deployment of Deception Island holds it. No local class of the fixed-length window therefore has a
-composition that holds under all three scalings.
+require. In the fixed-length window, the complete reference holds only at
+Copahue, Cascade, Hawai`i and Northern California. The model trained on the
+other systems assigns less than 80\% of the accepted events correctly for LP
+at Villarrica (0.49), Nevados de Chill\'an (0.51) and Nevado del Ruiz at
+Olleta (0.55), and for VT at Laguna del Maule (0.23), Alaska (0.72) and
+Hudson (0.80, with 63\% of its events rejected). At the VOISS-Net volcanoes
+and at Bis the single global class fails as well, and only the 2009
+deployment of Deception Island holds it. No local class of the fixed-length
+window has a stable composition: where the reference fails the class cannot
+be read, and at Copahue and Deception Island, where it holds, HB, VLP and the
+noise and tremor class change side between scalings.
 
 In the coda-length window, five local classes have a stable composition
-(Table~\ref{tab:composition}). HB of Copahue and the regional and other events
-of Alaska fall mostly on the VT side, the tornillos of Nevados de Chill\'an on
-the LP side, and AV of Nevados de Chill\'an mostly on neither. The events
-rejected as neither are mostly ambiguous between LP and VT rather than
-distant from both, so no local class lies outside the region the global classes span, and each falls toward LP,
-toward VT or between them.
+(Table~\ref{tab:composition}). HB of Copahue and the regional and other
+events of Alaska fall mostly on the VT side, the tornillos of Nevados de
+Chill\'an on the LP side, and AV of Nevados de Chill\'an mostly on neither.
+In these five classes the events rejected as neither are mostly ambiguous
+between LP and VT rather than distant from both, so each class falls toward
+LP, toward VT or between them.
 
 \begin{table}[h]
 \caption{Composition of the five local classes with a stable reading,
@@ -1031,18 +1043,19 @@ Alaska & Regional & 162 & 0.09 & 0.57 & 0.35 \\
 
 Within each system the descriptors classify LP and VT well. The diagonal of
 the LP--VT matrix reaches a median $G_m$ of 0.91 in both windows, from 0.77
-to 0.83 at Nevado del Ruiz at Olleta and in Alaska to 0.95 at Laguna del
-Maule (Figure~\ref{fig:matrices}). With all
-their classes, the systems range more widely: the balanced accuracy is 0.97
-at Laguna del Maule and 0.90 to 0.94 at the VCSEIS regions with two classes,
-0.75 at Nevados de Chill\'an with five classes and 0.81 at Villarrica with
-three, 0.62 to 0.67 at Copahue, Hudson and Nevado del Ruiz with HB, and 0.45
-and 0.51 at Pavlof and Semisopochnoi with six classes, against chance levels
-of 0.20 to 0.50. VLP and TO at Nevados de Chill\'an, tremor at Nevado del
-Ruiz, noise at Pavlof and Semisopochnoi and the noise and tremor class at
-Deception Island reach recalls above 0.79 within their systems, while HB, AV,
-explosions and the three tremor types of VOISS-Net among themselves stay
-between 0.19 and 0.74.
+to 0.84 at Nevado del Ruiz at Olleta, Hawai`i and Alaska to 0.96 at Laguna
+del Maule (Figure~\ref{fig:matrices}). With all their classes, the balanced
+accuracy is 0.97 at Laguna del Maule, 0.83 to 0.94 at the VCSEIS regions with
+two classes, 0.92 at Deception Island in 2009 and 0.80 at Veniaminof with two
+classes, 0.81 at Villarrica with three and 0.75 at Nevados de Chill\'an with
+five, 0.62 to 0.67 at Copahue, Hudson and Nevado del Ruiz with HB, 0.53 in
+Alaska with four, and 0.45 and 0.51 at Pavlof and Semisopochnoi with six,
+against chance levels of 0.17 to 0.50. VLP and TO at Nevados de Chill\'an,
+tremor at Nevado del Ruiz, noise at Pavlof and Semisopochnoi and the noise
+and tremor class at Deception Island reach recalls of at least 0.79 within
+their systems, while HB, AV, explosions, the regional events of Alaska and
+the three tremor types of VOISS-Net among themselves stay between 0.18 and
+0.74.
 
 \begin{figure}[H]
 \centering
@@ -1060,43 +1073,51 @@ LP and VT transfer with a moderate loss, and the agency that labels them adds
 none. Moving to another volcano labeled by the same agency lowers the median
 $G_m$ to 0.85 with the logistic regression and 0.82 with the boosted trees in
 the fixed-length window, and moving to another agency to 0.82 and 0.80; with
-the medians taken by source or by target, both steps lie between 0.80 and
+the medians taken by source or by target, both steps lie between 0.79 and
 0.84 and change order. The coda-length window gives 0.78 to 0.83 outside the
 diagonal, and the two classifiers differ by at most 0.05 at every step.
-Targets with a single class keep it at most systems: the LP of the VOISS-Net
-volcanoes and of Deception Island is recovered in 92\% to 100\% of the
-events, and the VT of Tanaga, Kilauea and Redoubt in 87\% to 96\%, 73\% to
-76\% and 65\% to 78\%. Nevado del Ruiz at Bis is the exception: from every
-source, only 3\% to 6\% of its LP events are taken as LP.
+Targets with a single class keep it at most systems: over all sources, the
+median recall of LP at the VOISS-Net volcanoes and at Deception Island is
+0.92 to 1.00, and that of VT at Tanaga, Kilauea and Redoubt 0.87 to 0.96,
+0.73 to 0.76 and 0.65 to 0.78. Nevado del Ruiz at Bis is the exception: the
+median recall of its LP over all sources is 0.03 to 0.06, from 0.42 to 0.50
+when the source is Olleta, on the same volcano, and lower from every other
+system.
 
 HB does not transfer. Its recall, 0.57 to 0.61 within its system in the
 fixed-length window, falls to 0.15 between Copahue and Hudson, to 0.20
 between agencies and to 0.23 to 0.35 from Olleta to Bis, and the $G_m$ of the
-three classes falls from 0.68 to 0.69 to 0.36 to 0.37 and to 0.21 to 0.26. Between
-agencies the LP of Nevado del Ruiz collapses as well, to a recall of 0.04 to
-0.06. The scaling of each system recovers part of HB, to recalls of 0.31 to
-0.40 and a $G_m$ of 0.45 to 0.49, without approaching the diagonal. The
-detector of each local class against LP and VT confirms that no further
-class carries over between catalogs. Between OVDAS and Nevado del Ruiz, the
-AUC of LP against VT is 0.84, while that of HB against LP and against VT
-ranges from 0.22 to 0.81 with reversed pairs; tremor between VOISS-Net and
-Nevado del Ruiz reaches an AUC of about 0.48, and the boosted trees give the
-same result, 0.51 for HB and 0.48 for tremor against 0.79 for LP and VT.
+three classes falls from 0.68 to 0.69 to 0.36 to 0.37 and to 0.22 to 0.26.
+When the target is Nevado del Ruiz, its LP collapses as well, to recalls of
+0.002 to 0.077 from Copahue and Hudson. The scaling of each system recovers
+part of HB, to recalls of 0.31 to 0.40 and a $G_m$ of 0.45 to 0.49, without
+approaching the diagonal. The detector of each local class against LP and VT
+confirms that no further class carries over between catalogs. Between OVDAS
+and Nevado del Ruiz, the AUC of LP against VT is 0.84, while that of HB
+against LP and against VT ranges from 0.22 to 0.81 with reversed pairs, and
+tremor between VOISS-Net and Nevado del Ruiz reaches an AUC of about 0.48.
+With boosted trees, the balanced accuracy of these detectors between
+catalogs is 0.51 for HB and 0.48 for tremor, against 0.79 for VT against LP
+over all catalog pairs.
 
 The transferred models rely on the transferable descriptors. In the LP--VT
-matrix, the permutation importance ranks $FI$, $DET$ and $SR$ first, within
-each system and between systems, with a rank correlation with the ranking of
-Table~\ref{tab:transferability} of 0.72 to 0.92 in the fixed-length window
-and 0.46 to 0.70 in the coda-length window. Within each target, the loss
-follows recording quality: from the lowest to the highest third of
-signal-to-noise ratio, the recall of VT rises from 0.57 to 0.92 at Copahue,
-from 0.36 to 0.70 at Villarrica and from 0.90 to 0.99 at Laguna del Maule, and
-that of LP from 0.75 to 0.98 at Nevados de Chill\'an and from 0.06 to 0.34 at
-Olleta. The LP of Bis stays at 0.06 to 0.10 in every third. Across the ten
-targets with LP and VT, the median score follows the median signal-to-noise
-ratio of the target with a rank correlation of 0.26 to 0.47 and does not
-follow the distance of its station to the crater ($\rho \approx 0$), and
-island and continental targets differ by less than 0.13.
+matrix with the fixed-length window, the permutation importance ranks $FI$,
+$DET$ and $SR$ first, within each system and between systems, and $FI$ and
+$SR$ stay first in the coda-length window; the rank correlation with the
+ranking of Table~\ref{tab:transferability} is 0.72 to 0.92 in the
+fixed-length window and 0.46 to 0.70 in the coda-length window. Within most
+targets, the loss follows recording quality: from the lowest to the highest
+third of signal-to-noise ratio, the recall of VT rises from 0.57 to 0.92 at
+Copahue, from 0.36 to 0.70 at Villarrica and from 0.90 to 0.99 at Laguna del
+Maule, and that of LP from 0.75 to 0.98 at Nevados de Chill\'an and from 0.06
+to 0.34 at Olleta. At a few targets the recall of VT falls with the ratio
+instead, from 0.93 to 0.77 at Tanaga, 0.90 to 0.81 at Cascade and 0.88 to
+0.78 at Nevados de Chill\'an, and the LP of Bis stays at 0.06 to 0.10 from
+the lowest to the highest third. Across the ten targets with LP and VT, the
+median score follows the median signal-to-noise ratio of the target with a
+rank correlation of 0.26 to 0.47 and the distance of its station to the
+crater with $|\rho| \leq 0.26$; Hawai`i, the only island target with both
+classes, differs from the continental ones by less than 0.03.
 
 \subsection{Unsupervised grouping}\label{subsec:res_unsupervised}
 
@@ -1106,19 +1127,25 @@ median adjusted Rand index of 0.22 with the catalog labels, from 0.02 to
 0.63, highest at the VCSEIS regions with LP and VT, Cascade (0.63), Hawai`i
 (0.42) and Northern California (0.38), and at Villarrica (0.33); with all
 sixteen descriptors the median falls to 0.11. Grouping all systems together
-gives a median index of 0.10 to 0.14 per system, and the stable number of
-components varies between 3 and 5 with the draws.
+gives a median index per system of 0.10 to 0.14 with $FI$, $DET$ and $SR$ and
+0.03 to 0.06 with all sixteen, and the stable number of components varies
+between 3 and 5 among the variants and with the draws.
 
-The joint grouping returns a low-frequency, highly deterministic group that
-gathers the tremor types and explosions of VOISS-Net, the noise and tremor
-class of Deception Island, HB of Hudson, VLP of Copahue and tremor of Nevado
-del Ruiz, together with most LP events of the VCSEIS regions, Hudson and
-Copahue. No group of any variant or number of components, from 2 to 12,
-recurs at three or more systems of two or more catalogs with at most 30\% of
-LP and VT. The group that recurs most widely spans ten systems, five catalogs
-and thirteen local labels, with 42\% of LP and VT and 71\% of local events
-against a base of 62\%. The local classes thus share the region of LP rather
-than forming a group of their own.
+With five components on $FI$, $DET$ and $SR$, the joint grouping returns a
+low-frequency, highly deterministic group. It gathers more than half of the
+tremor types and explosions of Pavlof, of the harmonic tremor of
+Semisopochnoi, Popocat\'epetl and Veniaminof, of the 1995 noise and tremor
+class of Deception Island, of HB of Hudson and of the tremor of Nevado del
+Ruiz at Olleta, about half of VLP of Copahue and AV of Hudson, and most LP
+events of the VCSEIS regions, Hudson and Copahue. No group of any variant or
+number of components, from 2 to 12, recurs at three or more systems of two or
+more catalogs with at most 30\% of LP and VT. Nine groups meet a looser
+criterion, a local share of at least 0.70 within the systems that hold local
+classes; all come from the sixteen descriptors at more components than the
+stable number, and their local share, at most 0.73, exceeds the base of 0.62
+by a factor of at most 1.18. One of them spans ten systems, five catalogs and
+thirteen local labels with 42\% of LP and VT. The local classes thus share
+the region of LP rather than forming a group of their own.
 
 \section{Conclusion}\label{sec:conclusion}
 
