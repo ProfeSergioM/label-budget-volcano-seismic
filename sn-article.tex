@@ -723,20 +723,29 @@ systems. The ranking is computed on each window, and its two leading
 descriptors define the plane in which the global and local classes of all
 systems are compared.
 
-\subsection{Class heterogeneity}\label{subsec:heterogeneity}
+\subsection{Composition of the local classes}\label{subsec:heterogeneity}
 
-A label groups the events an analyst judges alike, and the same label may
-gather signals of more than one kind. The number of groups within each class
-of each system is measured with a Gaussian mixture model on the sixteen
-descriptors, scaled with the median and interquartile range of the class and
-reduced by principal components to 90\% of their variance. The number of
-components, from 1 to 6, is selected by the Bayesian information criterion.
-Since that criterion favors more components as the sample grows, every class
-is evaluated on draws of 100 events, repeated 20 times, and LP and VT of each
-system serve as the reference. For the classes that split, the mixture is fit
-on all their events, and each component is described by its size, its median
-descriptors, its duration and its signal-to-noise ratio. Every event keeps its
-label, so the components describe the content of a class without changing
+A label groups the events an analyst judges alike, and a local class may
+gather events that the global classes would set apart. The composition of
+each local class is therefore measured against LP and VT. For each system, a
+logistic regression trained on the LP and VT events of the other systems,
+leaving out those of the same volcano and those sharing a station with it,
+assigns every event of the local class to LP, to VT or to neither. An event
+falls in neither when the probability of its assigned class is below 0.7, or
+when its robust Mahalanobis distance to that class exceeds the 95th
+percentile of the training events of the class. The descriptors are scaled
+within each system with the median and interquartile range of all its
+events, a scaling that uses no label.
+
+The same model scores the LP and VT events of the evaluated system, which
+serve as its reference. A local class is read only where that reference
+holds: each global class of the system with at least 50 events is assigned
+correctly in at least 80\% of its accepted events, with at most half of them
+rejected. A composition is stable when its majority side, LP, VT or neither,
+persists under two further scalings, one computed on class-balanced draws of
+each system and one shared by all systems, and gradient-boosted trees give
+the same side as the logistic regression. Every event keeps its catalog
+label, so the composition describes the content of a class without changing
 the population that enters the following steps.
 
 \subsection{Classification and transfer design}\label{subsec:transfer}
@@ -779,6 +788,16 @@ the mean and variance of the source. The two models differ in flexibility,
 so a transfer loss shared by both comes from the descriptors and the
 records, and one seen only in the boosted trees comes from what that model
 learned from its source.
+
+Both classifiers run with two scalings of the descriptors. The first is the
+one above, the descriptors of the source at their native scale or
+standardized with its mean and variance. The second standardizes every
+system, source and target alike, with the median and interquartile range of
+all its events, computed without labels. It removes a shift of the whole
+system, such as a change of station gain or site response, and keeps the
+relations among its classes, so the difference between the two scalings
+separates a transfer loss that a recalibration of the target recovers from
+one that it does not.
 
 Each training set holds 100 events per class drawn at random from the
 source, a size that every class of every source exceeds in both windows. A common
@@ -842,7 +861,7 @@ it collects at each system and by its median descriptors.
 
 \subsection{Global and local classes in the transferable plane}\label{subsec:res_plane}
 
-\subsection{Class heterogeneity}\label{subsec:res_heterogeneity}
+\subsection{Composition of the local classes}\label{subsec:res_heterogeneity}
 
 \subsection{Transfer across systems}\label{subsec:res_transfer}
 
