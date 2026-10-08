@@ -1,53 +1,53 @@
-# Paper 2 — Transferencia de clasificadores sismovolcánicos entre datasets
+# Paper 2 — Transferring volcano-seismic classifiers across datasets
 
-Repositorio privado del segundo artículo de la tesis doctoral de Sergio Morales Méndez (Programa de Doctorado en Ingeniería, Universidad de La Frontera; OVDAS–SERNAGEOMIN), en colaboración con Andrés Ávila, Mailyn Moreno Espino y Oscar Valderrama Cayumán. Responde al **objetivo específico 3** de la tesis: evaluar la generalización y la transferencia de los clasificadores entre contextos volcánicos y condiciones de instalación.
+Private repository for the second article of Sergio Morales Méndez's doctoral thesis (Doctoral Program in Engineering, Universidad de La Frontera; OVDAS–SERNAGEOMIN), in collaboration with Andrés Ávila, Mailyn Moreno Espino and Oscar Valderrama Cayumán. It addresses **specific objective 3** of the thesis: to evaluate the generalization and transfer of classifiers across volcanic contexts and installation conditions.
 
-> **Estado:** borrador en propuesta para los coautores. Data, Methodology y Results están escritos; Introduction, Discussion, Conclusion y Abstract se escriben al cerrar los análisis. El enfoque se está reorientando (ver abajo) y la estructura del texto todavía puede cambiar.
+> **Status:** draft proposal for the co-authors. Data, Methodology and Results are written; Introduction, Discussion, Conclusion and Abstract will be written once the analyses are closed. The focus is being reoriented (see below), and the structure of the text may still change.
 
-## Pregunta central (enfoque desde 2026-10-08)
+## Central question (focus since 2026-10-08)
 
-**¿Cuántas etiquetas expertas necesita un dataset nuevo, y los métodos recientes reducen esa carga?**
+**How many expert labels does a new dataset need, and do recent methods reduce that burden?**
 
-El trabajo se plantea desde los datos: la sismología volcánica es el caso de estudio, con unos 20 datasets de cinco agencias (OVDAS, SGC, VCSEIS, VOISS-Net e Isla Decepción). Los ejes son:
+The work is framed from the data side: volcano seismology is the case study, with about 20 datasets from five agencies (OVDAS, SGC, VCSEIS, VOISS-Net and Deception Island). The three axes are:
 
-1. **Transferencia sin etiquetas del destino:** qué se reutiliza de un dataset a otro (LP y VT se transfieren; las clases locales, como HB, no).
-2. **Curva de presupuesto de etiquetas:** cuántos eventos etiquetados del dataset nuevo hacen falta para alcanzar un modelo local, comparando regresión logística, XGBoost y TabPFN, y aprendizaje activo frente a selección al azar.
-3. **Sesgo del experto:** confident learning y agrupamiento no supervisado para separar el error de transferencia de las diferencias de criterio entre centros (por ejemplo, el criterio HB/LP basado en la alta frecuencia del onset).
+1. **Transfer without target labels:** what carries over from one dataset to another (LP and VT transfer; local classes such as HB do not).
+2. **Label budget curve:** how many labeled events of the new dataset are needed to reach a local model, comparing logistic regression, XGBoost and TabPFN, and active learning against random selection.
+3. **Expert bias:** confident learning and unsupervised clustering to separate transfer error from differences in labeling criteria between centers (for example, the HB/LP criterion based on high-frequency content at the onset).
 
-Título provisorio en el `.tex`; en discusión un título orientado a datos, p. ej. *How many expert labels does a new dataset need?* Revista objetivo en discusión (p. ej. IEEE TGRS); por ahora el texto usa la plantilla Springer.
+The title in the `.tex` is provisional; a data-oriented title is under discussion, e.g. *How many expert labels does a new dataset need?* The target journal is also under discussion (e.g. IEEE TGRS); for now the text uses the Springer template.
 
-## Estructura
+## Structure
 
 ```
 .
-├── sn-article.tex        texto del artículo (plantilla Springer Nature, sn-jnl)
-├── references.bib        bibliografía
-├── sn-jnl.cls, bst/, *.bst   archivos de la plantilla
-├── fig_*.pdf / fig_*.png figuras del artículo
-└── analisis/             código, datos derivados, resultados y notebooks (ver analisis/README.md)
+├── sn-article.tex        article text (Springer Nature template, sn-jnl)
+├── references.bib        bibliography
+├── sn-jnl.cls, bst/, *.bst   template files
+├── fig_*.pdf / fig_*.png article figures
+└── analisis/             code, derived data, results and notebooks (see analisis/README.md)
 ```
 
-## Cómo se compila
+## Compiling
 
-El repositorio está conectado a **Overleaf**, que lee este GitHub y compila `sn-article.tex`. Para ver el PDF actualizado, sincroniza el proyecto en Overleaf (Menu → GitHub → Pull GitHub changes). No hace falta compilar localmente.
+The repository is linked to **Overleaf**, which reads this GitHub repository and compiles `sn-article.tex`. To see the updated PDF, sync the Overleaf project (Menu → GitHub → Pull GitHub changes). No local compilation is needed.
 
-## Análisis y datos
+## Analysis and data
 
-Todo lo necesario para revisar y reproducir los resultados está en [`analisis/`](analisis/README.md):
+Everything needed to review and reproduce the results is in [`analisis/`](analisis/README.md) (documented in Spanish):
 
-- **Notebooks** autónomos que leen solo `analisis/datos` y `analisis/resultados` (vía rápida para explorar).
-- **Datos derivados** de los catálogos de validación (descriptores y cortes manuales). Las formas de onda públicas se bajan con los scripts.
-- **Resultados** agregados que respaldan las cifras y figuras del texto.
-- **Scripts** del proyecto de análisis.
+- **Notebooks** that run on their own, reading only `analisis/datos` and `analisis/resultados` (the quickest way to explore).
+- **Derived data** from the validation catalogs (descriptors and manual segmentation). The public waveforms can be downloaded with the scripts.
+- **Results**: aggregated tables behind the numbers and figures of the text.
+- **Scripts** of the analysis project.
 
-No se incluyen los archivos originales del SGC (cedidos para la colaboración) ni los datos institucionales de OVDAS; se comparten aparte a pedido.
+The original SGC files (shared for this collaboration) and the institutional OVDAS data are not included; they are shared separately on request.
 
-## Código relacionado
+## Related work
 
-- Paquete de descriptores (RQA y espectrales), público: <https://github.com/ProfeSergioM/descriptores-volcanicos>
-- Paper 1 (preprint): Morales, Ávila, Franco y Malik (2026), *Recurrence Quantification Analysis of Volcanic Seismicity: Physically Interpretable Features for Multi-class Event Classification*, ESS Open Archive, doi:10.22541/essoar.15004691/v2.
-- Revisión sistemática (OE1): Morales, Ávila y Moreno Espino (2026), *Artificial intelligence techniques for volcanic seismic signal analysis: a systematic review*, Earth Science Informatics 19:26, doi:10.1007/s12145-026-02073-2.
+- Descriptor package (RQA and spectral), public: <https://github.com/ProfeSergioM/descriptores-volcanicos>
+- Paper 1 (preprint): Morales, Ávila, Franco and Malik (2026), *Recurrence Quantification Analysis of Volcanic Seismicity: Physically Interpretable Features for Multi-class Event Classification*, ESS Open Archive, doi:10.22541/essoar.15004691/v2.
+- Systematic review (specific objective 1): Morales, Ávila and Moreno Espino (2026), *Artificial intelligence techniques for volcanic seismic signal analysis: a systematic review*, Earth Science Informatics 19:26, doi:10.1007/s12145-026-02073-2.
 
-## Contacto
+## Contact
 
 Sergio Morales Méndez — s.morales01@ufromail.cl
