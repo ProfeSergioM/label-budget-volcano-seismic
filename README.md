@@ -33,7 +33,7 @@ The repository is linked to **Overleaf**, which reads this GitHub repository and
 
 ## Analysis and data
 
-Everything needed to review and reproduce the results is in [`analisis/`](analisis/README.md) (documented in Spanish):
+Everything needed to review and reproduce the results is in [`analisis/`](analisis/README.md):
 
 - **Notebooks** that run on their own, reading only `analisis/datos` and `analisis/resultados` (the quickest way to explore).
 - **Derived data** from the validation catalogs (descriptors and manual segmentation). The public waveforms can be downloaded with the scripts.
