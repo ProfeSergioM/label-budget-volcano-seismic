@@ -34,8 +34,7 @@ The notebooks are saved executed, with their figures. Everything is presented by
 
 **Current caveats**
 
-- `presupuesto_resumen.csv` is **provisional**: it was generated while the computation of the curve was still running (some targets and pairs are missing). It is regenerated with the command given in the label-budget section below.
-- XGBoost "target only" with n = 10 gives Gm ≈ 0 because of a configuration artifact (with so few events the model predicts a single class); this will be fixed.
+- `presupuesto_resumen.csv` is complete: 10 targets × 9 sources × 3 repetitions. Below 200 events, XGBoost trained on the target only uses a fixed small-data configuration (`XGB_POCOS` in `presupuesto_etiquetas.py`), because the tuned configuration cannot split any node with so few events.
 
 ## Public validation data and how to obtain them
 
@@ -105,7 +104,7 @@ Copy of the scripts of the analysis project used by the paper and of the local m
 | Public data and segmentation | `fetch_vcseis_muestra.py`, `extract_vcseis.py`, `extract_deception.py`, `extract_voissnet.py`, `extract_sgc_ruiz.py`, `cortar_trazas.py` (queue and segmentation page), `extract_picks.py`, `extract_picks_16.py`, `extract_continuas.py`, `extract_picks_auto.py` |
 | Figure dependencies and OVDAS access | `download_and_extract.py` (reads OVDAS Winston; requires institutional configuration), `make_fig_window.py`, `make_fig_coda_window.py` |
 | Transfer | `ranking_transferibilidad.py`, `heterogeneidad_clases.py` (`datos()` loader), `transferencia.py`, `resumen_transferencia.py`, `verificaciones_transferencia.py`, `comparar_corte.py`, `clasificacion_por_sistema.py`, `candidatos_globales.py`, `candidatas_analisis.py` |
-| Label budget | `presupuesto_etiquetas.py`, `resumir_presupuesto.py` |
+| Label budget | `presupuesto_etiquetas.py`, `resumir_presupuesto.py`, `make_fig_presupuesto.py` |
 | Expert bias | `sesgo_experto.py`, `onset_hb_lp.py` |
 
 Execution order in the full project (from its root, `python scripts/<script>.py`; detailed usage is in the docstring of each script):
@@ -125,7 +124,8 @@ python scripts/verificaciones_transferencia.py
 python scripts/extract_picks_auto.py --ventana fija && python scripts/comparar_corte.py --ventana fija
 python scripts/candidatos_globales.py && python scripts/candidatas_analisis.py
 # 3. label budget
-python scripts/presupuesto_etiquetas.py --workers 3 --reps 5
+python scripts/presupuesto_etiquetas.py --workers 3 --reps 3
+python scripts/make_fig_presupuesto.py   # fig_presupuesto.pdf
 python scripts/resumir_presupuesto.py --entrada experiments/reports/presupuesto \
     --salida <paper repository>/analisis/resultados/presupuesto_resumen.csv
 # 4. expert bias (requires OVDAS descriptors and traces)

@@ -14,7 +14,10 @@ eventos y descriptores que transferencia.py), y para cada repeticion:
         la fuente, en lotes de LOTE se etiqueta el evento del pool con menor
         margen |p(LP) - 0.5| y se reentrena;
   - referencias: el mismo modelo solo con n eventos del destino al azar
-    ("solo_destino") y el modelo local con hasta 100 por clase del pool
+    ("solo_destino"; en XGBoost, con menos de 200 eventos, una configuracion
+    fija para pocos datos, XGB_POCOS, porque con pesos que suman n el minimo
+    de hessiano y la regularizacion L1 ajustados no dejan dividir ningun
+    nodo) y el modelo local con hasta 100 por clase del pool
     ("local"), el techo que el presupuesto busca alcanzar; ambos con la
     configuracion que transferencia.py ajusto para el propio destino.
 Tres clasificadores: regresion logistica y XGBoost con la configuracion que
@@ -28,6 +31,7 @@ sobre fuentes se calcula despues, por destino.
 
 Uso:
     python scripts/presupuesto_etiquetas.py [--workers 3] [--reps 5]
+    python scripts/presupuesto_etiquetas.py --rehacer-xgb-solo   # solo esas filas
 """
 from __future__ import annotations
 
@@ -52,6 +56,7 @@ CLASES = ["LP", "VT"]
 PRESUPUESTO = [0, 10, 20, 50, 100, 200]
 LOTE = 10
 TOPE_PRUEBA = 300
+POCOS = 200      # bajo este n, XGBoost solo con el destino usa la config de pocos datos
 SEMILLA = 41
 DATOS = {}
 
@@ -125,6 +130,17 @@ def puntuar(p_vt, y):
 
 # ---------------------------------------------------------------- trabajo --
 
+XGB_POCOS = dict(n_estimators=200, max_depth=3, learning_rate=0.1, subsample=1.0,
+                 colsample_bytree=1.0, min_child_weight=0.0, reg_alpha=0.0, reg_lambda=1.0)
+
+
+def conf_pocos(tipo, conf, n):
+    """XGBoost con pocos eventos del destino: configuracion fija XGB_POCOS."""
+    if tipo != "xgb" or n >= POCOS:
+        return conf
+    return XGB_POCOS
+
+
 def particion(g, rep):
     """Prueba fija (mitad de cada clase, hasta TOPE_PRUEBA) y pool."""
     prueba, pool = [], []
@@ -137,7 +153,8 @@ def particion(g, rep):
 
 
 def una(args):
-    fuente, destino, rep, confs, confs_dst = args
+    fuente, destino, rep, confs, confs_dst, *modo = args
+    solo_xgb = bool(modo and modo[0])
     warnings.filterwarnings("ignore")
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     import torch
@@ -156,6 +173,12 @@ def una(args):
         filas.append(dict(fuente=fuente, destino=destino, rep=rep, modelo=modelo,
                           seleccion=seleccion, n=n, **puntuar(m.proba_vt(xp), yp)))
 
+    if solo_xgb:
+        for n in PRESUPUESTO[1:]:
+            n = min(n, len(pool))
+            fila("xgb", "solo_destino", n, Clf("xgb", conf_pocos("xgb", confs_dst["xgb"], n),
+                                               SEMILLA + rep).fit(xq[:n], yq[:n]))
+        return filas
     for tipo in ("log", "xgb", "tabpfn"):
         conf = confs.get(tipo)
         # fuente + n al azar (pool en orden fijo: los primeros n)
@@ -168,7 +191,8 @@ def una(args):
         for n in PRESUPUESTO[1:]:
             n = min(n, len(pool))
             fila(tipo, "solo_destino", n,
-                 Clf(tipo, confs_dst.get(tipo), SEMILLA + rep).fit(xq[:n], yq[:n]))
+                 Clf(tipo, conf_pocos(tipo, confs_dst.get(tipo), n),
+                     SEMILLA + rep).fit(xq[:n], yq[:n]))
         # local: hasta 100 por clase del pool, estratificado
         loc = pd.concat([pool[pool.clase == c].iloc[:T.N_POR_CLASE] for c in CLASES])
         fila(tipo, "local", len(loc), Clf(tipo, confs_dst.get(tipo), SEMILLA + rep).fit(
@@ -201,6 +225,8 @@ def main():
     ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--reps", type=int, default=3)
     ap.add_argument("--solo", nargs="*", help="limita a estos destinos (prueba)")
+    ap.add_argument("--rehacer-xgb-solo", action="store_true",
+                    help="recalcula solo las filas XGBoost solo_destino de los archivos existentes")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     datos = T.cargar()
@@ -222,15 +248,21 @@ def main():
                                      log=float(conf.loc[s, "conf_log"])) for s in (src, dst))
             for r in range(a.reps):
                 ruta = OUT / f"{dst}__{src}__{r}.parquet".replace(" ", "_")
-                if not ruta.exists():
+                if a.rehacer_xgb_solo and ruta.exists():
+                    trabajos.append((src, dst, r, confs, confs_dst, True))
+                elif not a.rehacer_xgb_solo and not ruta.exists():
                     trabajos.append((src, dst, r, confs, confs_dst))
     print(f"{len(sistemas)} sistemas con LP y VT; {len(trabajos)} trabajos", flush=True)
     with ProcessPoolExecutor(a.workers, initializer=init, initargs=(datos,)) as ex:
         for k, filas in enumerate(ex.map(una, trabajos), 1):
             f = pd.DataFrame(filas)
             r = f.iloc[0]
-            f.to_parquet(OUT / f"{r.destino}__{r.fuente}__{r.rep}.parquet".replace(" ", "_"),
-                         index=False)
+            ruta = OUT / f"{r.destino}__{r.fuente}__{r.rep}.parquet".replace(" ", "_")
+            if a.rehacer_xgb_solo:
+                v = pd.read_parquet(ruta)
+                v = v[~((v.modelo == "xgb") & (v.seleccion == "solo_destino"))]
+                f = pd.concat([v, f], ignore_index=True)
+            f.to_parquet(ruta, index=False)
             if k % 10 == 0:
                 print(f"  {k}/{len(trabajos)}", flush=True)
     todo = pd.concat([pd.read_parquet(p) for p in OUT.glob("*.parquet")], ignore_index=True)
