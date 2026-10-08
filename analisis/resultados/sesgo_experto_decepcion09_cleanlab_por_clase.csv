@@ -1,0 +1,5 @@
+modelo,clase,n,n_sospechosos,frac_sospechosos,exactitud_balanceada_modelo,snr_mediana_sospechosos,snr_mediana_resto,dur_mediana_sospechosos,dur_mediana_resto,sugiere_LP,sugiere_NTR,frac_ruido_hdbscan_sospechosos,frac_grupo_otra_clase_sospechosos,frac_ruido_hdbscan_resto,frac_grupo_otra_clase_resto,frac_grupo_de_clase_sugerida_sospechosos
+xgb,LP,175,8,0.045714285714285714,0.922200328407225,3.782184796144648,13.218522823228716,10.5,9.82,0,8,0.75,1.0,1.0,0.0,1.0
+xgb,NTR,435,8,0.01839080459770115,0.922200328407225,,,,,8,0,1.0,0.0,0.8735362997658079,0.0,0.0
+logreg,LP,175,4,0.022857142857142857,0.9112972085385878,2.8029678048658813,12.978629504574288,12.5,9.48,0,4,0.75,1.0,0.9941520467836257,1.0,1.0
+logreg,NTR,435,6,0.013793103448275862,0.9112972085385878,,,,,6,0,1.0,0.0,0.8741258741258742,0.0,0.0

@@ -28,6 +28,11 @@ cruzan los sospechosos con los grupos de HDBSCAN: los eventos fuera de la
 submuestra reciben el grupo por mayoria de sus 15 vecinos mas cercanos en la
 submuestra (incluido el ruido como un grupo mas).
 
+Clases: las que tienen al menos MIN_CLASE eventos en el sistema; en los
+catalogos OVDAS grandes (Villarrica, Chillan) cada clase se recorta al azar a
+TOPE_CLASE eventos, para que el costo no crezca con el catalogo (Hudson no se
+recorta: ninguna clase pasa del tope).
+
 Cada sistema va por separado; nunca se juntan volcanes.
 
 Uso:
@@ -58,6 +63,8 @@ N_SUB = 4000
 ENSAYOS = 80
 K_VECINOS = 15
 TOP_REVISION = 200
+MIN_CLASE = 50
+TOPE_CLASE = 20000
 FIDETSR = ["FI", "DET", "SR"]
 
 
@@ -337,7 +344,13 @@ def main() -> None:
     sis = args.sistema
     tag = sis.lower().replace(" ", "_")
     d = cargar(sis)
-    d = d[d.clase.notna()].reset_index(drop=True)
+    d = d[d.clase.notna()]
+    n = d.clase.value_counts()
+    d = d[d.clase.isin(n[n >= MIN_CLASE].index)]
+    if (n > TOPE_CLASE).any():
+        d = pd.concat([g.sample(min(len(g), TOPE_CLASE), random_state=SEMILLA)
+                       for _, g in d.groupby("clase")])
+    d = d.reset_index(drop=True)
     print(f"{sis}: {len(d)} eventos; {d.clase.value_counts().to_dict()}", flush=True)
     X = escalar(d[F16])
     pca = PCA(n_components=0.9, svd_solver="full").fit(X)

@@ -28,7 +28,7 @@ jupyter lab                                   # or: jupyter nbconvert --to noteb
 | `01_datos_y_descriptores.ipynb` | Inventory by catalog, system and class; distribution of FI, DET and SR by system and class; relation between the fixed window and the window up to the end of the coda | `datos/features16_*.parquet` |
 | `02_transferencia.ipynb` | LP-VT AUC by system and descriptor; source→target matrices; summary by step; executable demonstration (logistic regression trained on Cascade, evaluated on Hawai`i, Northern California and Alaska) | `resultados/transferibilidad_*.csv`, `resultados/transferencia_resumen_*.csv`, `datos/features16_fija.parquet` |
 | `03_presupuesto_de_etiquetas.ipynb` | Gm versus the number n of target labels, by target: source + random, source + active, target only, and local model; logistic regression, XGBoost and TabPFN | `resultados/presupuesto_resumen.csv` |
-| `04_sesgo_del_experto.ipynb` | Confident learning on Hudson (suspects by class, manual review) and the HB/LP criterion at the onset by SNR quartile (Hudson, Copahue, Ruiz-Olleta, Ruiz-Bis) | `resultados/sesgo_experto_hudson_*.csv`, `resultados/onset_hb_lp_*.csv` |
+| `04_sesgo_del_experto.ipynb` | Confident learning in nine systems (own criterion) and across datasets (another source's criterion), HDBSCAN versus the labels, Hudson in detail (manual review) and the HB/LP criterion at the onset by SNR quartile | `resultados/sesgo_experto_*.csv`, `resultados/sesgo_entre_datasets_*.csv`, `resultados/onset_hb_lp_*.csv` |
 
 The notebooks are saved executed, with their figures. Everything is presented by system; no result averages different volcanoes into a single number without showing the detail.
 
@@ -90,6 +90,8 @@ The descriptors of the four catalogs are computed on manual segmentation: `corta
 | `corte_auto_*_fija.csv` | automatic versus manual segmentation: onset and end shifts, change in descriptors, Gm within the system and in transfer | `comparar_corte.py` |
 | `presupuesto_resumen.csv` | label-budget curve: mean over repetitions of `gm`, `rec_LP`, `rec_VT` (and `gm_sd`, `n_reps`) by `destino` (target), `fuente` (source), `modelo` (model: log, xgb, tabpfn), `seleccion` (selection: `azar` = random, `activo` = active, `solo_destino` = target only, `local`) and `n` | `presupuesto_etiquetas.py` → `resumir_presupuesto.py` |
 | `sesgo_experto_hudson_*.csv` | Hudson: HDBSCAN/DBSCAN clustering tuned by DBCV (Optuna), class × cluster contingency and purity, confident learning by class, cross-check with the subsample, manual review queue | `sesgo_experto.py` |
+| `sesgo_experto_<system>_{agrupamiento,cleanlab_por_clase,pureza,contingencia}.csv` | the same aggregated tables for Alaska, Copahue, Deception Island 2009, Laguna del Maule, Nevados de Chillán, Ruiz-Bis, Ruiz-Olleta and Villarrica (classes with ≥ 50 events; at most 20,000 per class) | `sesgo_experto.py` |
+| `sesgo_entre_datasets_{pares,resumen,conjunta}.csv` | confident learning across datasets: per source → target pair, repetition, criterion (`fuente` = other source, `propio` = own) and class, the suspect fraction, recall and suggested classes; median summary by target; cleanlab joint matrix (given × estimated label) | `sesgo_entre_datasets.py` |
 | `onset_hb_lp_{hudson,copahue,ruiz}_resumen.csv` | by SNR quartile (`q`) and class (`label`, HB or LP): SNR, n, `FI_onset`, `dFI` and `HF_onset` (fraction of energy above 4.5 Hz at the onset) | `onset_hb_lp.py` |
 | `onset_hb_lp_hudson_revision.csv` | final class from the manual review on Hudson, with median SNR, ΔFI and `HF_onset` | `onset_hb_lp.py` |
 | `candidatas_analisis_resumen.csv` | candidate global classes (HB, tremor) against the LP-VT reference (`VT_ref`): balanced accuracy, recall, confusions with LP and VT, and AUC, by pair type (diagonal, same catalog, between catalogs) | `candidatas_analisis.py` (uses `candidatos_globales.py`) |
@@ -105,7 +107,7 @@ Copy of the scripts of the analysis project used by the paper and of the local m
 | Figure dependencies and OVDAS access | `download_and_extract.py` (reads OVDAS Winston; requires institutional configuration), `make_fig_window.py`, `make_fig_coda_window.py` |
 | Transfer | `ranking_transferibilidad.py`, `heterogeneidad_clases.py` (`datos()` loader), `transferencia.py`, `resumen_transferencia.py`, `verificaciones_transferencia.py`, `comparar_corte.py`, `clasificacion_por_sistema.py`, `candidatos_globales.py`, `candidatas_analisis.py` |
 | Label budget | `presupuesto_etiquetas.py`, `resumir_presupuesto.py`, `make_fig_presupuesto.py` |
-| Expert bias | `sesgo_experto.py`, `onset_hb_lp.py` |
+| Expert bias | `sesgo_experto.py`, `sesgo_entre_datasets.py`, `onset_hb_lp.py`, `make_fig_sesgo_experto.py` |
 
 Execution order in the full project (from its root, `python scripts/<script>.py`; detailed usage is in the docstring of each script):
 
@@ -129,7 +131,9 @@ python scripts/make_fig_presupuesto.py   # fig_presupuesto.pdf
 python scripts/resumir_presupuesto.py --entrada experiments/reports/presupuesto \
     --salida <paper repository>/analisis/resultados/presupuesto_resumen.csv
 # 4. expert bias (requires OVDAS descriptors and traces)
-python scripts/sesgo_experto.py --sistema Hudson
+python scripts/sesgo_experto.py --sistema Hudson   # also Copahue, Villarrica, "Nevados de Chillan", "Laguna del Maule", Ruiz-Olleta, Ruiz-Bis, Decepcion09, Alaska
+python scripts/sesgo_entre_datasets.py --reps 3
+python scripts/make_fig_sesgo_experto.py   # fig_sesgo_experto.pdf
 python scripts/onset_hb_lp.py --sistema hudson   # also copahue, ruiz
 ```
 
