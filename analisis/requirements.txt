@@ -1,0 +1,25 @@
+# Python 3.13. Versiones del entorno donde se generaron los resultados.
+# Notebooks: bastan numpy, pandas, pyarrow, matplotlib, scikit-learn y Jupyter.
+numpy==2.5.2
+pandas==3.0.5
+pyarrow==25.0.1
+scipy==1.18.0
+matplotlib==3.11.1
+scikit-learn==1.9.0
+# Scripts de analisis
+xgboost==3.4.1
+optuna==4.9.0
+cleanlab==2.9.0
+tabpfn==9.1.0
+torch==2.14.1        # en el entorno original: 2.14.1+cpu (indice de PyTorch para CPU)
+# Extraccion de descriptores y corte de trazas
+obspy==1.5.0
+h5py==3.16.0
+requests==2.34.2
+PyRQA==8.1.0
+pyopencl==2025.1
+# Jupyter
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0
+nbconvert==7.17.1

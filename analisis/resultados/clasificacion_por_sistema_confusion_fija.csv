@@ -1,0 +1,407 @@
+origen,sistema,modelo,verdadera,predicha,n,fraccion_fila
+OVDAS,Copahue,log,HB,HB,767,0.5113333333333333
+OVDAS,Copahue,log,HB,LP,221,0.14733333333333334
+OVDAS,Copahue,log,HB,VLP,211,0.14066666666666666
+OVDAS,Copahue,log,HB,VT,301,0.20066666666666666
+OVDAS,Copahue,log,LP,HB,235,0.15666666666666668
+OVDAS,Copahue,log,LP,LP,1000,0.6666666666666666
+OVDAS,Copahue,log,LP,VLP,230,0.15333333333333332
+OVDAS,Copahue,log,LP,VT,35,0.023333333333333334
+OVDAS,Copahue,log,VLP,HB,192,0.128
+OVDAS,Copahue,log,VLP,LP,223,0.14866666666666667
+OVDAS,Copahue,log,VLP,VLP,928,0.6186666666666667
+OVDAS,Copahue,log,VLP,VT,157,0.10466666666666667
+OVDAS,Copahue,log,VT,HB,229,0.15266666666666667
+OVDAS,Copahue,log,VT,LP,75,0.05
+OVDAS,Copahue,log,VT,VLP,168,0.112
+OVDAS,Copahue,log,VT,VT,1028,0.6853333333333333
+OVDAS,Copahue,xgb,HB,HB,857,0.5713333333333334
+OVDAS,Copahue,xgb,HB,LP,225,0.15
+OVDAS,Copahue,xgb,HB,VLP,155,0.10333333333333333
+OVDAS,Copahue,xgb,HB,VT,263,0.17533333333333334
+OVDAS,Copahue,xgb,LP,HB,256,0.17066666666666666
+OVDAS,Copahue,xgb,LP,LP,964,0.6426666666666667
+OVDAS,Copahue,xgb,LP,VLP,227,0.15133333333333332
+OVDAS,Copahue,xgb,LP,VT,53,0.035333333333333335
+OVDAS,Copahue,xgb,VLP,HB,228,0.152
+OVDAS,Copahue,xgb,VLP,LP,258,0.172
+OVDAS,Copahue,xgb,VLP,VLP,869,0.5793333333333334
+OVDAS,Copahue,xgb,VLP,VT,145,0.09666666666666666
+OVDAS,Copahue,xgb,VT,HB,235,0.15666666666666668
+OVDAS,Copahue,xgb,VT,LP,92,0.06133333333333333
+OVDAS,Copahue,xgb,VT,VLP,141,0.094
+OVDAS,Copahue,xgb,VT,VT,1032,0.688
+OVDAS,Hudson,log,AV,AV,690,0.46
+OVDAS,Hudson,log,AV,HB,236,0.15733333333333333
+OVDAS,Hudson,log,AV,LP,229,0.15266666666666667
+OVDAS,Hudson,log,AV,VT,345,0.23
+OVDAS,Hudson,log,HB,AV,187,0.12466666666666666
+OVDAS,Hudson,log,HB,HB,863,0.5753333333333334
+OVDAS,Hudson,log,HB,LP,244,0.16266666666666665
+OVDAS,Hudson,log,HB,VT,206,0.13733333333333334
+OVDAS,Hudson,log,LP,AV,147,0.098
+OVDAS,Hudson,log,LP,HB,111,0.074
+OVDAS,Hudson,log,LP,LP,1213,0.8086666666666666
+OVDAS,Hudson,log,LP,VT,29,0.019333333333333334
+OVDAS,Hudson,log,VT,AV,193,0.12866666666666668
+OVDAS,Hudson,log,VT,HB,179,0.11933333333333333
+OVDAS,Hudson,log,VT,LP,20,0.013333333333333334
+OVDAS,Hudson,log,VT,VT,1108,0.7386666666666667
+OVDAS,Hudson,xgb,AV,AV,788,0.5253333333333333
+OVDAS,Hudson,xgb,AV,HB,237,0.158
+OVDAS,Hudson,xgb,AV,LP,208,0.13866666666666666
+OVDAS,Hudson,xgb,AV,VT,267,0.178
+OVDAS,Hudson,xgb,HB,AV,188,0.12533333333333332
+OVDAS,Hudson,xgb,HB,HB,950,0.6333333333333333
+OVDAS,Hudson,xgb,HB,LP,168,0.112
+OVDAS,Hudson,xgb,HB,VT,194,0.12933333333333333
+OVDAS,Hudson,xgb,LP,AV,191,0.12733333333333333
+OVDAS,Hudson,xgb,LP,HB,147,0.098
+OVDAS,Hudson,xgb,LP,LP,1137,0.758
+OVDAS,Hudson,xgb,LP,VT,25,0.016666666666666666
+OVDAS,Hudson,xgb,VT,AV,209,0.13933333333333334
+OVDAS,Hudson,xgb,VT,HB,202,0.13466666666666666
+OVDAS,Hudson,xgb,VT,LP,18,0.012
+OVDAS,Hudson,xgb,VT,VT,1071,0.714
+OVDAS,Laguna del Maule,log,LP,LP,1436,0.9573333333333334
+OVDAS,Laguna del Maule,log,LP,VT,64,0.042666666666666665
+OVDAS,Laguna del Maule,log,VT,LP,47,0.03133333333333333
+OVDAS,Laguna del Maule,log,VT,VT,1453,0.9686666666666667
+OVDAS,Laguna del Maule,xgb,LP,LP,1448,0.9653333333333334
+OVDAS,Laguna del Maule,xgb,LP,VT,52,0.034666666666666665
+OVDAS,Laguna del Maule,xgb,VT,LP,33,0.022
+OVDAS,Laguna del Maule,xgb,VT,VT,1467,0.978
+OVDAS,Nevados de Chillan,log,AV,AV,892,0.5946666666666667
+OVDAS,Nevados de Chillan,log,AV,LP,119,0.07933333333333334
+OVDAS,Nevados de Chillan,log,AV,TO,95,0.06333333333333334
+OVDAS,Nevados de Chillan,log,AV,VLP,183,0.122
+OVDAS,Nevados de Chillan,log,AV,VT,211,0.14066666666666666
+OVDAS,Nevados de Chillan,log,LP,AV,116,0.07733333333333334
+OVDAS,Nevados de Chillan,log,LP,LP,1034,0.6893333333333334
+OVDAS,Nevados de Chillan,log,LP,TO,103,0.06866666666666667
+OVDAS,Nevados de Chillan,log,LP,VLP,141,0.094
+OVDAS,Nevados de Chillan,log,LP,VT,106,0.07066666666666667
+OVDAS,Nevados de Chillan,log,TO,AV,111,0.074
+OVDAS,Nevados de Chillan,log,TO,LP,194,0.12933333333333333
+OVDAS,Nevados de Chillan,log,TO,TO,1142,0.7613333333333333
+OVDAS,Nevados de Chillan,log,TO,VLP,20,0.013333333333333334
+OVDAS,Nevados de Chillan,log,TO,VT,33,0.022
+OVDAS,Nevados de Chillan,log,VLP,AV,136,0.09066666666666667
+OVDAS,Nevados de Chillan,log,VLP,LP,73,0.048666666666666664
+OVDAS,Nevados de Chillan,log,VLP,TO,22,0.014666666666666666
+OVDAS,Nevados de Chillan,log,VLP,VLP,1235,0.8233333333333334
+OVDAS,Nevados de Chillan,log,VLP,VT,34,0.02266666666666667
+OVDAS,Nevados de Chillan,log,VT,AV,138,0.092
+OVDAS,Nevados de Chillan,log,VT,LP,24,0.016
+OVDAS,Nevados de Chillan,log,VT,TO,30,0.02
+OVDAS,Nevados de Chillan,log,VT,VLP,57,0.038
+OVDAS,Nevados de Chillan,log,VT,VT,1251,0.834
+OVDAS,Nevados de Chillan,xgb,AV,AV,973,0.6486666666666666
+OVDAS,Nevados de Chillan,xgb,AV,LP,124,0.08266666666666667
+OVDAS,Nevados de Chillan,xgb,AV,TO,70,0.04666666666666667
+OVDAS,Nevados de Chillan,xgb,AV,VLP,137,0.09133333333333334
+OVDAS,Nevados de Chillan,xgb,AV,VT,196,0.13066666666666665
+OVDAS,Nevados de Chillan,xgb,LP,AV,143,0.09533333333333334
+OVDAS,Nevados de Chillan,xgb,LP,LP,1055,0.7033333333333334
+OVDAS,Nevados de Chillan,xgb,LP,TO,107,0.07133333333333333
+OVDAS,Nevados de Chillan,xgb,LP,VLP,104,0.06933333333333333
+OVDAS,Nevados de Chillan,xgb,LP,VT,91,0.06066666666666667
+OVDAS,Nevados de Chillan,xgb,TO,AV,88,0.058666666666666666
+OVDAS,Nevados de Chillan,xgb,TO,LP,167,0.11133333333333334
+OVDAS,Nevados de Chillan,xgb,TO,TO,1185,0.79
+OVDAS,Nevados de Chillan,xgb,TO,VLP,17,0.011333333333333334
+OVDAS,Nevados de Chillan,xgb,TO,VT,43,0.028666666666666667
+OVDAS,Nevados de Chillan,xgb,VLP,AV,176,0.11733333333333333
+OVDAS,Nevados de Chillan,xgb,VLP,LP,90,0.06
+OVDAS,Nevados de Chillan,xgb,VLP,TO,10,0.006666666666666667
+OVDAS,Nevados de Chillan,xgb,VLP,VLP,1199,0.7993333333333333
+OVDAS,Nevados de Chillan,xgb,VLP,VT,25,0.016666666666666666
+OVDAS,Nevados de Chillan,xgb,VT,AV,169,0.11266666666666666
+OVDAS,Nevados de Chillan,xgb,VT,LP,35,0.023333333333333334
+OVDAS,Nevados de Chillan,xgb,VT,TO,36,0.024
+OVDAS,Nevados de Chillan,xgb,VT,VLP,24,0.016
+OVDAS,Nevados de Chillan,xgb,VT,VT,1236,0.824
+OVDAS,Villarrica,log,AV,AV,1058,0.7053333333333334
+OVDAS,Villarrica,log,AV,LP,109,0.07266666666666667
+OVDAS,Villarrica,log,AV,VT,333,0.222
+OVDAS,Villarrica,log,LP,AV,69,0.046
+OVDAS,Villarrica,log,LP,LP,1378,0.9186666666666666
+OVDAS,Villarrica,log,LP,VT,53,0.035333333333333335
+OVDAS,Villarrica,log,VT,AV,235,0.15666666666666668
+OVDAS,Villarrica,log,VT,LP,108,0.072
+OVDAS,Villarrica,log,VT,VT,1157,0.7713333333333333
+OVDAS,Villarrica,xgb,AV,AV,1116,0.744
+OVDAS,Villarrica,xgb,AV,LP,113,0.07533333333333334
+OVDAS,Villarrica,xgb,AV,VT,271,0.18066666666666667
+OVDAS,Villarrica,xgb,LP,AV,91,0.06066666666666667
+OVDAS,Villarrica,xgb,LP,LP,1364,0.9093333333333333
+OVDAS,Villarrica,xgb,LP,VT,45,0.03
+OVDAS,Villarrica,xgb,VT,AV,221,0.14733333333333334
+OVDAS,Villarrica,xgb,VT,LP,105,0.07
+OVDAS,Villarrica,xgb,VT,VT,1174,0.7826666666666666
+decepcion,Decepcion09,log,LP,LP,775,0.8857142857142857
+decepcion,Decepcion09,log,LP,NTR,100,0.11428571428571428
+decepcion,Decepcion09,log,NTR,LP,72,0.048
+decepcion,Decepcion09,log,NTR,NTR,1428,0.952
+decepcion,Decepcion09,xgb,LP,LP,782,0.8937142857142857
+decepcion,Decepcion09,xgb,LP,NTR,93,0.10628571428571429
+decepcion,Decepcion09,xgb,NTR,LP,68,0.04533333333333334
+decepcion,Decepcion09,xgb,NTR,NTR,1432,0.9546666666666667
+sgc,Ruiz-Bis,log,HB,HB,73,0.20857142857142857
+sgc,Ruiz-Bis,log,HB,LP,253,0.7228571428571429
+sgc,Ruiz-Bis,log,HB,TR,24,0.06857142857142857
+sgc,Ruiz-Bis,log,LP,HB,64,0.07398843930635839
+sgc,Ruiz-Bis,log,LP,LP,666,0.7699421965317919
+sgc,Ruiz-Bis,log,LP,TR,135,0.15606936416184972
+sgc,Ruiz-Bis,log,TR,HB,7,0.0056
+sgc,Ruiz-Bis,log,TR,LP,72,0.0576
+sgc,Ruiz-Bis,log,TR,TR,1171,0.9368
+sgc,Ruiz-Bis,xgb,HB,HB,98,0.28
+sgc,Ruiz-Bis,xgb,HB,LP,235,0.6714285714285714
+sgc,Ruiz-Bis,xgb,HB,TR,17,0.04857142857142857
+sgc,Ruiz-Bis,xgb,LP,HB,114,0.13179190751445086
+sgc,Ruiz-Bis,xgb,LP,LP,649,0.7502890173410405
+sgc,Ruiz-Bis,xgb,LP,TR,102,0.11791907514450867
+sgc,Ruiz-Bis,xgb,TR,HB,15,0.012
+sgc,Ruiz-Bis,xgb,TR,LP,68,0.0544
+sgc,Ruiz-Bis,xgb,TR,TR,1167,0.9336
+sgc,Ruiz-Olleta,log,HB,HB,1016,0.6773333333333333
+sgc,Ruiz-Olleta,log,HB,LP,152,0.10133333333333333
+sgc,Ruiz-Olleta,log,HB,TR,73,0.048666666666666664
+sgc,Ruiz-Olleta,log,HB,VT,259,0.17266666666666666
+sgc,Ruiz-Olleta,log,LP,HB,391,0.44431818181818183
+sgc,Ruiz-Olleta,log,LP,LP,231,0.2625
+sgc,Ruiz-Olleta,log,LP,TR,124,0.1409090909090909
+sgc,Ruiz-Olleta,log,LP,VT,134,0.15227272727272728
+sgc,Ruiz-Olleta,log,TR,HB,49,0.0392
+sgc,Ruiz-Olleta,log,TR,LP,50,0.04
+sgc,Ruiz-Olleta,log,TR,TR,1120,0.896
+sgc,Ruiz-Olleta,log,TR,VT,31,0.0248
+sgc,Ruiz-Olleta,log,VT,HB,273,0.25277777777777777
+sgc,Ruiz-Olleta,log,VT,LP,28,0.025925925925925925
+sgc,Ruiz-Olleta,log,VT,TR,23,0.021296296296296296
+sgc,Ruiz-Olleta,log,VT,VT,756,0.7
+sgc,Ruiz-Olleta,xgb,HB,HB,1034,0.6893333333333334
+sgc,Ruiz-Olleta,xgb,HB,LP,216,0.144
+sgc,Ruiz-Olleta,xgb,HB,TR,62,0.04133333333333333
+sgc,Ruiz-Olleta,xgb,HB,VT,188,0.12533333333333332
+sgc,Ruiz-Olleta,xgb,LP,HB,317,0.36022727272727273
+sgc,Ruiz-Olleta,xgb,LP,LP,356,0.40454545454545454
+sgc,Ruiz-Olleta,xgb,LP,TR,99,0.1125
+sgc,Ruiz-Olleta,xgb,LP,VT,108,0.12272727272727273
+sgc,Ruiz-Olleta,xgb,TR,HB,66,0.0528
+sgc,Ruiz-Olleta,xgb,TR,LP,52,0.0416
+sgc,Ruiz-Olleta,xgb,TR,TR,1095,0.876
+sgc,Ruiz-Olleta,xgb,TR,VT,37,0.0296
+sgc,Ruiz-Olleta,xgb,VT,HB,272,0.2518518518518518
+sgc,Ruiz-Olleta,xgb,VT,LP,28,0.025925925925925925
+sgc,Ruiz-Olleta,xgb,VT,TR,32,0.02962962962962963
+sgc,Ruiz-Olleta,xgb,VT,VT,748,0.6925925925925925
+vcseis,Alaska,log,LP,LP,1252,0.8346666666666667
+vcseis,Alaska,log,LP,OT,93,0.062
+vcseis,Alaska,log,LP,RE,10,0.006666666666666667
+vcseis,Alaska,log,LP,VT,145,0.09666666666666666
+vcseis,Alaska,log,OT,LP,85,0.056666666666666664
+vcseis,Alaska,log,OT,OT,1033,0.6886666666666666
+vcseis,Alaska,log,OT,RE,58,0.03866666666666667
+vcseis,Alaska,log,OT,VT,324,0.216
+vcseis,Alaska,log,RE,LP,80,0.09815950920245399
+vcseis,Alaska,log,RE,OT,386,0.4736196319018405
+vcseis,Alaska,log,RE,RE,93,0.11411042944785275
+vcseis,Alaska,log,RE,VT,256,0.3141104294478528
+vcseis,Alaska,log,VT,LP,183,0.122
+vcseis,Alaska,log,VT,OT,409,0.27266666666666667
+vcseis,Alaska,log,VT,RE,75,0.05
+vcseis,Alaska,log,VT,VT,833,0.5553333333333333
+vcseis,Alaska,xgb,LP,LP,1209,0.806
+vcseis,Alaska,xgb,LP,OT,91,0.06066666666666667
+vcseis,Alaska,xgb,LP,RE,24,0.016
+vcseis,Alaska,xgb,LP,VT,176,0.11733333333333333
+vcseis,Alaska,xgb,OT,LP,73,0.048666666666666664
+vcseis,Alaska,xgb,OT,OT,904,0.6026666666666667
+vcseis,Alaska,xgb,OT,RE,157,0.10466666666666667
+vcseis,Alaska,xgb,OT,VT,366,0.244
+vcseis,Alaska,xgb,RE,LP,68,0.0834355828220859
+vcseis,Alaska,xgb,RE,OT,323,0.39631901840490796
+vcseis,Alaska,xgb,RE,RE,148,0.18159509202453988
+vcseis,Alaska,xgb,RE,VT,276,0.33865030674846625
+vcseis,Alaska,xgb,VT,LP,183,0.122
+vcseis,Alaska,xgb,VT,OT,402,0.268
+vcseis,Alaska,xgb,VT,RE,132,0.088
+vcseis,Alaska,xgb,VT,VT,783,0.522
+vcseis,Cascade,log,LP,LP,755,0.888235294117647
+vcseis,Cascade,log,LP,VT,95,0.11176470588235295
+vcseis,Cascade,log,VT,LP,67,0.07204301075268817
+vcseis,Cascade,log,VT,VT,863,0.9279569892473118
+vcseis,Cascade,xgb,LP,LP,748,0.88
+vcseis,Cascade,xgb,LP,VT,102,0.12
+vcseis,Cascade,xgb,VT,LP,68,0.07311827956989247
+vcseis,Cascade,xgb,VT,VT,862,0.9268817204301075
+vcseis,Hawái,log,LP,LP,1238,0.8253333333333334
+vcseis,Hawái,log,LP,VT,262,0.17466666666666666
+vcseis,Hawái,log,VT,LP,199,0.13266666666666665
+vcseis,Hawái,log,VT,VT,1301,0.8673333333333333
+vcseis,Hawái,xgb,LP,LP,1213,0.8086666666666666
+vcseis,Hawái,xgb,LP,VT,287,0.19133333333333333
+vcseis,Hawái,xgb,VT,LP,232,0.15466666666666667
+vcseis,Hawái,xgb,VT,VT,1268,0.8453333333333334
+vcseis,Norte de California,log,LP,LP,1393,0.9286666666666666
+vcseis,Norte de California,log,LP,VT,107,0.07133333333333333
+vcseis,Norte de California,log,VT,LP,62,0.04133333333333333
+vcseis,Norte de California,log,VT,VT,1438,0.9586666666666667
+vcseis,Norte de California,xgb,LP,LP,1387,0.9246666666666666
+vcseis,Norte de California,xgb,LP,VT,113,0.07533333333333334
+vcseis,Norte de California,xgb,VT,LP,79,0.05266666666666667
+vcseis,Norte de California,xgb,VT,VT,1421,0.9473333333333334
+voissnet,Pavlof,log,EX,EX,249,0.34344827586206894
+voissnet,Pavlof,log,EX,LP,4,0.005517241379310344
+voissnet,Pavlof,log,EX,RUIDO,56,0.07724137931034483
+voissnet,Pavlof,log,EX,TRb,272,0.37517241379310345
+voissnet,Pavlof,log,EX,TRh,25,0.034482758620689655
+voissnet,Pavlof,log,EX,TRm,119,0.16413793103448276
+voissnet,Pavlof,log,LP,EX,32,0.10491803278688525
+voissnet,Pavlof,log,LP,LP,14,0.04590163934426229
+voissnet,Pavlof,log,LP,RUIDO,112,0.36721311475409835
+voissnet,Pavlof,log,LP,TRb,62,0.20327868852459016
+voissnet,Pavlof,log,LP,TRh,27,0.08852459016393442
+voissnet,Pavlof,log,LP,TRm,58,0.1901639344262295
+voissnet,Pavlof,log,RUIDO,EX,10,0.006666666666666667
+voissnet,Pavlof,log,RUIDO,LP,10,0.006666666666666667
+voissnet,Pavlof,log,RUIDO,RUIDO,1326,0.884
+voissnet,Pavlof,log,RUIDO,TRb,38,0.025333333333333333
+voissnet,Pavlof,log,RUIDO,TRh,46,0.030666666666666665
+voissnet,Pavlof,log,RUIDO,TRm,70,0.04666666666666667
+voissnet,Pavlof,log,TRb,EX,100,0.06666666666666667
+voissnet,Pavlof,log,TRb,LP,2,0.0013333333333333333
+voissnet,Pavlof,log,TRb,RUIDO,127,0.08466666666666667
+voissnet,Pavlof,log,TRb,TRb,913,0.6086666666666667
+voissnet,Pavlof,log,TRb,TRh,206,0.13733333333333334
+voissnet,Pavlof,log,TRb,TRm,152,0.10133333333333333
+voissnet,Pavlof,log,TRh,EX,63,0.042
+voissnet,Pavlof,log,TRh,LP,3,0.002
+voissnet,Pavlof,log,TRh,RUIDO,176,0.11733333333333333
+voissnet,Pavlof,log,TRh,TRb,352,0.23466666666666666
+voissnet,Pavlof,log,TRh,TRh,639,0.426
+voissnet,Pavlof,log,TRh,TRm,267,0.178
+voissnet,Pavlof,log,TRm,EX,75,0.05
+voissnet,Pavlof,log,TRm,LP,10,0.006666666666666667
+voissnet,Pavlof,log,TRm,RUIDO,245,0.16333333333333333
+voissnet,Pavlof,log,TRm,TRb,349,0.23266666666666666
+voissnet,Pavlof,log,TRm,TRh,364,0.24266666666666667
+voissnet,Pavlof,log,TRm,TRm,457,0.30466666666666664
+voissnet,Pavlof,xgb,EX,EX,252,0.34758620689655173
+voissnet,Pavlof,xgb,EX,LP,25,0.034482758620689655
+voissnet,Pavlof,xgb,EX,RUIDO,54,0.07448275862068965
+voissnet,Pavlof,xgb,EX,TRb,218,0.3006896551724138
+voissnet,Pavlof,xgb,EX,TRh,62,0.08551724137931034
+voissnet,Pavlof,xgb,EX,TRm,114,0.15724137931034482
+voissnet,Pavlof,xgb,LP,EX,28,0.09180327868852459
+voissnet,Pavlof,xgb,LP,LP,51,0.16721311475409836
+voissnet,Pavlof,xgb,LP,RUIDO,96,0.31475409836065577
+voissnet,Pavlof,xgb,LP,TRb,61,0.2
+voissnet,Pavlof,xgb,LP,TRh,40,0.13114754098360656
+voissnet,Pavlof,xgb,LP,TRm,29,0.09508196721311475
+voissnet,Pavlof,xgb,RUIDO,EX,11,0.007333333333333333
+voissnet,Pavlof,xgb,RUIDO,LP,13,0.008666666666666666
+voissnet,Pavlof,xgb,RUIDO,RUIDO,1264,0.8426666666666667
+voissnet,Pavlof,xgb,RUIDO,TRb,47,0.03133333333333333
+voissnet,Pavlof,xgb,RUIDO,TRh,65,0.043333333333333335
+voissnet,Pavlof,xgb,RUIDO,TRm,100,0.06666666666666667
+voissnet,Pavlof,xgb,TRb,EX,88,0.058666666666666666
+voissnet,Pavlof,xgb,TRb,LP,14,0.009333333333333334
+voissnet,Pavlof,xgb,TRb,RUIDO,109,0.07266666666666667
+voissnet,Pavlof,xgb,TRb,TRb,755,0.5033333333333333
+voissnet,Pavlof,xgb,TRb,TRh,232,0.15466666666666667
+voissnet,Pavlof,xgb,TRb,TRm,302,0.20133333333333334
+voissnet,Pavlof,xgb,TRh,EX,60,0.04
+voissnet,Pavlof,xgb,TRh,LP,5,0.0033333333333333335
+voissnet,Pavlof,xgb,TRh,RUIDO,131,0.08733333333333333
+voissnet,Pavlof,xgb,TRh,TRb,295,0.19666666666666666
+voissnet,Pavlof,xgb,TRh,TRh,689,0.4593333333333333
+voissnet,Pavlof,xgb,TRh,TRm,320,0.21333333333333335
+voissnet,Pavlof,xgb,TRm,EX,66,0.044
+voissnet,Pavlof,xgb,TRm,LP,15,0.01
+voissnet,Pavlof,xgb,TRm,RUIDO,208,0.13866666666666666
+voissnet,Pavlof,xgb,TRm,TRb,298,0.19866666666666666
+voissnet,Pavlof,xgb,TRm,TRh,364,0.24266666666666667
+voissnet,Pavlof,xgb,TRm,TRm,549,0.366
+voissnet,Semisopochnoi,log,EX,EX,481,0.3217391304347826
+voissnet,Semisopochnoi,log,EX,LP,399,0.26688963210702343
+voissnet,Semisopochnoi,log,EX,RUIDO,94,0.06287625418060201
+voissnet,Semisopochnoi,log,EX,TRb,476,0.3183946488294314
+voissnet,Semisopochnoi,log,EX,TRh,26,0.017391304347826087
+voissnet,Semisopochnoi,log,EX,TRm,19,0.012709030100334449
+voissnet,Semisopochnoi,log,LP,EX,238,0.15866666666666668
+voissnet,Semisopochnoi,log,LP,LP,841,0.5606666666666666
+voissnet,Semisopochnoi,log,LP,RUIDO,115,0.07666666666666666
+voissnet,Semisopochnoi,log,LP,TRb,240,0.16
+voissnet,Semisopochnoi,log,LP,TRh,57,0.038
+voissnet,Semisopochnoi,log,LP,TRm,9,0.006
+voissnet,Semisopochnoi,log,RUIDO,EX,73,0.048666666666666664
+voissnet,Semisopochnoi,log,RUIDO,LP,54,0.036
+voissnet,Semisopochnoi,log,RUIDO,RUIDO,1294,0.8626666666666667
+voissnet,Semisopochnoi,log,RUIDO,TRb,64,0.042666666666666665
+voissnet,Semisopochnoi,log,RUIDO,TRh,12,0.008
+voissnet,Semisopochnoi,log,RUIDO,TRm,3,0.002
+voissnet,Semisopochnoi,log,TRb,EX,254,0.16933333333333334
+voissnet,Semisopochnoi,log,TRb,LP,176,0.11733333333333333
+voissnet,Semisopochnoi,log,TRb,RUIDO,163,0.10866666666666666
+voissnet,Semisopochnoi,log,TRb,TRb,821,0.5473333333333333
+voissnet,Semisopochnoi,log,TRb,TRh,72,0.048
+voissnet,Semisopochnoi,log,TRb,TRm,14,0.009333333333333334
+voissnet,Semisopochnoi,log,TRh,EX,12,0.01804511278195489
+voissnet,Semisopochnoi,log,TRh,LP,50,0.07518796992481203
+voissnet,Semisopochnoi,log,TRh,RUIDO,48,0.07218045112781955
+voissnet,Semisopochnoi,log,TRh,TRb,101,0.1518796992481203
+voissnet,Semisopochnoi,log,TRh,TRh,438,0.6586466165413534
+voissnet,Semisopochnoi,log,TRh,TRm,16,0.02406015037593985
+voissnet,Semisopochnoi,log,TRm,EX,48,0.11428571428571428
+voissnet,Semisopochnoi,log,TRm,LP,38,0.09047619047619047
+voissnet,Semisopochnoi,log,TRm,RUIDO,53,0.1261904761904762
+voissnet,Semisopochnoi,log,TRm,TRb,137,0.3261904761904762
+voissnet,Semisopochnoi,log,TRm,TRh,96,0.22857142857142856
+voissnet,Semisopochnoi,log,TRm,TRm,48,0.11428571428571428
+voissnet,Semisopochnoi,xgb,EX,EX,592,0.3959866220735786
+voissnet,Semisopochnoi,xgb,EX,LP,358,0.2394648829431438
+voissnet,Semisopochnoi,xgb,EX,RUIDO,95,0.06354515050167224
+voissnet,Semisopochnoi,xgb,EX,TRb,407,0.27224080267558526
+voissnet,Semisopochnoi,xgb,EX,TRh,29,0.01939799331103679
+voissnet,Semisopochnoi,xgb,EX,TRm,14,0.009364548494983277
+voissnet,Semisopochnoi,xgb,LP,EX,325,0.21666666666666667
+voissnet,Semisopochnoi,xgb,LP,LP,814,0.5426666666666666
+voissnet,Semisopochnoi,xgb,LP,RUIDO,82,0.05466666666666667
+voissnet,Semisopochnoi,xgb,LP,TRb,213,0.142
+voissnet,Semisopochnoi,xgb,LP,TRh,52,0.034666666666666665
+voissnet,Semisopochnoi,xgb,LP,TRm,14,0.009333333333333334
+voissnet,Semisopochnoi,xgb,RUIDO,EX,95,0.06333333333333334
+voissnet,Semisopochnoi,xgb,RUIDO,LP,45,0.03
+voissnet,Semisopochnoi,xgb,RUIDO,RUIDO,1249,0.8326666666666667
+voissnet,Semisopochnoi,xgb,RUIDO,TRb,86,0.05733333333333333
+voissnet,Semisopochnoi,xgb,RUIDO,TRh,12,0.008
+voissnet,Semisopochnoi,xgb,RUIDO,TRm,13,0.008666666666666666
+voissnet,Semisopochnoi,xgb,TRb,EX,343,0.22866666666666666
+voissnet,Semisopochnoi,xgb,TRb,LP,158,0.10533333333333333
+voissnet,Semisopochnoi,xgb,TRb,RUIDO,157,0.10466666666666667
+voissnet,Semisopochnoi,xgb,TRb,TRb,726,0.484
+voissnet,Semisopochnoi,xgb,TRb,TRh,84,0.056
+voissnet,Semisopochnoi,xgb,TRb,TRm,32,0.021333333333333333
+voissnet,Semisopochnoi,xgb,TRh,EX,39,0.058646616541353384
+voissnet,Semisopochnoi,xgb,TRh,LP,55,0.08270676691729323
+voissnet,Semisopochnoi,xgb,TRh,RUIDO,51,0.07669172932330827
+voissnet,Semisopochnoi,xgb,TRh,TRb,96,0.1443609022556391
+voissnet,Semisopochnoi,xgb,TRh,TRh,394,0.5924812030075188
+voissnet,Semisopochnoi,xgb,TRh,TRm,30,0.045112781954887216
+voissnet,Semisopochnoi,xgb,TRm,EX,69,0.16428571428571428
+voissnet,Semisopochnoi,xgb,TRm,LP,19,0.04523809523809524
+voissnet,Semisopochnoi,xgb,TRm,RUIDO,51,0.12142857142857143
+voissnet,Semisopochnoi,xgb,TRm,TRb,115,0.27380952380952384
+voissnet,Semisopochnoi,xgb,TRm,TRh,86,0.20476190476190476
+voissnet,Semisopochnoi,xgb,TRm,TRm,80,0.19047619047619047
+voissnet,Veniaminof,log,LP,LP,1279,0.8526666666666667
+voissnet,Veniaminof,log,LP,TRh,221,0.14733333333333334
+voissnet,Veniaminof,log,TRh,LP,460,0.30666666666666664
+voissnet,Veniaminof,log,TRh,TRh,1040,0.6933333333333334
+voissnet,Veniaminof,xgb,LP,LP,1245,0.83
+voissnet,Veniaminof,xgb,LP,TRh,255,0.17
+voissnet,Veniaminof,xgb,TRh,LP,357,0.238
+voissnet,Veniaminof,xgb,TRh,TRh,1143,0.762
