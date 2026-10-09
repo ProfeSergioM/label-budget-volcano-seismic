@@ -5,7 +5,8 @@ un panel por destino, Gm frente al numero de etiquetas del destino.
 Lineas: mediana sobre fuentes del Gm promedio sobre repeticiones.
   - logistica, XGBoost y TabPFN con fuente + n al azar (continuas);
   - logistica con fuente + n por aprendizaje activo (punteada);
-  - TabPFN solo con n del destino (discontinua);
+  - TabPFN solo con n del destino, al azar (discontinua) y estratificados
+    (punto-raya);
   - banda gris: rango de los tres modelos locales (hasta 100 por clase).
 Paneles ordenados por el Gm de la logistica sin etiquetas del destino. El eje
 x es categorico (0, 10, 20, 50, 100, 200); cuando el pool del destino tiene
@@ -32,6 +33,7 @@ CURVAS = [  # (modelo, seleccion, etiqueta, color, estilo)
     ("xgb", "azar", "XGBoost, source + random", "#e08a1e", "-"),
     ("tabpfn", "azar", "TabPFN, source + random", "#2e8b57", "-"),
     ("tabpfn", "solo_destino", "TabPFN, target only", "#2e8b57", "--"),
+    ("tabpfn", "solo_destino_estrat", "TabPFN, target only, stratified", "#2e8b57", "-."),
 ]
 TICKS = [0, 10, 20, 50, 100, 200]
 
@@ -64,8 +66,8 @@ def main():
     for ax in ejes[:, 0]:
         ax.set_ylabel("Gm (LP, VT)")
     h, l = ejes.flat[0].get_legend_handles_labels()
-    fig.legend(h, l, loc="lower center", ncol=6, fontsize=10, frameon=False)
-    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    fig.legend(h, l, loc="lower center", ncol=4, fontsize=10, frameon=False)
+    fig.tight_layout(rect=(0, 0.09, 1, 1))
     for ext in ("pdf", "png"):
         fig.savefig(REP / f"fig_presupuesto.{ext}", dpi=200)
     print("->", REP / "fig_presupuesto.pdf")

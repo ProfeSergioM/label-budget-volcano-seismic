@@ -9,12 +9,16 @@ eventos y descriptores que transferencia.py), y para cada repeticion:
     la composicion natural del destino);
   - se entrena con los 100 por clase de la fuente mas n eventos etiquetados
     del destino, n en PRESUPUESTO (total, no por clase), elegidos
-      * al azar del pool (seleccion "azar"), o
+      * al azar del pool (seleccion "azar"),
+      * estratificados: n/2 por clase, los primeros del pool de cada clase
+        (seleccion "estratificado"; si una clase no alcanza, el resto lo
+        completa la otra), o
       * por aprendizaje activo (seleccion "activo"): partiendo del modelo de
         la fuente, en lotes de LOTE se etiqueta el evento del pool con menor
         margen |p(LP) - 0.5| y se reentrena;
   - referencias: el mismo modelo solo con n eventos del destino al azar
-    ("solo_destino"; en XGBoost, con menos de 200 eventos, una configuracion
+    ("solo_destino") o estratificados ("solo_destino_estrat");
+    (en "solo_destino" en XGBoost, con menos de 200 eventos, una configuracion
     fija para pocos datos, XGB_POCOS, porque con pesos que suman n el minimo
     de hessiano y la regularizacion L1 ajustados no dejan dividir ningun
     nodo) y el modelo local con hasta 100 por clase del pool
@@ -32,6 +36,7 @@ sobre fuentes se calcula despues, por destino.
 Uso:
     python scripts/presupuesto_etiquetas.py [--workers 3] [--reps 5]
     python scripts/presupuesto_etiquetas.py --rehacer-xgb-solo   # solo esas filas
+    python scripts/presupuesto_etiquetas.py --estratificado      # agrega esas filas
 """
 from __future__ import annotations
 
@@ -152,9 +157,22 @@ def particion(g, rep):
     return pd.concat(prueba), pd.concat(pool).sample(frac=1, random_state=SEMILLA + 100 + rep)
 
 
+def indices_estratificados(yq, n):
+    """Los primeros n/2 del pool de cada clase; si una no alcanza, completa la otra."""
+    por = {c: np.flatnonzero(yq == c) for c in CLASES}
+    k = {c: min(len(por[c]), n // 2) for c in CLASES}
+    falta = n - sum(k.values())
+    for c in CLASES:
+        extra = min(falta, len(por[c]) - k[c])
+        k[c] += extra
+        falta -= extra
+    return np.sort(np.concatenate([por[c][:k[c]] for c in CLASES]))
+
+
 def una(args):
     fuente, destino, rep, confs, confs_dst, *modo = args
-    solo_xgb = bool(modo and modo[0])
+    modo = modo[0] if modo else None
+    solo_xgb = modo == "xgb"
     warnings.filterwarnings("ignore")
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     import torch
@@ -173,6 +191,17 @@ def una(args):
         filas.append(dict(fuente=fuente, destino=destino, rep=rep, modelo=modelo,
                           seleccion=seleccion, n=n, **puntuar(m.proba_vt(xp), yp)))
 
+    if modo == "estrat":
+        for tipo in ("log", "xgb", "tabpfn"):
+            for n in PRESUPUESTO[1:]:
+                n = min(n, len(pool))
+                i = indices_estratificados(yq, n)
+                fila(tipo, "estratificado", n, Clf(tipo, confs.get(tipo), SEMILLA + rep).fit(
+                    np.vstack([xs, xq[i]]), np.concatenate([ys, yq[i]])))
+                fila(tipo, "solo_destino_estrat", n,
+                     Clf(tipo, conf_pocos(tipo, confs_dst.get(tipo), n),
+                         SEMILLA + rep).fit(xq[i], yq[i]))
+        return filas
     if solo_xgb:
         for n in PRESUPUESTO[1:]:
             n = min(n, len(pool))
@@ -227,6 +256,8 @@ def main():
     ap.add_argument("--solo", nargs="*", help="limita a estos destinos (prueba)")
     ap.add_argument("--rehacer-xgb-solo", action="store_true",
                     help="recalcula solo las filas XGBoost solo_destino de los archivos existentes")
+    ap.add_argument("--estratificado", action="store_true",
+                    help="agrega las filas de seleccion estratificada a los archivos existentes")
     a = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     datos = T.cargar()
@@ -249,8 +280,10 @@ def main():
             for r in range(a.reps):
                 ruta = OUT / f"{dst}__{src}__{r}.parquet".replace(" ", "_")
                 if a.rehacer_xgb_solo and ruta.exists():
-                    trabajos.append((src, dst, r, confs, confs_dst, True))
-                elif not a.rehacer_xgb_solo and not ruta.exists():
+                    trabajos.append((src, dst, r, confs, confs_dst, "xgb"))
+                elif a.estratificado and ruta.exists():
+                    trabajos.append((src, dst, r, confs, confs_dst, "estrat"))
+                elif not (a.rehacer_xgb_solo or a.estratificado) and not ruta.exists():
                     trabajos.append((src, dst, r, confs, confs_dst))
     print(f"{len(sistemas)} sistemas con LP y VT; {len(trabajos)} trabajos", flush=True)
     with ProcessPoolExecutor(a.workers, initializer=init, initargs=(datos,)) as ex:
@@ -258,10 +291,11 @@ def main():
             f = pd.DataFrame(filas)
             r = f.iloc[0]
             ruta = OUT / f"{r.destino}__{r.fuente}__{r.rep}.parquet".replace(" ", "_")
-            if a.rehacer_xgb_solo:
+            if a.rehacer_xgb_solo or a.estratificado:
                 v = pd.read_parquet(ruta)
-                v = v[~((v.modelo == "xgb") & (v.seleccion == "solo_destino"))]
-                f = pd.concat([v, f], ignore_index=True)
+                quitar = (((v.modelo == "xgb") & (v.seleccion == "solo_destino")) if a.rehacer_xgb_solo
+                          else v.seleccion.isin(["estratificado", "solo_destino_estrat"]))
+                f = pd.concat([v[~quitar], f], ignore_index=True)
             f.to_parquet(ruta, index=False)
             if k % 10 == 0:
                 print(f"  {k}/{len(trabajos)}", flush=True)

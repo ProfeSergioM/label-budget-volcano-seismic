@@ -729,15 +729,16 @@ fixed test set, half of each class up to 300 events, and a pool that keeps
 the natural composition of the target. The source contributes 100 events per
 class. To these, $n$ labeled target events are added from the pool, with $n$
 in $\{0, 10, 20, 50, 100, 200\}$ in total rather than per class, or the
-whole pool where it is smaller, chosen in two ways: at random, or by active
-learning, which starts from the source model and, in
+whole pool where it is smaller, chosen in three ways: at random; stratified,
+half from each class, the other class completing the draw where one falls
+short; or by active learning, which starts from the source model and, in
 batches of 10, labels the pool events with the smallest margin
 $|p(\mathrm{LP}) - 0.5|$ and retrains, a margin form of the uncertainty
 sampling that \cite{bueno_continuous_2022} applied to volcano-seismic
 monitoring; \cite{manley_deep_2022} select by diversity instead. Two
-references accompany the curve: the
-same model trained on the $n$ random target events alone, the target-only
-model, and the local model, trained on up to 100 events per class of the
+references accompany the curve: the same model trained on the $n$ target
+events alone, random or stratified, the target-only model, and the local
+model, trained on up to 100 events per class of the
 pool.
 
 Three classifiers enter the budget. The logistic regression and the boosted
@@ -975,8 +976,8 @@ number of labeled target events added to 100 events per class of the source,
 median over the nine sources of the mean over three repetitions. Solid lines:
 target events drawn at random, for the logistic regression (LR), the
 gradient-boosted trees and TabPFN; dotted line: target events chosen by
-active learning (LR); dashed line: TabPFN trained on the target events alone.
-Grey band: range of the three local models, trained on up to 100 events per
+active learning (LR); dashed and dash-dotted lines: TabPFN trained on the
+target events alone, drawn at random or stratified by class. Grey band: range of the three local models, trained on up to 100 events per
 class of the target. Where the pool of a target holds fewer than 200 events
 (Cascade Range, Nevado del Ruiz at Olleta), the last point uses the whole
 pool. Panels are ordered by the score of LR with no target labels.}
@@ -1000,14 +1001,22 @@ labels. At Nevado del Ruiz at Olleta the source hinders: TabPFN trained on
 the target events alone reaches 0.63 with 20 and 0.81 with 100, above every
 model that adds them to the source.
 
-Strong class imbalance in the target undermines both selections. Villarrica holds 31{,}483
-LP and 308 VT events, so a random draw from its pool rarely holds a VT: the
-target-only models stay at $G_m = 0$ up to 200 labels, and added to the
-source, the labels leave the logistic regression at 0.84 to 0.87 and lower
-TabPFN from 0.84 to 0.74 and active learning from 0.84 to 0.75 to 0.78,
-against local models of 0.93 to 0.94 trained on balanced classes. At Laguna
-del Maule, with 445 LP and 4{,}616 VT events, the target-only models need 100
-to 200 labels to approach the transferred ones.
+Strong class imbalance in the target undermines random and active
+selection alike, and a stratified draw repairs it. Villarrica holds
+31{,}483 LP and 308 VT events, so a random draw from its pool rarely holds a
+VT: the target-only models stay at $G_m = 0$ up to 200 labels, and added to
+the source, the random labels leave the logistic regression at 0.84 to 0.87
+and lower TabPFN from 0.84 to 0.74 and active learning from 0.84 to 0.75 to
+0.78, against local models of 0.93 to 0.94 trained on balanced classes. The
+same budget drawn half from each class reaches 0.83 to 0.87 with 10
+target-only labels and 0.92 to 0.94 with 100, the level of the local models,
+and added to the source 0.90 to 0.92 with 100. At Laguna del Maule, with 445
+LP and 4{,}616 VT events, the stratified target-only models reach 0.82 to
+0.89 with 10 labels and 0.93 to 0.96 with 50, where the random ones need 100
+to 200. At the eight other targets, whose pools are closer to balance,
+stratified and random draws differ by at most 0.04 from 20 labels on, and by
+0.11 to 0.31 with 10 labels at Hudson, Copahue, Cascade Range and Olleta,
+where a random draw of 10 can miss one class.
 
 \subsection{Automatic segmentation}\label{subsec:res_autocut}
 
