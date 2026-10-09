@@ -639,6 +639,11 @@ and no threshold, on up to 5{,}000 events per class drawn at random, and the
 AUC is oriented by its median direction across datasets, so a value below 0.5
 marks a reversal in that dataset. Descriptors are ranked by the median
 oriented AUC across datasets minus its interquartile range.
+$FI$ and $DET$, the leading spectral and the leading recurrence descriptor,
+define a plane in which the global and local classes of all datasets are
+compared: LP and VT are drawn as densities over all datasets, with equal
+weight for every dataset, and each class of each dataset with at least 50
+events by its median, with its interquartile range for the local classes.
 
 \subsection{Transfer with no target labels}\label{subsec:transfer}
 
@@ -871,6 +876,43 @@ balanced accuracy from seven of the ten LP--VT sources, 8 to 31 percentage
 points as a median over targets, and $FI$, $DET$ and $SR$ are the three most
 important descriptors with both classifiers (Figure~\ref{fig:importance},
 Appendix~\ref{subsec:supp_classif}).
+
+In the plane of $FI$ and $DET$, LP gathers at low $FI$ and high $DET$, from
+15 datasets, and VT at higher $FI$ and lower $DET$, from 13
+(Figure~\ref{fig:plane}). Every median of LP and VT lies within the 90\%
+contour of its class, and most within its 50\% core; outside the core lie
+the LP medians of Copahue and Alaska and the VT medians of Copahue, Hudson,
+Northern California and Redoubt. The LP medians of Olleta and Bis lie within
+the LP contour but inside the core of VT, next to the VT median of Olleta.
+The local classes fall in places that depend on their catalog. The tremor
+types, noise and explosions of Pavlof and Semisopochnoi, the harmonic tremor
+of Veniaminof and the NTR class of Deception Island lie within the LP core,
+and the harmonic tremor of Popocat\'epetl, VLP of Copahue and Nevados de
+Chill\'an and the tornillos of Nevados de Chill\'an between the two clouds.
+The tremor of Nevado del Ruiz lies within the VT core at Olleta and at the
+low-$DET$ edge of the VT cloud at Bis. HB lies between LP and VT at Copahue,
+within the LP core at Hudson and within the VT core at Nevado del Ruiz; AV
+within the VT core at Nevados de Chill\'an and Villarrica and between the two
+clouds at Hudson; and the regional and other events of Alaska within the VT
+core. The plane thus shows what the matrices measure: LP and VT occupy the
+same regions in every catalog, while a local label, HB above all, occupies a
+different region in each one.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig_plano_transferible.pdf}
+\caption{Global and local classes in the plane of $FI$ and $DET$. Shading
+encloses 50\% and lines 90\% of the density of LP and of VT over all
+datasets. Small open markers give the median of LP or VT in each dataset,
+and large markers with bars the median and interquartile range of each local
+class with at least 50 events. Marker shape gives the catalog and color the
+class (TR: tremor of Nevado del Ruiz; TRh, TRm, TRb: harmonic, monochromatic
+and broadband tremor of VOISS-Net; NTR: noise and tremor class of Deception
+Island; EX: explosions; RE, OT: regional and other events of Alaska). Popo:
+Popocat\'epetl; Dec95: Deception Island in 1995; other abbreviations as in
+Figure~\ref{fig:matrices}.}
+\label{fig:plane}
+\end{figure}
 
 The diagonal of the LP--VT matrix reaches a median $G_m$ of 0.90 to 0.91,
 lowest at Nevado del Ruiz at Olleta, Hawai`i and Alaska and highest at
