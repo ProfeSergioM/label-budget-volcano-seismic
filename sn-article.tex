@@ -830,6 +830,12 @@ estimator that maximize the density-based clustering validation index (DBCV)
 agreement with the labels is measured afterwards by the adjusted Rand index,
 and the DBCV of the expert labels themselves, in the same space, measures
 whether the classes form dense, separated groups.
+In the four datasets that hold HB, the overlap of HB with LP and with VT is
+also measured directly: the three classes are drawn as densities in the
+plane of $SR$ and $FI$, and each pair of classes is separated by a logistic
+regression on the sixteen descriptors, scored by balanced accuracy over
+five-fold cross-validation on ten balanced draws of up to 500 events per
+class.
 
 To read what the flags mean, an analyst reviews at Hudson the 200 events
 with the lowest label quality
@@ -1083,6 +1089,27 @@ HDBSCAN retains two groups at every dataset, with an adjusted Rand index of
 $-0.07$ to 0.08 with the labels, and the DBCV of the expert labels is
 negative at all nine datasets, $-0.72$ to $-0.85$, so the classes do not form
 dense, separated groups in descriptor space.
+
+Where HB is labeled, it overlaps a different global class in each dataset
+(Figure~\ref{fig:hboverlap}). At Copahue HB lies between LP and VT and
+overlaps both, at Hudson it lies within the LP cloud, and at Nevado del
+Ruiz the three classes share one region at Olleta and at Bis. The pairwise
+balanced accuracy with the sixteen descriptors follows: LP against VT
+reaches 0.90 at Copahue, 0.95 at Hudson and 0.81 at Olleta, HB against LP
+0.79, 0.84 and 0.63, and 0.62 at Bis, and HB against VT 0.79, 0.83 and 0.75.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{fig_superposicion_hb.pdf}
+\caption{HB against LP and VT in the four datasets that label it. (a--d)
+Densities of the three classes in the plane of $SR$ and $FI$, 50\% (shading)
+and 90\% (line), with the number of events of each class. (e) Balanced
+accuracy of a logistic regression separating each pair of classes with the
+sixteen descriptors, five-fold cross-validation over ten balanced draws of
+up to 500 events per class; Nevado del Ruiz at Bis holds 3 VT events, so
+only HB against LP is scored there.}
+\label{fig:hboverlap}
+\end{figure}
 
 Across datasets, LP and VT keep a shared criterion and HB does not
 (Figure~\ref{fig:audit}b). In the LP--VT pairs, a source flags about as many
