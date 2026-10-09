@@ -58,6 +58,14 @@
 
 \section{Data}\label{sec:data}
 
+The study draws on nineteen datasets of labeled volcano-seismic events: five
+from the catalog of one observatory, OVDAS, and fourteen from four catalogs
+compiled by other agencies. Each dataset is one volcano, region, station or
+deployment recorded under one configuration and labeled under one practice,
+so that transferring a classifier between two of them changes the volcano,
+the recording or the labeling agency. This section describes the OVDAS
+catalog first and the four validation catalogs after it.
+
 \subsection{Volcanoes and monitoring network}\label{subsec:area}
 
 The study uses the seismic catalog of the Southern Andes Volcanological
@@ -121,8 +129,8 @@ elevation tiles; coordinates in WGS84.}
 
 \subsection{Nature of the catalog}\label{subsec:catalog}
 
-Each catalog entry is an operational classification by an analyst, who
-assigns the event class, the detecting station, an onset at that station and
+Each catalog entry is an operational classification by an analyst, the
+expert whose labels the study counts, who assigns the event class, the detecting station, an onset at that station and
 a duration. The same class lasts differently at each dataset
 (Table~\ref{tab:durations}): LP lasts 11.0~s at Copahue and 29.7~s at
 Villarrica, and VT 8.0~s at Laguna del Maule and 17.9~s at Villarrica. A
@@ -276,7 +284,8 @@ composition, with 44.0\% VT, 32.0\% LP, 22.5\% AV and 1.4\% HB. HB exceeds
 50 events only at Copahue and Hudson, TO appears only at Nevados de
 Chill\'an, and VLP concentrates at Nevados de Chill\'an and Copahue. These
 proportions reflect the seismicity of each volcano together with network
-sensitivity, station placement and labeling practice.
+sensitivity, station placement and labeling practice, which the audit of
+Section~\ref{subsec:audit} returns to.
 
 \subsection{Validation catalogs}\label{subsec:validation}
 
@@ -412,19 +421,24 @@ Bis             & BISZ, BIS1 & $\approx$1.1 & 100 & Continental \\
 %%===========================================================================%%
 \section{Methodology}\label{sec:methods}
 
-The pipeline turns each event into sixteen descriptors computed on a
-fixed-length window of its waveform and asks how many expert labels a new
-dataset needs. A classifier trained on one dataset, the source, is applied to
-another, the target, first with no target labels and then with a growing
-budget of them; the same comparison is repeated with the onset and end of the
-validation events set automatically, and the expert labels themselves are
-audited within each dataset and across datasets. Every score is measured
-within one dataset or one pair of datasets, and every summary across datasets
-is built from those values.
+The analysis turns each event into sixteen descriptors computed on a
+fixed-length window of its waveform
+(Sections~\ref{subsec:stationselection}--\ref{subsec:features}) and then
+follows the order of the question. A classifier trained on one dataset, the
+source, is applied to another, the target, with no target labels
+(Section~\ref{subsec:transfer}) and then with a growing budget of them
+(Section~\ref{subsec:budget}); the comparison is repeated with the validation
+events segmented automatically (Section~\ref{subsec:autocut}); two checks
+probe the training draw and the class prior (Section~\ref{subsec:checks});
+and the labels themselves are audited within each dataset and across
+datasets (Section~\ref{subsec:audit}). Every score is measured within one
+dataset or one pair of datasets, and every summary across datasets is built
+from those values.
 
 \subsection{Station selection}\label{subsec:stationselection}
 
-Each OVDAS dataset uses one station, the one that combines the largest number
+A dataset is the set of events of one catalog recorded under one
+configuration. Each OVDAS dataset uses one station, the one that combines the largest number
 of catalogued detections with uninterrupted operation
 (Table~\ref{tab:stations}), which keeps a single instrument response and
 source--station geometry within each class. Each validation catalog is
@@ -447,7 +461,8 @@ interruption or a date before the station was installed falls outside the
 analyzed population, the second condition of Table~\ref{tab:filters}, as
 does an event whose filtered window has zero variance.
 
-The signal-to-noise ratio of each event compares the signal window with a
+The signal-to-noise ratio (SNR) of each event compares the signal window
+with a
 2~s noise window, from 4 to 2~s before the onset, on the same filtered
 segment:
 \begin{equation}
@@ -495,9 +510,8 @@ proposed noise window spans 12 to 2~s before the onset. The analyst places
 the onset at the first arrival of the labeled event, the end of the coda
 where the signal returns to the pre-event level, and the noise window right
 before the onset, clear of other events where the record allows it. The
-signal-to-noise ratio is measured as at the OVDAS datasets,
-from the onset set by the analyst; the manual noise window serves to choose
-among copies of one event.
+SNR is measured as at the OVDAS datasets, from the onset
+set by the analyst.
 
 \begin{figure}[H]
 \centering
@@ -528,18 +542,20 @@ Each event is kept once. Of the copies of one earthquake at several VCSEIS
 stations, which share a catalog source identifier, or of an event spanning
 two consecutive VOISS-Net windows or SGC files, whose onsets lie less than
 3~s apart, the copy with its onset inside the reference and the highest ratio
-of the event to the manual noise window is kept. Records sampled at 50 or
-40~Hz are resampled to 100~Hz by polyphase filtering before any other
-filtering, and the window and the sixteen descriptors are then computed
-with the same code and parameters as at the OVDAS datasets.
+of the event to the manual noise window is kept, which is what that window
+serves for.
+
+Records sampled at 50 or 40~Hz are resampled to 100~Hz by polyphase filtering
+before any other filtering, so that the window and the sixteen descriptors
+are computed with the same code and parameters as at the OVDAS datasets.
 
 Explosions and the further VCSEIS classes, which carry a catalog arrival or a
 distinct first motion, follow the same protocol. Tremor, noise and the
 Deception Island NTR class are continuous signals with no onset, so their
 window is centered on the labeled span, extended where it is shorter than
-10~s, and they carry no signal-to-noise ratio.
+10~s, and they carry no SNR.
 
-\subsection{Class support criterion}\label{subsec:classsupport}
+\subsection{Class support threshold}\label{subsec:classsupport}
 
 A class enters the per-class analyses of a dataset when it holds at least 50
 events there, a threshold that admits the local classes labeled in a single
@@ -547,7 +563,7 @@ dataset alongside the global ones. It is fixed before any analysis and
 applies to every dataset-class combination of the OVDAS and validation
 datasets; a combination below it stays in the analyzed population.
 
-\subsection{RQA and spectral feature extraction}\label{subsec:features}
+\subsection{RQA and spectral descriptors}\label{subsec:features}
 
 The window yields sixteen descriptors, thirteen from recurrence
 quantification analysis (RQA) and three from the spectrum, computed on the
@@ -567,9 +583,8 @@ and $W_{div}$ are the reciprocals of $L_{max}$ and $W_{max}$, so each pair
 orders the events identically; they are left missing when that length is
 zero, and all thirteen descriptors are left missing when every radius fails.
 Where a later step needs complete values, a missing descriptor takes the
-median of its dataset in the audit of the labels and the median of the
-training data for the logistic regression and TabPFN, while the boosted
-trees take it as missing.
+median of the data that step trains or scales on; the boosted trees of
+Section~\ref{subsec:transfer} take it as missing.
 
 Three spectral descriptors complement this set. They come from the FFT of the
 filtered window before z-scoring, over 1.0 to 8.0~Hz, where the filter passes
@@ -614,9 +629,11 @@ amplitude of the two bands entering $FI$. Values appear above each panel.}
 \label{fig:spectral}
 \end{figure}
 
-A descriptor is transferable when it separates the global classes in the same
-direction and with a similar strength in every dataset. Each descriptor is
-scored in each dataset holding LP and VT above the support criterion by the
+Beyond their definition, the descriptors are ranked by how far each one
+carries the global classes across datasets. A descriptor is transferable when
+it separates the global classes in the same direction and with a similar
+strength in every dataset. Each descriptor is
+scored in each dataset holding LP and VT above the support threshold by the
 area under the ROC curve (AUC) of LP against VT, which needs no classifier
 and no threshold, on up to 5{,}000 events per class drawn at random, and the
 AUC is oriented by its median direction across datasets, so a value below 0.5
@@ -625,23 +642,28 @@ oriented AUC across datasets minus its interquartile range.
 
 \subsection{Transfer with no target labels}\label{subsec:transfer}
 
-Each dataset is first classified with all its classes above the support
-criterion, global and local, by a logistic regression with a fixed
-regularization strength and by gradient-boosted trees with a fixed
-configuration, the same in every dataset, scored by balanced accuracy over
-five-fold cross-validation repeated five times on up to 300 events per class.
+Before any transfer, each dataset is classified with all its classes above
+the support threshold, global and local, which measures how far the
+descriptors separate each taxonomy on its own. A logistic regression with a
+fixed regularization strength and gradient-boosted decision trees
+\cite{chen_xgboost_2016}, XGBoost, hereafter the boosted trees, with a fixed
+configuration, the same in every dataset, are scored by balanced accuracy
+over five-fold cross-validation repeated five times on up to 300 events per
+class.
 
 Transfer is measured by training a classifier on a single source dataset and
 scoring it on another, and the scores of all source--target pairs form a
 matrix. The main matrix holds LP and VT. Its sources are the datasets with
-both classes above the support criterion, the five OVDAS datasets, the four
+both classes above the support threshold, the five OVDAS datasets, the four
 VCSEIS regions and Nevado del Ruiz at Olleta, and its targets are every
-dataset with LP or VT above that criterion, including those with a single
+dataset with LP or VT above that threshold, including those with a single
 class: the six VOISS-Net volcanoes, Nevado del Ruiz at Bis and the 2009
-Deception Island deployment. Its pairs change the volcano within one labeling
-agency, among the OVDAS datasets, or the agency that draws the labels: OVDAS,
-the SGC, each observatory behind a VCSEIS region, the VOISS-Net team and the
-Deception Island team. A second matrix adds HB, the class that Nevado del
+Deception Island deployment. Each pair changes either the volcano within one
+labeling agency, as between two OVDAS datasets, or the agency that draws the
+labels: OVDAS, the SGC, each observatory behind a VCSEIS region, the
+VOISS-Net team and the Deception Island team.
+
+A second matrix adds HB, the class that Nevado del
 Ruiz shares with the OVDAS taxonomy; its sources are Copahue, Hudson and
 Nevado del Ruiz at Olleta, and Nevado del Ruiz at Bis enters as a target
 scored on its LP and HB events. In both matrices the diagonal, the source
@@ -651,9 +673,9 @@ target is the transfer loss. Each step, another station of the same volcano,
 another volcano of the same agency, or another agency, is summarized by the
 median over its pairs.
 
-Two classifiers are trained on each source. Gradient-boosted decision trees
-\cite{chen_xgboost_2016} use the descriptors at their native scales, since a
-tree ensemble is invariant to monotone rescaling, and an $L_2$-regularized
+The same two classifiers are trained on each source. The boosted trees use
+the descriptors at their native scales, since a tree ensemble is invariant to
+monotone rescaling, and the $L_2$-regularized
 logistic regression uses them standardized with the mean and variance of its
 training draw. Each training set holds 100 events per class drawn at random
 from the source, a size that every class of every source exceeds, which keeps
@@ -686,30 +708,32 @@ G_m = \left( \prod_{c=1}^{C} \mathrm{recall}_c \right)^{1/C},
 \end{equation}
 which rewards recovering every class regardless of their proportion in the
 target. Scores are computed on up to 5{,}000 events per class of the target,
-drawn at random. The permutation importance of each descriptor, the drop in
-balanced accuracy averaged over three permutations, is computed on every
+drawn at random. Which descriptors each transferred model relies on is
+measured by permutation importance, the drop in balanced accuracy averaged
+over three permutations of one descriptor, computed on every
 source--target pair, the diagonal included, over the first three draws and
-up to 1{,}000 events of each target class above the support criterion.
+up to 1{,}000 events of each target class above the support threshold.
 
 \subsection{Label budget}\label{subsec:budget}
 
 The label budget measures how many labeled target events bring a transferred
 model to the level of a model trained on the target. Each dataset with LP and
-VT above the support criterion is a target in turn, and each of the other
+VT above the support threshold is a target in turn, and each of the other
 nine is its source. In each of three repetitions, the target is split into a
 fixed test set, half of each class up to 300 events, and a pool that keeps
 the natural composition of the target. The source contributes 100 events per
-class, and $n$ labeled target events, with $n$ in $\{0, 10, 20, 50, 100,
-200\}$ in total rather than per class, or the whole pool where it is
-smaller, are added from the pool in two ways:
-at random, or by active learning, which starts from the source model and, in
+class. To these, $n$ labeled target events are added from the pool, with $n$
+in $\{0, 10, 20, 50, 100, 200\}$ in total rather than per class, or the
+whole pool where it is smaller, chosen in two ways: at random, or by active
+learning, which starts from the source model and, in
 batches of 10, labels the pool events with the smallest margin
 $|p(\mathrm{LP}) - 0.5|$ and retrains, a margin form of the uncertainty
 sampling that \cite{bueno_continuous_2022} applied to volcano-seismic
 monitoring; \cite{manley_deep_2022} select by diversity instead. Two
 references accompany the curve: the
-same model trained on the $n$ random target events alone, and the local
-model, trained on up to 100 events per class of the pool.
+same model trained on the $n$ random target events alone, the target-only
+model, and the local model, trained on up to 100 events per class of the
+pool.
 
 Three classifiers enter the budget. The logistic regression and the boosted
 trees keep the configuration tuned for each source in the transfer matrix
@@ -728,10 +752,11 @@ mean over repetitions.
 
 \subsection{Automatic segmentation}\label{subsec:autocut}
 
-The validation events are also cut with the automatic proposal of
+Segmentation by hand is part of the burden of adding a dataset, so the
+validation events are also cut with the automatic proposal of
 Section~\ref{subsec:manualcut} alone, its onset and end of the coda, and
-their sixteen descriptors recomputed with the same code. Both cuts cover the
-same LP and VT events. The comparison measures the shift of the onset and of
+their sixteen descriptors recomputed with the same code (hereafter the
+manual and the automatic cut). Both cuts cover the same LP and VT events. The comparison measures the shift of the onset and of
 the end of the coda, the share of proposals the analyst accepted unchanged
 and the rank correlation of $FI$, $DET$ and $SR$ between the cuts. The change
 in $G_m$ is measured within each dataset that holds LP and VT, with the fixed
@@ -743,9 +768,10 @@ class, with the configurations and the 20 draws of the transfer matrix.
 
 \subsection{Checks of the transfer design}\label{subsec:checks}
 
-Two checks probe the training draw and the class prior of the LP--VT matrix,
-over five training draws.
-In the first, the 100 events per class of each source are drawn
+Two checks, each over five training draws, probe the two choices of the
+transfer design that a new dataset cannot verify without labels: when the
+training events of the source were recorded, and in what proportion the
+classes occur in the target. In the first, the 100 events per class of each source are drawn
 systematically in time, one every $N/100$ events of the class in time order
 from a random offset, instead of at random, with the same seed for the model,
 so that a source catalog spanning years enters with its whole history. In the
@@ -766,21 +792,20 @@ by $G_m$.
 Confident learning \cite{northcutt_confident_2021} flags the events whose
 catalog label disagrees with the rest of the dataset. Within each dataset,
 with every class of at least 50 events and at most 20{,}000 drawn at random
-per class, out-of-sample probabilities from five-fold cross-validation of
-gradient-boosted trees with a fixed configuration (300 rounds of depth 6, a
-learning rate of 0.1 and subsampling of 0.8) and of a logistic regression
-($C = 1$) on the sixteen descriptors, scaled with the median and
-interquartile range of the dataset, estimate the joint distribution of given
-and true labels, and the events whose label falls in an off-diagonal cell,
-pruned by the estimated noise rate of each class, are flagged as suspect.
-The boosted trees are the main model, and the logistic regression checks
-them.
+per class, two models give out-of-sample probabilities from five-fold
+cross-validation on the sixteen descriptors, scaled with the median and
+interquartile range of the dataset: the boosted trees with a fixed
+configuration (300 rounds of depth 6, a learning rate of 0.1 and subsampling
+of 0.8), the main model, and a logistic regression ($C = 1$) that checks
+them. These probabilities estimate the joint distribution of given and true
+labels, and the events whose label falls in an off-diagonal cell, pruned by
+the estimated noise rate of each class, are flagged as suspect.
 
 Across datasets, on the events of the transfer matrices, the same trees,
 with balanced class weights, are trained on up to 1{,}000 events per class of
 a source and predict up to 2{,}000 events
 per class of a target, over the classes among LP, VT and HB that both hold
-above the support criterion, for every pair with at least two shared classes,
+above the support threshold, for every pair with at least two shared classes,
 in three repetitions. The share of target labels flagged with these
 probabilities is compared with the share flagged with the out-of-sample
 probabilities of the target itself on the same events. The per-class
@@ -801,25 +826,30 @@ agreement with the labels is measured afterwards by the adjusted Rand index,
 and the DBCV of the expert labels themselves, in the same space, measures
 whether the classes form dense, separated groups.
 
-At Hudson, an analyst reviews the 200 events with the lowest label quality
+To read what the flags mean, an analyst reviews at Hudson the 200 events
+with the lowest label quality
 among those flagged by both models, seeing the trace and the spectrogram with
 the catalog class and the suggested class, and confirms or relabels each one.
 
-Since the OVDAS analysts tell HB from LP by an impulsive, high-frequency
+Since the OVDAS analysts distinguish HB from LP by an impulsive, high-frequency
 onset, the
 share of energy above 4.5~Hz in the first 2~s after the onset,
 $HF_{\text{onset}}$, is measured on up to 2{,}000 HB and 2{,}000 LP events
-drawn evenly across deciles of signal-to-noise ratio at Hudson and Copahue, and on every HB
+drawn evenly across deciles of SNR at Hudson and Copahue, and on every HB
 and LP event of Nevado del Ruiz at Olleta and Bis from the manual onset, and
-it is compared between HB and LP within each quartile of signal-to-noise
-ratio. At Hudson, the share of HB among HB and LP events is computed in each
-quintile of signal-to-noise ratio.
+it is compared between HB and LP within each quartile of SNR. At Hudson, the share of HB among HB and LP events is computed in each
+quintile of SNR.
 
 \section{Results}\label{sec:results}
 
+The results follow the order of the methods: transfer with no target labels,
+the label budget, the automatic segmentation, the two checks and the audit of
+the labels. Unless stated otherwise, a range of one score spans the two
+classifiers.
+
 \subsection{Transfer with no target labels}\label{subsec:res_transfer}
 
-Within each dataset, with all their classes, the descriptors separate the
+Within each dataset, with all its classes, the descriptors separate the
 taxonomy to a degree that falls with the number and the overlap of its
 classes (Figure~\ref{fig:confusion}, Appendix~\ref{subsec:supp_classif}). With the boosted
 trees, the balanced accuracy is 0.97 at Laguna del Maule, 0.83 to 0.94 at
@@ -842,8 +872,7 @@ points as a median over targets, and $FI$, $DET$ and $SR$ are the three most
 important descriptors with both classifiers (Figure~\ref{fig:importance},
 Appendix~\ref{subsec:supp_classif}).
 
-Here and below, a range of one score spans the two classifiers. The
-diagonal of the LP--VT matrix reaches a median $G_m$ of 0.90 to 0.91,
+The diagonal of the LP--VT matrix reaches a median $G_m$ of 0.90 to 0.91,
 lowest at Nevado del Ruiz at Olleta, Hawai`i and Alaska and highest at
 Laguna del Maule (Figure~\ref{fig:matrices}). Moving to another volcano of the same agency lowers the
 median $G_m$ per pair to 0.82 to 0.85, and moving to another agency to 0.80
@@ -909,10 +938,8 @@ pool. Panels are ordered by the score of LR with no target labels.}
 At eight of the ten targets, 100 random labels bring the best transferred
 model within 0.03 of the local models; Villarrica and Nevado del Ruiz at
 Olleta stay below. At Hudson, random labels lift the logistic regression from
-0.73 to 0.81 at 20 and 0.90 at 100 labels. Nevado del Ruiz at Olleta stays below its local
-model, at 0.65 to 0.71 with 100 labels, and there the source hinders: TabPFN
-trained on the target events alone reaches 0.63 with 20 and 0.81 with 100,
-above every model that adds them to the source.
+0.73 to 0.81 at 20 and 0.90 at 100 labels, and Nevado del Ruiz at Olleta
+stays below its local model, at 0.65 to 0.71 with 100 labels.
 
 TabPFN gains the most where the transfer falls short. At Hudson it starts at
 0.78 and reaches 0.88 with 20 random labels and 0.93 with 50, against 0.81 and
@@ -921,9 +948,11 @@ already reaches 0.91; at the targets that start near their local model the
 three classifiers lie within 0.05 of each other. Active learning adds
 0.01 to 0.03 over random selection to the logistic regression at most
 targets, and up to 0.06 to the boosted trees at Laguna del Maule with 100
-labels.
+labels. At Nevado del Ruiz at Olleta the source hinders: TabPFN trained on
+the target events alone reaches 0.63 with 20 and 0.81 with 100, above every
+model that adds them to the source.
 
-Strongly imbalanced targets defeat both selections. Villarrica holds 31{,}483
+Strong class imbalance in the target undermines both selections. Villarrica holds 31{,}483
 LP and 308 VT events, so a random draw from its pool rarely holds a VT: the
 target-only models stay at $G_m = 0$ up to 200 labels, and added to the
 source, the labels leave the logistic regression at 0.84 to 0.87 and lower
@@ -961,13 +990,15 @@ unchanged: the median change in $G_m$ per target is within 0.01 for both
 classifiers, and 4 of the 180 combinations of pair and classifier change by
 more than 0.05, in either direction.
 
-Correcting the prior of the target, estimated without its labels, raises the
-accuracy at the six VOISS-Net targets, which hold a single class, lowers it
-at Nevado del Ruiz at Bis, where the transfer fails, from 0.05 to 0.07 to
-0.02, and lowers $G_m$ wherever both classes are present. At Redoubt the accuracy rises from 0.61 to 0.63 to 0.76 to 0.81,
-at K\={\i}lauea from 0.72 to 0.74 to 0.80 to 0.86 and at Tanaga from 0.87 to
-0.89 to 0.99 to 1.00. Where both classes are present, the estimate of the LP
-share misses by a median of 0.01 to 0.13 at the other targets with both
+Correcting the prior of the target, estimated without its labels, helps
+only the targets with a single class. At the six VOISS-Net targets the
+accuracy rises, at Redoubt from 0.61 to 0.63 to 0.76 to 0.81, at
+K\={\i}lauea from 0.72 to 0.74 to 0.80 to 0.86 and at Tanaga from 0.87 to
+0.89 to 0.99 to 1.00, while at Nevado del Ruiz at Bis, where the transfer
+fails, it falls from 0.05 to 0.07 to 0.02.
+
+Wherever both classes are present, the correction lowers $G_m$. The estimate
+of the LP share misses by a median of 0.01 to 0.13 at the other targets with both
 classes and by 0.36 to 0.45 at Hudson and Nevado del Ruiz at Olleta, and the
 reweighting lowers $G_m$ by up to 0.05 where the prior is near balance, from 0.78 to 0.84
 to 0.71 to 0.75 at Copahue, from 0.85 to 0.87 to 0.45 to 0.46 at Laguna del
@@ -996,7 +1027,7 @@ Maule and Deception Island in 2009 to 0.53 in Alaska.
 \caption{Audit of the expert labels by confident learning (gradient-boosted
 trees). (a) Share of each analyst class flagged as a suspect label with the
 out-of-sample probabilities of its own dataset; blank cells mark classes that
-the dataset does not hold above the support criterion. (b) Share of target
+the dataset does not hold above the support threshold. (b) Share of target
 labels flagged with the probabilities of a model trained on another dataset
 against the share flagged with the target's own probabilities, per target
 and class, median over sources of the mean over three repetitions; circles:
@@ -1004,6 +1035,12 @@ pairs with LP and VT; triangles: pairs that include HB. Above the diagonal,
 the other dataset flags more labels than the target's own criterion.}
 \label{fig:audit}
 \end{figure}
+
+Without labels, the descriptors form no group that matches the classes.
+HDBSCAN retains two groups at every dataset, with an adjusted Rand index of
+$-0.07$ to 0.08 with the labels, and the DBCV of the expert labels is
+negative at all nine datasets, $-0.72$ to $-0.85$, so the classes do not form
+dense, separated groups in descriptor space.
 
 Across datasets, LP and VT keep a shared criterion and HB does not
 (Figure~\ref{fig:audit}b). In the LP--VT pairs, a source flags about as many
@@ -1021,12 +1058,6 @@ Olleta are flagged as VT. With HB among the classes, 45\% to 87\% of the VT of
 Hudson are flagged, most of them as HB, by the criteria of Copahue and
 Olleta.
 
-Without labels, the descriptors form no group that matches the classes.
-HDBSCAN retains two groups at every dataset, with an adjusted Rand index of
-$-0.07$ to 0.08 with the labels, and the DBCV of the expert labels is
-negative at all nine datasets, $-0.72$ to $-0.85$, so the classes do not form
-dense, separated groups in descriptor space.
-
 At Hudson, the review of the 200 suspects changed 141 labels, 120 of them to
 the class the model suggested. Of the 102 HB events, 31 stayed HB, 24 became
 LP, 29 VT and 18 AV, and among the other suspects, 16 of the 25 AV and 19 of
@@ -1035,11 +1066,11 @@ $HF_{\text{onset}}$ of 0.20, against 0.50 for those kept as HB.
 
 Over the catalog, the high-frequency onset sets HB apart from LP at both
 OVDAS datasets and not at Nevado del Ruiz. Within each quartile of
-signal-to-noise ratio, the median $HF_{\text{onset}}$ of HB is 2.7 to 4.5
+SNR, the median $HF_{\text{onset}}$ of HB is 2.7 to 4.5
 times that of LP at Hudson and 2.1 to 2.8 times at Copahue, while at Olleta
 and Bis both classes lie between 0.58 and 0.81. At Hudson, the share of HB
 among HB and LP events rises from 1.1\% in the lowest quintile of
-signal-to-noise ratio to 14.3\% in the highest.
+SNR to 14.3\% in the highest.
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -1132,7 +1163,7 @@ segment padded from 10~s before the onset to 3~s after its end and
 conditioned as the fixed-length window, with a 5~s noise window from 7 to 2~s
 before the onset (Figure~\ref{fig:codawindow}). At Laguna del Maule, Nevados
 de Chill\'an, Copahue and Villarrica it is computed on a subsample of the
-events lasting 5~s or more: every class above the support criterion enters
+events lasting 5~s or more: every class above the support threshold enters
 in full up to 10 times the size of the smallest class, or 100 times at
 Villarrica, and a larger class contributes that many events taken at even
 steps in time; Hudson enters in full. The descriptors and the transfer design
