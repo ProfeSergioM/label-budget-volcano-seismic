@@ -1270,21 +1270,34 @@ labels, not in the onsets, provided the catalog publishes a time of arrival
 with each label; a catalog of labeled windows without arrivals leaves the
 10~s descriptors at the mercy of the detector.
 
-These conclusions rest on one station per volcano and on descriptors of a
-10~s window, within which the recording conditions of each dataset enter the
-label of HB and possibly of AV, and VLP and tremor lie partly outside the
-band; on two global classes, so that the budget is measured on LP and VT
-and not on a full taxonomy, whose within-dataset accuracy is 0.45 to 0.81;
-on a manual review by one analyst who saw the suggested class; and on three
-repetitions of the budget and of the cross-dataset audit. They give a
-protocol for a new dataset: measure the transfer from the available sources
-with no labels; where it falls short, label about 100 events per class,
-stratified, and consider a model trained on the target alone; before any
-local class, fix its operational definition on a measurable feature
-corrected for the recording, starting with HB; audit the labels with
-confident learning within the dataset and against a reference source, and
-review the suspects; and automate the segmentation wherever the catalog
-supplies arrivals.
+Together, the results give a protocol for a new dataset: measure the
+transfer from the available sources with no labels; where it falls short,
+label about 100 events per class, stratified, and consider a model trained
+on the target alone; before any local class, fix its operational definition
+on a measurable feature corrected for the recording, starting with HB; audit
+the labels with confident learning within the dataset and against a
+reference source, and review the suspects; and automate the segmentation
+wherever the catalog supplies arrivals.
+
+\subsection{Limitations}\label{subsec:limitations}
+
+The conclusions rest on one station per volcano and on the vertical channel,
+so the recording conditions of each dataset enter the label of HB and
+possibly of AV, and on descriptors of a 10~s window, within which VLP and
+tremor lie partly outside the band; the coda-length window leaves the LP--VT
+transfer unchanged but was not carried into the budget. The budget and the
+audit across datasets cover the two global classes, so the number of labels
+is measured on LP and VT and not on a full taxonomy, whose within-dataset
+accuracy is 0.45 to 0.81, and HB enters the audit only in the four datasets
+that label it. The manual review was made by one analyst who saw the
+suggested class, and confident learning ran with models of fixed
+configuration. The budget and the cross-dataset audit use three
+repetitions, the checks five and the matrices twenty; TabPFN enters with an
+ensemble of four and without active learning; and the validation records at
+50 and 40~Hz are resampled, with Olleta and Bis holding few events of each
+class. The evidence on the HB criterion comes from two OVDAS datasets and
+one SGC volcano, so the dependence on SNR is established at OVDAS and the
+alternative criterion at the SGC remains to be named.
 
 \section{Conclusion}\label{sec:conclusion}
 
