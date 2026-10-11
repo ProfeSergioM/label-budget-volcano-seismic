@@ -830,7 +830,12 @@ estimator that maximize the density-based clustering validation index (DBCV)
 \cite{moulavi_density-based_2014}, so the labels take no part in the fit; the
 agreement with the labels is measured afterwards by the adjusted Rand index,
 and the DBCV of the expert labels themselves, in the same space, measures
-whether the classes form dense, separated groups.
+whether the classes form dense, separated groups. The same procedure runs
+on the amplitude spectrum of the window, 96 bins of 0.1~Hz between 0.5 and
+10~Hz in log amplitude, centered per event and reduced by principal
+components to 90\% of its variance, on the same events, to test whether
+the absence of groups is a property of the sixteen descriptors or of the
+signals (Appendix~\ref{subsec:supp_fft}).
 In the four datasets that hold HB, the overlap of HB with LP and with VT is
 also measured directly: the three classes are drawn as densities in the
 plane of $SR$ and $FI$, and each pair of classes is separated by a logistic
@@ -1097,7 +1102,13 @@ Without labels, the descriptors form no group that matches the classes.
 HDBSCAN retains two groups at every dataset, with an adjusted Rand index of
 $-0.07$ to 0.08 with the labels, and the DBCV of the expert labels is
 negative at all nine datasets, $-0.72$ to $-0.85$, so the classes do not form
-dense, separated groups in descriptor space.
+dense, separated groups in descriptor space. The amplitude spectrum gives the
+same picture (Figure~\ref{fig:fft}, Appendix~\ref{subsec:supp_fft}): on
+the thirteen datasets with more than 200 events, HDBSCAN retains two groups
+with an adjusted Rand index of $-0.06$ to 0.09 and leaves 81\% to 99\% of the
+events as noise at ten of them, while at the two Deception Island
+deployments, with 77 and 199 events of two well separated classes, the
+spectrum reaches 0.61 and 0.82.
 
 Where HB is labeled, it overlaps a different global class in each dataset
 (Figure~\ref{fig:hboverlap}). At Copahue HB lies between LP and VT and
@@ -1198,10 +1209,14 @@ criterion of another dataset flags LP and VT labels at the same rate as the
 dataset's own criterion, 6\% to 14\%, and flags 40\% to 70\% of the HB labels;
 the disagreement holds between Hudson and Copahue, two catalogs of one
 observatory, where each sees the HB of the other as its own VT or LP. No
-unsupervised grouping reproduces any class, and the expert labels have a
-negative DBCV in all nine datasets: the classes are operational cuts in a
-continuum of events, and a classifier learns the cut of the catalog it was
-trained on. Unifying criteria before transfer is therefore not a matter of
+unsupervised grouping reproduces any class, on the sixteen descriptors or on
+the full amplitude spectrum, and the expert labels have a negative DBCV in
+all nine datasets: the classes are operational cuts in a continuum of
+events, not a property of one representation, and a classifier learns the
+cut of the catalog it was trained on. The two Deception Island deployments,
+where the spectrum does recover LP and VT, are the smallest datasets and the
+cleanest in the audit, which is what a taxonomy of well separated classes
+looks like when it exists. Unifying criteria before transfer is therefore not a matter of
 agreeing on names but of agreeing on the observable feature that defines
 each cut. The audit has a limit of its own: confident learning assumes a
 noise that depends only on the true class, while the HB noise depends on a
@@ -1458,6 +1473,32 @@ Table~\ref{tab:transferability}) and dataset (columns, grouped by agency),
 oriented as in that table, for (a) the fixed-length and (b) the coda-length
 window. Framed values below 0.5 mark a reversal in that dataset.}
 \label{fig:aucsystems}
+\end{figure}
+
+\subsection{Clustering on the amplitude spectrum}\label{subsec:supp_fft}
+
+Figure~\ref{fig:fft} compares HDBSCAN on the amplitude spectrum of the
+window with HDBSCAN on the sixteen descriptors, on the same events, at the
+fifteen datasets with at least two classes of 20 events. The spectrum is the
+FFT of the z-scored 10~s window with a Hann taper, 96 bins of 0.1~Hz between
+0.5 and 10~Hz, in log amplitude and centered per event; both
+representations are reduced by principal components to 90\% of their
+variance, which keeps 40 to 68 components of the spectrum and 4 to 6 of the
+descriptors, and the parameters of HDBSCAN are chosen by DBCV without the
+labels, as in Section~\ref{subsec:audit}. A logistic regression on the raw
+representation, scored by balanced accuracy over five-fold cross-validation
+on up to 300 events per class, serves as a supervised control.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{fig_agrupamiento_fft.pdf}
+\caption{HDBSCAN on the amplitude spectrum (FFT) and on the sixteen
+descriptors (F16), same events, per dataset. (a) Adjusted Rand index between
+the groups and the expert labels. (b) Fraction of events HDBSCAN leaves as
+noise. (c) Balanced accuracy of a logistic regression with all the classes
+of the dataset, as a supervised control. The four datasets with a single
+class are omitted.}
+\label{fig:fft}
 \end{figure}
 
 \subsection{Classification within each dataset and descriptor importance}\label{subsec:supp_classif}

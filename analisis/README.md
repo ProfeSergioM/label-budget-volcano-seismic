@@ -91,6 +91,7 @@ The descriptors of the four catalogs are computed on manual segmentation: `corta
 | `presupuesto_resumen.csv` | label-budget curve: mean over repetitions of `gm`, `rec_LP`, `rec_VT` (and `gm_sd`, `n_reps`) by `destino` (target), `fuente` (source), `modelo` (model: log, xgb, tabpfn), `seleccion` (selection: `azar` = random, `estratificado` = stratified, `activo` = active, `solo_destino` = target only, `solo_destino_estrat` = target only stratified, `local`) and `n` | `presupuesto_etiquetas.py` → `resumir_presupuesto.py` |
 | `sesgo_experto_hudson_*.csv` | Hudson: HDBSCAN/DBSCAN clustering tuned by DBCV (Optuna), class × cluster contingency and purity, confident learning by class, cross-check with the subsample, manual review queue | `sesgo_experto.py` |
 | `sesgo_experto_<system>_{agrupamiento,cleanlab_por_clase,pureza,contingencia}.csv` | the same aggregated tables for Alaska, Copahue, Deception Island 2009, Laguna del Maule, Nevados de Chillán, Ruiz-Bis, Ruiz-Olleta and Villarrica (classes with ≥ 50 events; at most 20,000 per class) | `sesgo_experto.py` |
+| `agrupamiento_fft_resumen.csv` | HDBSCAN/DBSCAN on the amplitude spectrum of the 10 s window versus on the 16 descriptors, same events, per dataset: groups, noise fraction, DBCV, ARI/NMI with the labels and a supervised logistic-regression control | `extract_ventanas.py` → `agrupamiento_fft.py` |
 | `sesgo_entre_datasets_{pares,resumen,conjunta}.csv` | confident learning across datasets: per source → target pair, repetition, criterion (`fuente` = other source, `propio` = own) and class, the suspect fraction, recall and suggested classes; median summary by target; cleanlab joint matrix (given × estimated label) | `sesgo_entre_datasets.py` |
 | `onset_hb_lp_{hudson,copahue,ruiz}_resumen.csv` | by SNR quartile (`q`) and class (`label`, HB or LP): SNR, n, `FI_onset`, `dFI` and `HF_onset` (fraction of energy above 4.5 Hz at the onset) | `onset_hb_lp.py` |
 | `onset_hb_lp_hudson_revision.csv` | final class from the manual review on Hudson, with median SNR, ΔFI and `HF_onset` | `onset_hb_lp.py` |
@@ -107,7 +108,7 @@ Copy of the scripts of the analysis project used by the paper and of the local m
 | Figure dependencies and OVDAS access | `download_and_extract.py` (reads OVDAS Winston; requires institutional configuration), `make_fig_window.py`, `make_fig_coda_window.py` |
 | Transfer | `ranking_transferibilidad.py`, `heterogeneidad_clases.py` (`datos()` loader), `transferencia.py`, `resumen_transferencia.py`, `verificaciones_transferencia.py`, `comparar_corte.py`, `clasificacion_por_sistema.py`, `candidatos_globales.py`, `candidatas_analisis.py` |
 | Label budget | `presupuesto_etiquetas.py`, `resumir_presupuesto.py`, `make_fig_presupuesto.py` |
-| Expert bias | `sesgo_experto.py`, `sesgo_entre_datasets.py`, `onset_hb_lp.py`, `make_fig_sesgo_experto.py` |
+| Expert bias | `sesgo_experto.py`, `sesgo_entre_datasets.py`, `onset_hb_lp.py`, `make_fig_sesgo_experto.py`, `extract_ventanas.py`, `agrupamiento_fft.py`, `make_fig_agrupamiento_fft.py` |
 
 Execution order in the full project (from its root, `python scripts/<script>.py`; detailed usage is in the docstring of each script):
 
