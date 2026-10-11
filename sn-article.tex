@@ -1246,6 +1246,28 @@ as a subtype of LP with an impulsive onset. LP, VT, TO and AV, whose
 definitions are closer to a standard, do not raise this problem to the same
 degree.
 
+The plane of Figure~\ref{fig:plane} suggests how such definitions can be
+put to work: a classification in two stages. The first stage separates LP
+from VT with the transferable descriptors, and it is the stage that a new
+dataset inherits from another with no labels or with a few, since the two
+clouds keep their places in every catalog. The second stage acts within
+each cloud and assigns the local classes with one operational feature each.
+Within the LP cloud, HB is told by $HF_{\text{onset}}$ conditioned on SNR,
+TO by the sharpness of its spectral peak and the length of its
+quasi-monochromatic coda, and VLP by the energy below 1~Hz, which the
+present band leaves out. Within the VT cloud, where AV, the regional and
+other events of Alaska and the tremor and HB of Nevado del Ruiz fall, AV is
+told by its emergent onset and duration and the regional events by their
+distance. The classes that lie between the two clouds, VLP, TO, the HB of
+Copahue and the AV of Hudson, are those the first stage divides, and the
+second stage receives them with their own feature rather than with the
+sixteen descriptors. The cascade turns the two-level taxonomy into a
+procedure: a global stage that transfers, and a local stage that each
+observatory defines on features it can name and measure. Its test, the
+balanced accuracy of the cascade against that of the flat classification
+of Section~\ref{subsec:res_transfer}, 0.75 at Nevados de Chill\'an and
+0.62 to 0.67 at Copahue and Hudson, is left for a later study.
+
 The methods that need no target labels do not close the gap. Drawing the
 training events across the history of the source changes nothing, so the
 transfer loss is not a matter of when the source events were recorded.
