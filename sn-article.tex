@@ -56,6 +56,100 @@
 %%===========================================================================%%
 \section{Introduction}\label{sec:intro}
 
+Volcano observatories rely on catalogs of classified seismic events to read
+the state of a volcano, and the classification is done by analysts who
+assign each event to a class such as long-period (LP), volcano-tectonic (VT)
+or hybrid (HB) from its waveform and spectrum
+\cite{mcnutt_volcanic_2015,chouet_volcano_2003}. Automatic classifiers have
+been trained on these catalogs for two decades, from hand-crafted features
+with support vector machines and random forests
+\cite{malfante_machine_2018,orozco-alzate_towards_2019} to convolutional and
+recurrent networks on spectrograms and waveforms
+\cite{canario_-depth_2020,lara_deep_2021,titos_toward_2022,titos_dilated-rnns_2024},
+and they reach accuracies above 90\% on the catalog they were trained on
+\cite{morales_artificial_2026}.
+
+That accuracy is measured within one catalog. A classifier trained at one
+volcano and applied to another, to another station or to a catalog labeled
+by another observatory meets a different source population, a different
+path and site response and a different labeling practice, and the studies
+that test such transfers report losses that depend on all three
+\cite{titos_detection_2019,titos_classification_2020,cortes_practical_2021,castro-cabrera_adaptive_2021}.
+Multi-volcano training sets \cite{fee_generalized_2025}, multi-station
+inputs \cite{salazar_multi-station_2023} and transfer learning
+\cite{bueno_volcano-seismic_2020,ardid_ergodic_2025} reduce the loss but
+do not remove it, and the systematic review of the field
+\cite{morales_artificial_2026} finds that few studies quantify robustness
+across stations or volcanoes and that inconsistent labeling across catalogs
+is a barrier as large as the data itself. In practice, every new dataset,
+whether a new volcano, a new station or a new deployment, is labeled again
+by an expert before a classifier serves it.
+
+The labels themselves are the second problem. A catalog entry is an
+operational decision taken under time pressure, by analysts who rotate and
+whose criteria shift between observatories and over the years
+\cite{morales_artificial_2026,titos_could_2025}. Catalogs can be cleaned with
+a classifier that flags entries at odds with the rest
+\cite{anzieta_cleaning_2023}, completed by weak supervision from a model
+trained elsewhere \cite{titos_could_2025}, or standardized at the waveform
+level before classification \cite{cortes_standardization_2019}. None of
+these separates the two causes of a transfer loss: a classifier that fails to
+carry a class across datasets, and a class that is defined differently in
+each dataset.
+
+Several methods promise to cut the number of labels a new dataset needs.
+Transfer learning reuses a model trained elsewhere
+\cite{titos_classification_2020,bueno_volcano-seismic_2020}; active learning
+chooses which events the expert labels, by uncertainty
+\cite{bueno_continuous_2022} or by diversity \cite{manley_deep_2022};
+unsupervised and self-supervised representations learn from unlabeled
+events \cite{duque_exploring_2020,rios_learning_2024}; foundation models
+pretrained on large collections of waveforms \cite{liu_seislm_2024} or of
+synthetic tabular tasks \cite{hollmann_accurate_2025} classify from a
+handful of examples; label-shift estimators adapt a classifier to the class
+proportions of the target without its labels
+\cite{lipton_detecting_2018,saerens_adjusting_2002}; and confident learning
+locates the labels that disagree with the rest of a dataset
+\cite{northcutt_confident_2021}. Each has been evaluated on its own terms.
+What is missing is the measurement they all point to: how many expert
+labels a new dataset needs to reach the performance of a model trained on
+it, which of these methods lowers that number, and how much of the
+remaining gap comes from the labels rather than from the classifier.
+
+This study makes that measurement. The question is one of data rather than
+of volcanoes: a labeled dataset, its shift with respect to another, the
+budget of labels that closes the shift, and the criteria of the annotators
+who produced the labels. Volcano seismology is the case, with nineteen
+datasets of labeled events from five agencies, five from the catalog of the
+Southern Andes Volcanological Observatory (OVDAS) and fourteen from four
+public or shared catalogs, which together span volcanoes, stations,
+deployments and labeling practices. Each event is described by sixteen
+interpretable descriptors of a 10~s window, thirteen from recurrence
+quantification analysis and three from the spectrum, which a previous study
+selected on the OVDAS catalog \cite{morales_recurrence_2026}; their small
+number keeps every model trainable from a hundred events and every result
+readable in terms of named features.
+
+The analysis proceeds in five steps. A classifier trained on one dataset is
+applied to another with no labels of the target, over every pair of
+datasets, to establish what transfers and what does not. A budget of target
+labels is then added, from ten to two hundred, with three classifiers,
+random, stratified and active selection, and two references, a model
+trained on the target labels alone and the local model, to measure how many
+labels close the gap and which method lowers the number. The segmentation
+of the events by hand is compared with an automatic one, to locate the cost
+of a new dataset between its onsets and its labels. Two checks probe the
+training draw and the class prior of the target with estimators that need
+no labels. The labels themselves are audited with confident learning within
+each dataset and across datasets, with unsupervised clustering on the
+descriptors and on the amplitude spectrum, with a manual review of the
+suspects at one volcano and with a direct measurement of the feature that
+the OVDAS analysts use to separate HB from LP. Section~\ref{sec:data}
+describes the datasets, Section~\ref{sec:methods} the descriptors and the
+five analyses, Section~\ref{sec:results} their results and
+Section~\ref{sec:discussion} what they imply for adding a dataset to an
+automatic classifier.
+
 \section{Data}\label{sec:data}
 
 The study draws on nineteen datasets of labeled volcano-seismic events: five
