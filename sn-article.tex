@@ -84,16 +84,15 @@ rather than in the classifier.}
 \section{Introduction}\label{sec:intro}
 
 Volcano observatories rely on catalogs of classified seismic events to read
-the state of a volcano, and the classification is done by analysts who
-assign each event to a class such as long-period (LP), volcano-tectonic (VT)
-or hybrid (HB) from its waveform and spectrum
-\cite{mcnutt_volcanic_2015,chouet_volcano_2003}. Automatic classifiers have
-been trained on these catalogs for two decades, from hand-crafted features
-with support vector machines and random forests
-\cite{malfante_machine_2018,orozco-alzate_towards_2019} to convolutional and
-recurrent networks on spectrograms and waveforms
-\cite{canario_-depth_2020,lara_deep_2021,titos_toward_2022,titos_dilated-rnns_2024},
-and they reach accuracies above 90\% on the catalog they were trained on
+the state of a volcano, and analysts classify each event as long-period
+(LP), volcano-tectonic (VT), hybrid (HB) or another class from its waveform
+and spectrum \cite{mcnutt_volcanic_2015,chouet_volcano_2003}. Automatic
+classifiers trained on these catalogs have moved from hand-crafted features
+with classical classifiers, such as support vector machines, random forests
+and Gaussian mixture models \cite{malfante_automatic_2018,venegas_combining_2019},
+to convolutional and recurrent networks on spectrograms and waveforms
+\cite{canario_-depth_2020,lara_deep_2021,titos_toward_2022,titos_dilated-rnns_2024}.
+They reach accuracies above 90\% on the catalog they were trained on
 \cite{morales_artificial_2026}.
 
 That accuracy is measured within one catalog. A classifier trained at one
