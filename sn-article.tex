@@ -1418,14 +1418,13 @@ one class and a model that already transfers, not a target where the labels
 are needed.
 
 Among the methods that use target labels, the gain comes from the model more
-than from the choice of events. TabPFN reaches at Hudson with 20 random labels what the logistic
-regression reaches with 100, and trained on 10 target events alone it
-already matches the local model. At Nevado del Ruiz at Olleta the
+than from the choice of events. TabPFN reaches 0.88 at Hudson with 20 random labels, within 0.02 of the
+logistic regression with 100, and trained on 10 target events alone it
+comes within 0.03 of the local model. At Nevado del Ruiz at Olleta the
 target-only model outperforms every model that keeps the source, so a
 source far from the target is better discarded. Active
-learning by uncertainty adds 0.01 to 0.03, since the LP--VT boundary is
-already well placed by the source and the events at the margin add little,
-in line with the gain that \cite{manley_deep_2022} found for less separable
+learning by uncertainty adds 0.01 to 0.03, as expected when the LP--VT
+boundary is already well placed by the source, in line with the gain that \cite{manley_deep_2022} found for less separable
 data and not for well separated ones. Class imbalance defeats random and
 uncertainty-based selection together, because neither sees the rare class,
 and a stratified draw repairs it completely: at Villarrica 100 stratified
@@ -1440,12 +1439,12 @@ unchanged; without one, at Nevado del Ruiz, it costs 0.01 to 0.02 of $G_m$,
 and in the 120~s windows of VOISS-Net it moves the recall of VT by up to
 0.17 in either direction. The cost of adding a dataset therefore lies in the
 labels, not in the onsets, provided the catalog publishes a time of arrival
-with each label; a catalog of labeled windows without arrivals leaves the
-10~s descriptors at the mercy of the detector.
+with each label; a catalog of labeled windows without arrivals makes the
+10~s descriptors depend on the detector.
 
 Together, the results give a protocol for a new dataset: measure the
 transfer from the available sources with no labels; where it falls short,
-label about 100 events per class, stratified, and consider a model trained
+label about 100 events, half from each class, and consider a model trained
 on the target alone; before any local class, fix its operational definition
 on a measurable feature corrected for the recording, starting with HB; audit
 the labels with confident learning within the dataset and against a
