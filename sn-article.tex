@@ -1338,16 +1338,19 @@ the SGC records there because they are not visible at Olleta, are recovered
 with a median recall of 0.03 to 0.05 over all sources.
 
 The bottleneck is the definition of the class, not the classifier. The
-criterion of another dataset flags LP and VT labels at the same rate as the
-dataset's own criterion, 6\% to 14\%, and flags 40\% to 70\% of the HB labels;
+criterion of another dataset flags LP and VT labels at about the dataset's
+own rate at most targets, and 40\% to 70\% of the HB labels against 10\% to
+36\% with the own criterion;
 the disagreement holds between Hudson and Copahue, two catalogs of one
-observatory, where each sees the HB of the other as its own VT or LP. No unsupervised grouping reproduces any class, on the sixteen descriptors
-or on the full amplitude spectrum, and the expert labels have a negative
-DBCV in all nine datasets. The classes are therefore operational cuts in a
+observatory, where each sees the HB of the other as its own VT or LP. At the thirteen datasets with more than 200 events, no unsupervised grouping
+reproduces the classes, on the sixteen descriptors or on the full amplitude
+spectrum, and the expert labels have a negative DBCV in all nine audited
+datasets. The classes are therefore operational cuts in a
 continuum of events, a continuum that does not depend on the
 representation, and a classifier learns the cut of the catalog it was
 trained on. The two Deception Island deployments, where the spectrum does
-recover LP and VT, are the smallest datasets and the cleanest in the audit;
+recover LP and VT, are the smallest datasets, and the 2009 deployment is the
+cleanest in the audit;
 they show what a taxonomy of well separated classes looks like when it
 exists. Unifying criteria before transfer is thus not a matter of agreeing
 on names but of agreeing on the observable feature that defines each cut.
@@ -1363,19 +1366,18 @@ recording. The analysts distinguish HB from LP by a high-frequency onset, and th
 label follows that feature consistently: within each SNR quartile the
 $HF_{\text{onset}}$ of HB is 2 to 4.5 times that of LP at Hudson and
 Copahue, and the HB that the review returned to LP are those whose onset
-lacks it. The feature itself depends on the energy of the event and on the
-attenuation along the path, which is why the share of HB among HB and LP
-events at Hudson rises from 1\% to 14\% from the lowest to the highest
-quintile of SNR. One source process is thus labeled LP when the event is
-small or distant and HB when it is large or close. The label carries the
-event size, the source--station distance and the site along with the
-source. This explains why HB fails to transfer even between two volcanoes
-of one observatory. It also explains the collapse at Nevado del Ruiz, where
-the SGC analysts label HB by another criterion and the onset feature does
-not separate the two classes. A class defined this way needs an operational
+lacks it. The share of HB among HB and LP events at Hudson rises from 1\% to 14\%
+from the lowest to the highest quintile of SNR, as expected if the feature
+depends on the energy of the event and on the attenuation along the path.
+The same source process can then be labeled LP when the event is small or
+distant and HB when it is large or close, and the label carries the event
+size, the source--station distance and the site along with the source. This
+is consistent with the failure of HB to transfer even between two volcanoes
+of one observatory, and at Nevado del Ruiz, where the onset feature does not
+separate HB from LP, the SGC analysts label HB by another criterion. A class defined this way needs an operational
 definition that names the feature and corrects it for the recording, for
 instance a threshold on $HF_{\text{onset}}$ conditioned on SNR, or a status
-as a subtype of LP with an impulsive onset. LP, VT, TO and AV, whose
+as a subtype of LP with an impulsive onset. LP, VT and AV, whose
 definitions are closer to a standard, do not raise this problem to the same
 degree.
 
