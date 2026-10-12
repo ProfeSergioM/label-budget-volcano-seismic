@@ -1384,10 +1384,10 @@ degree.
 The plane of Figure~\ref{fig:plane} suggests how such definitions can be
 put to work: a classification in two stages. The first stage separates LP
 from VT with the transferable descriptors, and it is the stage that a new
-dataset inherits from another with no labels or with a few, since the two
-clouds keep their places in every catalog. The second stage acts within
+dataset inherits from another with no labels or with a few, since the two clouds keep their places in every catalog
+but Nevado del Ruiz. The second stage acts within
 each cloud and assigns the local classes with one operational feature each.
-Within the LP cloud, HB is told by $HF_{\text{onset}}$ conditioned on SNR,
+On the LP side, HB is told by $HF_{\text{onset}}$ conditioned on SNR,
 TO by the sharpness of its spectral peak and the length of its
 quasi-monochromatic coda, and VLP by the energy below 1~Hz, which the
 present band leaves out. Within the VT cloud, where AV, the regional and
@@ -1406,12 +1406,13 @@ of Section~\ref{subsec:res_transfer}, 0.75 at Nevados de Chill\'an and
 The methods that need no target labels do not close the gap. Drawing the
 training events across the history of the source changes nothing, so the
 transfer loss is not a matter of when the source events were recorded.
-Correcting the class prior of the target raises accuracy only where the
-target holds one class, and lowers $G_m$ wherever it holds two. The
+Correcting the class prior of the target raises accuracy only at the
+targets that hold one class and that the model already recovers, and lowers
+$G_m$ wherever the target holds two. The
 correction maximizes accuracy, and with a prior far from balance that
 sacrifices the minority class, which is the class $G_m$ protects, as the
 reweighting with the true prior at Laguna del Maule and Villarrica shows.
-Where the transferred model already fails, as at Hudson, the estimate of
+Where the transferred model is weak, as at Hudson, the estimate of
 the prior inherits its errors. These corrections suit a target dominated by
 one class and a model that already transfers, not a target where the labels
 are needed.
