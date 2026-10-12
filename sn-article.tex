@@ -53,8 +53,8 @@
 the catalog they are trained on and lose it on the next dataset, so every
 new volcano, station or deployment is labeled again by an expert. This
 study measures how many expert labels a new dataset needs and whether
-recent methods lower that number, on nineteen datasets of labeled events
-from five agencies, with sixteen interpretable descriptors of a 10~s
+recent methods lower that number, on twenty datasets of labeled events
+from five catalogs and eight labeling agencies, with sixteen interpretable descriptors of a 10~s
 window. A classifier trained on one dataset is applied to every other with
 no target labels, then with a budget of 10 to 200 target labels chosen at
 random, stratified or by active learning, with a logistic regression,
@@ -150,16 +150,17 @@ labels rather than from the classifier.
 This study makes that measurement. The question is one of data rather than
 of volcanoes: a labeled dataset, its shift with respect to another, the
 budget of labels that closes the shift, and the criteria of the annotators
-who produced the labels. Volcano seismology is the case, with nineteen
-datasets of labeled events from five agencies, five from the catalog of the
-Southern Andes Volcanological Observatory (OVDAS) and fourteen from four
+who produced the labels. Volcano seismology is the case, with twenty
+datasets of labeled events from five catalogs, five from the catalog of the
+Southern Andes Volcanological Observatory (OVDAS) and fifteen from four
 public or shared catalogs, which together span volcanoes, stations,
-deployments and labeling practices. Each event is described by sixteen
-interpretable descriptors of a 10~s window, thirteen from recurrence
-quantification analysis and three from the spectrum, which a previous study
-selected on the OVDAS catalog \cite{morales_recurrence_2026}; their small
-number keeps every model trainable from a hundred events and every result
-readable in terms of named features.
+deployments and eight labeling agencies. Each event is described by sixteen
+interpretable descriptors of a 10~s window: thirteen from recurrence
+quantification analysis, with the embedding a previous study selected on
+the OVDAS catalog \cite{morales_recurrence_2026}, and three from the
+spectrum \cite{cui_subdivision_2021}. Their small number keeps every model
+trainable from a hundred events and every result readable in terms of named
+features.
 
 The analysis proceeds in five steps. A classifier trained on one dataset is
 applied to another with no labels of the target, over every pair of
@@ -183,8 +184,8 @@ automatic classifier.
 
 \section{Data}\label{sec:data}
 
-The study draws on nineteen datasets of labeled volcano-seismic events: five
-from the catalog of one observatory, OVDAS, and fourteen from four catalogs
+The study draws on twenty datasets of labeled volcano-seismic events: five
+from the catalog of one observatory, OVDAS, and fifteen from four catalogs
 compiled by other agencies. Each dataset is one volcano, region, station or
 deployment recorded under one configuration and labeled under one practice,
 so that transferring a classifier between two of them changes the volcano,
@@ -1465,7 +1466,7 @@ alternative criterion at the SGC remains to be named.
 
 How many expert labels a new dataset needs is set by how far a classifier
 trained elsewhere already carries it, and that distance can be measured
-before any label is drawn. Across nineteen datasets from five agencies, LP
+before any label is drawn. Across twenty datasets from five catalogs, LP
 and VT transfer between volcanoes and between labeling agencies with the
 same loss, carried by three descriptors, and about 100 target labels, drawn
 half from each class, bring a transferred model to the level of a local one
