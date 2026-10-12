@@ -1309,29 +1309,33 @@ at Bis; numbers give the events behind each point.}
 The number of expert labels a new dataset needs is set by where it starts.
 With no target labels, the ten targets span a $G_m$ of 0.45 to 0.89, and
 that score, which costs no labels to measure, predicts what each label buys:
-at Nevados de Chill\'an or the Cascade Range a hundred labels add 0.02, at
-Hudson they add 0.17, and at Nevado del Ruiz at Olleta two hundred are not
-enough. The budget is therefore a function of the initial gap rather than a
-fixed number, and the first step at a new dataset is to measure the transfer
-from the available sources before labeling anything. Where that transfer
-reaches about 0.85, the transferred model serves as it is or with 20 to 50
-labels; where it does not, about 100 labels per class bring a model to the
-local level at every target whose classes share a criterion with the source.
+at Nevados de Chill\'an or the Cascade Range a hundred labels add 0.01 to
+0.02, at Hudson they add 0.17, and at Nevado del Ruiz at Olleta the whole
+pool of 157 is not enough. The budget is therefore a function of the initial
+gap rather than a fixed number, and the first step at a new dataset is to
+measure the transfer from the available sources before labeling anything.
+Where that transfer starts within a few hundredths of the local model, as at
+Nevados de Chill\'an and the Cascade Range, the transferred model serves as
+it is or with 20 to 50 labels. Elsewhere, about 100 target labels drawn from
+both classes bring a model within 0.03 of the local level at nine of the ten
+targets; the exception, Nevado del Ruiz at Olleta, is the target whose LP
+criterion differs from that of the sources.
 
 What transfers is the pair of global classes, carried by a small set of
-descriptors. $FI$, $DET$ and $SR$ keep their direction in all ten datasets, dominate
-the transferred models and place LP and VT in the same region of the plane
-at every catalog. The loss of 0.07 to 0.09 is the same when the volcano
+descriptors. $FI$, $DET$ and $SR$ keep their direction in all ten datasets and dominate
+the transferred models, and in the plane of $FI$ and $DET$, LP and VT occupy
+the same regions at every catalog but Nevado del Ruiz, whose LP lie in the
+core of VT. The loss of 0.07 to 0.09 is the same when the volcano
 changes within one agency and when the agency changes, so for LP and VT the
 labeling agency is not a barrier. HB behaves as a different class in each
 dataset, between LP and VT at Copahue, at the edge of LP at Hudson and
 within VT at Nevado del Ruiz, and its recall falls from 0.57 to 0.61 within
 a dataset to 0.15 to 0.20 between datasets. The taxonomy that transfers thus
 has two levels: global classes that a classifier carries across datasets,
-and local classes that each catalog defines for itself. A dataset that
-lacks one of the global classes, like Nevado del Ruiz at Bis, can also fall
-outside the transfer altogether, here because the events are not visible at
-the reference station, a cause that no descriptor resolves.
+and local classes that each catalog defines for itself. A dataset can also fall
+outside the transfer altogether: the LP of Nevado del Ruiz at Bis, events
+the SGC records there because they are not visible at Olleta, are recovered
+with a median recall of 0.03 to 0.05 over all sources.
 
 The bottleneck is the definition of the class, not the classifier. The
 criterion of another dataset flags LP and VT labels at the same rate as the
