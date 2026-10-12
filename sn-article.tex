@@ -1485,19 +1485,18 @@ trained elsewhere already carries it, and that distance can be measured
 before any label is drawn. Across twenty datasets from five catalogs, LP
 and VT transfer between volcanoes and between labeling agencies with the
 same loss, carried by three descriptors, and about 100 target labels, drawn
-half from each class, bring a transferred model to the level of a local one
-at eight of ten targets. Where the transfer starts low, a model pretrained
-on tabular tasks reaches with 20 labels what a tuned classifier reaches
-with 100, and a model trained on the target labels alone outperforms any
+half from each class, bring a transferred model within 0.03 of a local one
+at nine of ten targets. Where the transfer starts low, a model pretrained on
+tabular tasks comes within 0.02 with 20 labels of what a tuned classifier
+reaches with 100, and a model trained on the target labels alone outperforms any
 that keeps a distant source; active learning adds little, and the
 corrections that need no labels close no gap. The remaining distance is in
-the labels: the global classes keep one criterion across agencies, while
-HB is a different class in each catalog, including two of one observatory,
-because the feature its analysts use, a high-frequency onset, depends on
-the energy of the event and on the recording. Adding a dataset to an
+the labels: the global classes keep one criterion across agencies at most
+targets, while HB is a different class in each catalog, including two of one
+observatory, and the feature the OVDAS analysts use for it, a high-frequency
+onset, scales with the energy of the event. Adding a dataset to an
 automatic classifier therefore begins with a definition of each local class
-on a feature that can be measured and corrected for the recording, follows
-with a stratified budget of about 100 labels per class and an audit of
+on a feature that can be measured and corrected for the recording, follows with a stratified budget of about 100 labels and an audit of
 those labels, and leaves the segmentation to the catalog wherever it
 supplies arrivals.
 
