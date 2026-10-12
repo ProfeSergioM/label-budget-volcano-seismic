@@ -163,16 +163,15 @@ trainable from a hundred events and every result readable in terms of named
 features.
 
 The analysis proceeds in five steps. A classifier trained on one dataset is
-applied to another with no labels of the target, over every pair of
-datasets, to establish what transfers and what does not. A budget of target
-labels is then added, from ten to two hundred, with three classifiers,
-random, stratified and active selection, and two references, a model
+applied to another with no labels of the target, over every pair of datasets
+that share LP or VT, to establish what transfers and what does not. A budget of target
+labels is then added, from ten to two hundred, with three classifiers and three ways of choosing
+the labels, random, stratified and active, and two references, a model
 trained on the target labels alone and the local model, to measure how many
 labels close the gap and which method lowers the number. The segmentation
 of the events by hand is compared with an automatic one, to locate the cost
-of a new dataset between its onsets and its labels. Two checks probe the
-training draw and the class prior of the target with estimators that need
-no labels. The labels themselves are audited with confident learning within
+of a new dataset between its onsets and its labels. Two checks probe the training draw of the source
+and, with estimators that need no labels, the class prior of the target. The labels themselves are audited with confident learning within
 each dataset and across datasets, with unsupervised clustering on the
 descriptors and on the amplitude spectrum, with a manual review of the
 suspects at one volcano and with a direct measurement of the feature that
