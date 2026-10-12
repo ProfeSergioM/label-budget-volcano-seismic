@@ -257,12 +257,12 @@ elevation tiles; coordinates in WGS84.}
 Each catalog entry is an operational classification by an analyst, the
 expert labeler of this study. The analyst assigns the event class, the
 detecting station, an onset at that station and a duration. The median
-duration of a class differs between datasets (Table~\ref{tab:durations}):
-LP lasts 11.0~s at Copahue and 29.7~s at Villarrica, and VT 8.0~s at Laguna
-del Maule and 17.9~s at Villarrica. A
-non-positive duration appears in 654 entries at Nevados de Chill\'an, 514 at
-Villarrica, 267 at Copahue, 22 at Hudson and none at Laguna del Maule, at most
-0.24\% of the analyzed events of a dataset.
+duration of a class differs between datasets (Table~\ref{tab:durations}),
+with the event population and with the practice of each catalog: LP lasts
+11.0~s at Copahue and 29.7~s at Villarrica, and VT 8.0~s at Laguna del Maule
+and 17.9~s at Villarrica. Most events thus outlast the 10~s window of this
+study (Section~\ref{subsec:conditioning}), which measures their onset and
+early coda.
 
 \begin{table}[h]
 \caption{Median analyst-assigned duration in seconds within each volcanic
@@ -1568,8 +1568,9 @@ measures their onset and early coda. A second window follows each event to
 the end of its coda, from 5~s, the shortest record that supports the
 recurrence descriptors, to 100~s, after which a long coda is measured on its
 first 100~s, as in the full-duration window of \cite{morales_recurrence_2026}.
-The duration is the analyst-assigned one at the OVDAS datasets and the end of
-the coda set by hand at the validation datasets. The window is cut from a
+The duration is the analyst-assigned one at the OVDAS datasets, where a
+non-positive duration appears in at most 0.24\% of the analyzed events of a
+dataset, and the end of the coda set by hand at the validation datasets. The window is cut from a
 segment padded from 10~s before the onset to 3~s after its end and
 conditioned as the fixed-length window, with a 5~s noise window from 7 to 2~s
 before the onset (Figure~\ref{fig:codawindow}). At Laguna del Maule, Nevados
