@@ -186,15 +186,14 @@ automatic classifier.
 The study draws on twenty datasets of labeled volcano-seismic events: five
 from the catalog of one observatory, OVDAS, and fifteen from four catalogs
 compiled by other agencies. Each dataset is one volcano, region, station or
-deployment recorded under one configuration and labeled under one practice,
+deployment of one catalog, labeled under one practice,
 so that transferring a classifier between two of them changes the volcano,
 the recording or the labeling agency. This section describes the OVDAS
 catalog first and the four validation catalogs after it.
 
 \subsection{Volcanoes and monitoring network}\label{subsec:area}
 
-The OVDAS datasets come from the Southern Andes Volcanological Observatory
-(OVDAS), which monitors the active volcanoes of southern Chile within the
+OVDAS monitors the active volcanoes of southern Chile within the
 National Geology and Mining Service (SERNAGEOMIN) \cite{amigo_volcano_2021}
 and keeps a continuous event catalog for the local seismic network of each
 volcano. Five volcanoes were selected for their large event volumes, their
@@ -564,8 +563,8 @@ from those values.
 
 \subsection{Station selection}\label{subsec:stationselection}
 
-A dataset is the set of events of one catalog recorded under one
-configuration. Each OVDAS dataset uses one station, the one that combines the largest number
+A dataset is the set of events of one catalog from one volcano, region,
+station or deployment. Each OVDAS dataset uses one station, the one that combines the largest number
 of catalogued detections with uninterrupted operation
 (Table~\ref{tab:stations}), which keeps a single instrument response and
 source--station geometry within each class. Each validation catalog is
