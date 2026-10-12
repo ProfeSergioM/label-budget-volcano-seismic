@@ -872,9 +872,10 @@ since the tuned ones cannot split a node on so few events. TabPFN
 synthetic tabular tasks that classifies a test set in context from the
 training set without gradient updates, enters with its default
 configuration, without class weights, and an ensemble of four, with random
-selection only. Every model is scored by $G_m$ on the fixed
-test set, and the curve of each target is the median over its sources of the
-mean over repetitions.
+selection only. Every model is scored by $G_m$ on the fixed test set, and the curve of each
+target is the median over its sources of the mean over repetitions. A
+target reaches the local level when a transferred model comes within 0.03 of
+the local model of the same classifier.
 
 \subsection{Automatic segmentation}\label{subsec:autocut}
 
@@ -1110,9 +1111,11 @@ pool. Panels are ordered by the score of LR with no target labels.}
 \label{fig:budget}
 \end{figure}
 
-At eight of the ten targets, 100 random labels bring the best transferred
-model within 0.03 of the local models; Villarrica and Nevado del Ruiz at
-Olleta stay below. At Hudson, random labels lift the logistic regression from
+At seven of the ten targets, 100 random labels bring a transferred model
+within 0.03 of the local model of the same classifier; Laguna del Maule
+stays 0.03 below, and Villarrica and Nevado del Ruiz at Olleta further.
+Drawn half from each class, the same 100 labels close the gap at nine of the
+ten targets, all but Olleta. At Hudson, random labels lift the logistic regression from
 0.73 to 0.81 at 20 and 0.90 at 100 labels, and Nevado del Ruiz at Olleta
 stays below its local model, at 0.65 to 0.71 with 100 labels.
 
