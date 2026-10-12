@@ -257,8 +257,8 @@ study (Section~\ref{subsec:conditioning}), which measures their onset and
 early coda.
 
 \begin{table}[h]
-\caption{Median analyst-assigned duration in seconds within each volcanic
-dataset and class, over the analyzed events with a positive duration; only
+\caption{Median analyst-assigned duration in seconds within each OVDAS dataset and
+class, over the analyzed events with a positive duration; only
 combinations with at least 50 events are shown.}\label{tab:durations}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
@@ -1042,9 +1042,13 @@ and large markers with bars the median and interquartile range of each local
 class with at least 50 events. Marker shape gives the catalog and color the
 class (TR: tremor of Nevado del Ruiz; TRh, TRm, TRb: harmonic, monochromatic
 and broadband tremor of VOISS-Net; NTR: noise and tremor class of Deception
-Island; EX: explosions; RE, OT: regional and other events of Alaska). Popo:
-Popocat\'epetl; Dec95: Deception Island in 1995; other abbreviations as in
-Figure~\ref{fig:matrices}.}
+Island; EX: explosions; RE, OT: regional and other events of Alaska). LdM, NdCh,
+Cop, Vil, Hud: Laguna del Maule, Nevados de Chill\'an, Copahue, Villarrica,
+Hudson; Ruiz-O, Ruiz-B: Nevado del Ruiz at Olleta and at Bis; AK, Casc, HI,
+NCal: Alaska, Cascade Range, Hawai`i, Northern California; Kil, Red, Tan,
+Pav, Sem, Ven, Popo: K\={\i}lauea, Redoubt, Tanaga, Pavlof, Semisopochnoi,
+Veniaminof, Popocat\'epetl; Dec95, Dec09: Deception Island in 1995 and in
+2009.}
 \label{fig:plane}
 \end{figure}
 
@@ -1068,12 +1072,7 @@ LP--VT, with $G_m$ when the target holds LP and VT and, in italics, the
 recall of its single class otherwise. Bottom: LP--VT--HB, with $G_m$ above
 and the recall of HB below; at Nevado del Ruiz at Bis, which lacks VT, both
 lines give the recall of HB, in italics. Red frames mark the within-dataset
-validation. LdM, NdCh, Cop, Vil, Hud: Laguna del Maule, Nevados de
-Chill\'an, Copahue, Villarrica, Hudson; Ruiz-O, Ruiz-B: Nevado del Ruiz at
-Olleta and at Bis; AK, Casc, HI, NCal: Alaska, Cascade Range, Hawai`i,
-Northern California; Kil, Red, Tan, Pav, Sem, Ven: K\={\i}lauea, Redoubt,
-Tanaga, Pavlof, Semisopochnoi, Veniaminof; Dec09: Deception Island in
-2009.}
+validation. Abbreviations as in Figure~\ref{fig:plane}.}
 \label{fig:matrices}
 \end{figure}
 
@@ -1709,8 +1708,7 @@ fixed-length window; (b) LP--VT, coda-length window; (c) LP--VT--HB,
 fixed-length window. Each cell gives the median, over the targets other than
 the source, of the drop in balanced accuracy in percentage points when the
 descriptor is permuted (mean of three training draws); dots mark values within
-half a point of zero. Columns are source datasets grouped by agency, abbreviated as in
-Figure~\ref{fig:matrices}; the separate column gives the median
+half a point of zero. Columns are source datasets grouped by agency, abbreviated as in Figure~\ref{fig:plane}; the separate column gives the median
 within-dataset importance, and rows follow the fixed-window transferability
 ranking.}
 \label{fig:importance}
