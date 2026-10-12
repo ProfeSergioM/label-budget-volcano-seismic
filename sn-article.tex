@@ -49,34 +49,26 @@
 
 \affil[5]{\orgdiv{Instituto de Tecnología del Conocimiento}, \orgname{Universidad Complutense de Madrid}, \orgaddress{\city{Madrid}, \country{España}}}
 
-\abstract{Automatic classifiers of volcano-seismic events reach high accuracy on
-the catalog they are trained on and lose it on the next dataset, so every
-new volcano, station or deployment is labeled again by an expert. This
-study measures how many expert labels a new dataset needs and whether
-recent methods lower that number, on twenty datasets of labeled events
-from five catalogs and eight labeling agencies, with sixteen interpretable descriptors of a 10~s
-window. A classifier trained on one dataset is applied to every other with
-no target labels, then with a budget of 10 to 200 target labels chosen at
-random, stratified or by active learning, with a logistic regression,
-gradient-boosted trees and the tabular foundation model TabPFN, against a
-model trained on the target alone and a local model; the manual
-segmentation is compared with an automatic one; the training draw and the
-class prior are checked with label-free estimators; and the labels are
-audited with confident learning within and across datasets, with
-unsupervised clustering and with a manual review. LP and VT transfer with
-a loss of 0.07 to 0.09 in $G_m$ whether the volcano or the labeling agency
-changes, and about 100 stratified labels bring a transferred model within
-0.03 of the local one at eight of ten targets; TabPFN reaches with 20
-labels what the tuned classifiers reach with 100 where the transfer starts
-low, active learning adds 0.01 to 0.03, and label-shift correction lowers
-$G_m$ wherever both classes are present. The hybrid class HB does not
-transfer, even between two datasets of one observatory: another dataset's
-criterion flags 40\% to 70\% of its labels against 6\% to 14\% for LP and VT,
-no unsupervised grouping reproduces any class, and the feature the analysts
-use for HB, a high-frequency onset, scales with the energy of the event.
-The label budget of a new dataset is thus set by the transfer it starts
-from, and its residual cost lies in the definition of the local classes
-rather than in the classifier.}
+\abstract{Volcano-seismic classifiers lose on a new dataset the accuracy they reach on
+their own catalog, so each new volcano, station or deployment is labeled
+again. This study measures how many expert labels a new dataset needs, and
+whether recent methods lower that number, on twenty datasets from five
+catalogs, with sixteen interpretable descriptors. Classifiers trained on one
+dataset, among them the tabular foundation model TabPFN, are applied to
+another with 0 to 200 target labels, chosen at random, stratified or by
+active learning, and the expert labels are audited. LP and VT transfer with
+the same loss, 0.07 to 0.09 in $G_m$, whether the volcano or the labeling
+agency changes, and about 100 labels, half from each class, bring a
+transferred model within 0.03 of a local one at nine of ten targets. Where
+the transfer starts low, TabPFN comes within 0.02 with 20 labels of what a
+tuned classifier reaches with 100, and a model trained on the target alone
+outperforms one that keeps a distant source; active learning adds little,
+and a label-free correction of the class prior lowers $G_m$. The hybrid
+class HB does not transfer, even within one observatory: another dataset's
+criterion flags 40\% to 70\% of its labels, and the high-frequency onset
+that defines it scales with the energy of the event. The label budget is
+thus set by the starting transfer, and its residual cost lies in defining
+the local classes, not in the classifier.}
 \keywords{Volcano-seismic classification, Transfer, Label budget, Dataset shift, Label noise, Confident learning, TabPFN}
 \maketitle
 
