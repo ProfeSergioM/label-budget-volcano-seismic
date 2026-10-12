@@ -113,16 +113,19 @@ labeled again by an expert before a classifier serves it
 \cite{cortes_practical_2021}.
 
 The labels themselves are the second problem. A catalog entry is an
-operational decision taken under time pressure, by analysts who rotate and
-whose criteria shift between observatories and over the years
-\cite{titos_could_2025}. Catalogs can be cleaned with
-a classifier that flags entries at odds with the rest
-\cite{anzieta_cleaning_2023}, completed by weak supervision from a model
-trained elsewhere \cite{titos_could_2025}, or standardized at the waveform
-level before classification \cite{cortes_standardization_2019}. None of
-these separates the two causes of a transfer loss: a classifier that fails to
-carry a class across datasets, and a class that is defined differently in
-each dataset.
+operational decision, often taken under the time pressure of unrest, and
+the labeling criteria, even the names of the classes, differ between
+operators and between catalogs
+\cite{cortes_practical_2021,titos_could_2025}. Catalogs can be audited for
+mislabeled events, with a blind review by observatory scientists
+\cite{anzieta_cleaning_2023}, and completed or corrected by a model trained
+on another catalog \cite{titos_could_2025}, whose recognition varies widely
+when the labeling criteria of the two catalogs differ. Waveforms can in turn
+be standardized before classification to reduce the differences between
+sensors and sites \cite{cortes_standardization_2019}. These methods act on
+the labels or on the recording, but none separates the two causes of a
+transfer loss: a classifier that fails to carry a class across datasets,
+and a class that is defined differently in each dataset.
 
 Several methods promise to cut the number of labels a new dataset needs.
 Transfer learning reuses a model trained elsewhere
