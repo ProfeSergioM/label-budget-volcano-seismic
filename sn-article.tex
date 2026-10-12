@@ -1453,17 +1453,24 @@ wherever the catalog supplies arrivals.
 
 \subsection{Limitations}\label{subsec:limitations}
 
-The conclusions rest on one station per volcano and on the vertical
-channel, so the recording conditions of each dataset enter the label of HB
-and possibly of AV. They rest on descriptors of a 10~s window, within which
+The OVDAS datasets use one station per volcano and its vertical channel, a
+choice of this study, although each local network holds several stations.
+With one station, the recording conditions of a dataset cannot be separated
+from its labels, and they enter the label of HB and possibly of AV; a
+network approach, which classifies each event from several stations as
+multi-station classifiers do \cite{salazar_multi-station_2023,ferreira_deep_2023},
+is the natural extension. The conclusions also rest on descriptors of a
+10~s window, within which
 VLP and tremor lie partly outside the band; the coda-length window leaves
 the LP--VT transfer unchanged but was not carried into the budget. The
 budget and the audit across datasets cover the two global classes, so the
 number of labels is measured on LP and VT and not on a full taxonomy, whose
 within-dataset accuracy is 0.45 to 0.81, and HB enters the audit only in
-the four datasets that label it. The manual review was made by one analyst
-who saw the suggested class, and confident learning ran with models of
-fixed configuration. The budget and the cross-dataset audit use three
+the four datasets that label it. One analyst segmented the validation records and
+reviewed the suspects at Hudson, and the review saw the suggested class; a
+blind review by several analysts, as in \cite{anzieta_cleaning_2023}, would
+separate the quality of the labels from the agreement with the model.
+Confident learning ran with models of fixed configuration. The budget and the cross-dataset audit use three
 repetitions, the checks five and the matrices twenty. TabPFN enters with an
 ensemble of four and without active learning. The validation records at 50
 and 40~Hz are resampled, and Olleta and Bis hold few events of each class.
