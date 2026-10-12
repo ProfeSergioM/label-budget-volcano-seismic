@@ -98,18 +98,19 @@ They reach accuracies above 90\% on the catalog they were trained on
 That accuracy is measured within one catalog. A classifier trained at one
 volcano and applied to another, to another station or to a catalog labeled
 by another observatory meets a different source population, a different
-path and site response and a different labeling practice, and the studies
-that test such transfers report losses that depend on all three
-\cite{titos_detection_2019,titos_classification_2020,cortes_practical_2021,castro-cabrera_adaptive_2021}.
-Multi-volcano training sets \cite{fee_generalized_2025}, multi-station
-inputs \cite{salazar_multi-station_2023} and transfer learning
-\cite{bueno_volcano-seismic_2020} reduce the loss but
-do not remove it, and the systematic review of the field
-\cite{morales_artificial_2026} finds that few studies quantify robustness
-across stations or volcanoes and that inconsistent labeling across catalogs
-is a barrier as large as the data itself. In practice, every new dataset,
-whether a new volcano, a new station or a new deployment, is labeled again
-by an expert before a classifier serves it.
+path and site response and a different labeling practice. Classification
+systems lose accuracy when moved to another station, eruptive scenario or
+volcano \cite{cortes_practical_2021} and as a volcano evolves over the
+years \cite{castro-cabrera_adaptive_2021}. Multi-volcano training sets
+\cite{fee_generalized_2025}, multi-station inputs
+\cite{salazar_multi-station_2023} and transfer learning
+\cite{bueno_volcano-seismic_2020} reduce the loss but do not remove it. The
+systematic review of the field \cite{morales_artificial_2026} finds that few
+studies test transferability between volcanoes and that inconsistent
+labeling across catalogs, together with scarce open datasets, hinders
+generalization. In practice, a new volcano, station or deployment is
+labeled again by an expert before a classifier serves it
+\cite{cortes_practical_2021}.
 
 The labels themselves are the second problem. A catalog entry is an
 operational decision taken under time pressure, by analysts who rotate and
