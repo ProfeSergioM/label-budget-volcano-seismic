@@ -823,8 +823,8 @@ class, and at Copahue a fixed random set of 60{,}000 of them enters.
 
 Hyperparameters are tuned on the source alone, on a separate draw of 100
 events per class that may share events with the training draws and the
-diagonal. For the boosted trees, a tree-structured
-Parzen estimator \cite{akiba_optuna_2019} runs 200 trials that maximize the
+diagonal. For the boosted trees, the tree-structured
+Parzen estimator of Optuna \cite{akiba_optuna_2019} runs 200 trials that maximize the
 balanced accuracy of stratified five-fold cross-validation on that draw, over
 boosting rounds in $[200, 2000]$, maximum depth in $[3, 12]$, learning rate
 in $[0.01, 0.3]$, row and column subsampling in $[0.5, 1.0]$, minimum child
@@ -943,8 +943,8 @@ in descriptor space. Within each dataset, HDBSCAN
 \cite{ester_density-based_1996} group the
 sixteen scaled descriptors reduced by principal components to 90\% of their
 variance, on a random subsample of up to 4{,}000 events drawn regardless of
-class. Their parameters are chosen with 80 trials of a tree-structured Parzen
-estimator that maximize the density-based clustering validation index (DBCV)
+class. Their parameters are chosen with 80 trials of the tree-structured Parzen
+estimator of Optuna that maximize the density-based clustering validation index (DBCV)
 \cite{moulavi_density-based_2014}, so the labels take no part in the fit; the
 agreement with the labels is measured afterwards by the adjusted Rand index,
 and the DBCV of the expert labels themselves, in the same space, measures
